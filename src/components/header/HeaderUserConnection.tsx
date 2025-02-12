@@ -22,21 +22,7 @@ export default function HeaderUserConnection() {
                 height={32}
                 className="rounded-full ring-2 ring-primary/10 hover:ring-primary/30 transition-all"
               />
-            ) : (
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                {session.user.name?.[0] || session.user.email?.[0]}
-              </div>
-            )}
-            <div className="hidden sm:flex flex-col text-sm">
-              {session.user.name && (
-                <span className="font-medium">{session.user.name}</span>
-              )}
-              {session.user.email && (
-                <span className="text-muted-foreground text-xs">
-                  {session.user.email}
-                </span>
-              )}
-            </div>
+            ) : null}
           </div>
           <Button onClick={() => signOut()}>Déconnexion</Button>
         </div>
