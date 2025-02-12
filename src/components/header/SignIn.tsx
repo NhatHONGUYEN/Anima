@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { signIn } from "@/lib/auth";
 import { Github } from "lucide-react";
+import { signIn } from "next-auth/react";
 
 export default function SignIn() {
   return (
