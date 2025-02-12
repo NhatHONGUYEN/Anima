@@ -15,21 +15,21 @@ export default function Hero() {
   if (!anime) return <div>Anime not found</div>;
 
   return (
-    <div className="bg-white ">
+    <div>
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-1">
           <div className="relative lg:col-span-3">
-            <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
+            <div className="absolute inset-px rounded-lg  max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)]">
               <div className="p-10 pt-4">
                 <h3 className="text-sm/4 font-semibold text-indigo-600">
                   {anime.title}
                 </h3>
-                <p className="mt-2 text-lg flex gap-4 font-medium tracking-tight text-gray-950">
+                <div className="mt-2 text-lg flex gap-4 font-medium tracking-tight text-gray-950">
                   {anime.themes.map((theme) => (
-                    <div key={theme.mal_id}>{theme.name}</div>
+                    <p key={theme.mal_id}>{theme.name}</p>
                   ))}
-                </p>
+                </div>
                 <p className="mt-2 max-w-lg text-sm/6 text-gray-600">
                   {anime.score} / 10 - {anime.scored_by} - {anime.rank}
                 </p>
@@ -41,29 +41,26 @@ export default function Hero() {
             <div className="pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
           </div>
           <div className="relative lg:col-span-3">
-            <div className="absolute inset-px rounded-lg bg-white lg:rounded-tr-[2rem]" />
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-tr-[calc(2rem+1px)]">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-xl lg:rounded-tr-[calc(2rem+1px)]">
               {anime.trailer?.embed_url ? (
-                <div className="video-container">
+                <div className="video-container w-full h-full">
                   <iframe
-                    width={500}
-                    height={281}
-                    src={anime.trailer.embed_url}
+                    src={`${anime.trailer.embed_url}?autoplay=1`}
                     title="Anime Trailer"
                     style={{ border: 0 }}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
+                    className="w-full h-full"
                   ></iframe>
                 </div>
               ) : (
                 <p>Trailer non disponible</p>
               )}
             </div>
-            <div className="pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5 lg:rounded-tr-[2rem]" />
           </div>
           <div className="relative lg:col-span-2 lg:grid-rows-1">
-            <div className="absolute inset-px rounded-lg bg-white lg:rounded-bl-[2rem]" />
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-bl-[calc(2rem+1px)]">
+            <div className="absolute inset-px rounded-lg  lg:rounded-bl-[2rem]" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-xl lg:rounded-bl-[calc(2rem+1px)]">
               {anime.images?.jpg?.large_image_url && (
                 <Image
                   src={anime.images.jpg.large_image_url}
@@ -76,8 +73,8 @@ export default function Hero() {
             <div className="pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5 lg:rounded-bl-[2rem]" />
           </div>
           <div className="relative lg:col-span-2">
-            <div className="absolute inset-px rounded-lg bg-white" />
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+            <div className="absolute inset-px rounded-lg " />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-xl ">
               {anime.trailer?.images?.maximum_image_url && (
                 <Image
                   src={anime.trailer.images.maximum_image_url}
@@ -102,7 +99,7 @@ export default function Hero() {
             <div className="pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5" />
           </div>
           <div className="relative lg:col-span-2">
-            <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
+            <div className="absolute inset-px rounded-lg  max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
             <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]">
               <div className="p-10 pt-4">
                 <div>
