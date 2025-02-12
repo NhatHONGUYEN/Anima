@@ -103,7 +103,7 @@ export default function TopAnimeSlider() {
                 key={anime.mal_id}
                 className="max-w-[320px] pl-[20px] lg:max-w-[360px]"
               >
-                <Link href={"/"} className="group rounded-xl">
+                <div className="group rounded-xl">
                   <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9]">
                     <Image
                       src={
@@ -125,13 +125,16 @@ export default function TopAnimeSlider() {
                       <div className="mb-8 line-clamp-2 md:mb-12 lg:mb-9">
                         {anime.synopsis}
                       </div>
-                      <div className="flex items-center text-sm">
+                      <Link
+                        href={`/movies/${anime.mal_id}`}
+                        className="flex items-center text-sm"
+                      >
                         Read more{" "}
                         <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
-                      </div>
+                      </Link>
                     </div>
                   </div>
-                </Link>
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
