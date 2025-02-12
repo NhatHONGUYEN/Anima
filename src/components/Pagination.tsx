@@ -1,10 +1,10 @@
 import React from "react";
 
-interface PaginationProps {
+type PaginationProps = {
   page: number;
   isFetching: boolean;
   onPageChange: (newPage: number) => void;
-}
+};
 
 const Pagination: React.FC<PaginationProps> = ({
   page,
