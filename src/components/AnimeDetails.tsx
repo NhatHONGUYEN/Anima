@@ -3,6 +3,10 @@
 import { useAnimeDetails } from "@/hooks/useTopAnime";
 import Image from "next/image";
 
+type Genre = {
+  name: string;
+};
+
 export default function AnimeDetails({ id }: { id: number }) {
   const { data: animeDetail, error, isLoading } = useAnimeDetails(id);
 
@@ -28,7 +32,7 @@ export default function AnimeDetails({ id }: { id: number }) {
       <p>{anime.synopsis}</p>
       <p>
         <strong>Genres:</strong>{" "}
-        {anime.genres?.map((genre) => genre.name).join(", ") || "N/A"}
+        {anime.genres?.map((genre: Genre) => genre.name).join(", ") || "N/A"}
       </p>
       <p>
         <strong>Score:</strong> {anime.score || "N/A"}
