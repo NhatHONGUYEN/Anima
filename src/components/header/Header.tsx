@@ -21,8 +21,10 @@ export default function Header() {
             <Clapperboard className="text-primary" strokeWidth={1} />
             <span className=" font-semibold">Anima</span>
           </Link>
-          <div className="flex-grow text-center">
-            <span className=" font-semibold">All Movie Series</span>
+          <div className="flex gap-4 text-center">
+            <Link href={"/"}>All</Link>
+            <Link href={"/about"}>Movies</Link>
+            <Link href={"/contact"}>Series</Link>
           </div>
           <div className="hidden items-center gap-4 lg:flex">
             <HeaderUserConnection />

@@ -3,16 +3,26 @@
 import React from "react";
 import { useAnimeDetails } from "@/hooks/useTopAnime";
 import Image from "next/image";
-import { Anime } from "@/lib/types";
+import { Anime, Episode } from "@/lib/types";
+import { useAnimeEpisodes } from "../../hooks/useTopAnime";
 
 export default function Hero() {
   const { data: animeDetail, error, isLoading } = useAnimeDetails(38524);
+  const {
+    data: animeEpisodes,
+    error: episodesError,
+    isLoading: episodesLoading,
+  } = useAnimeEpisodes(38524);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading || episodesLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+  if (episodesError) return <div>Error: {episodesError.message}</div>;
 
   const anime: Anime | undefined = animeDetail?.data;
   if (!anime) return <div>Anime not found</div>;
+
+  const episodes: Episode[] | undefined = animeEpisodes?.data;
+  if (!episodes) return <div>Episodes not found</div>;
 
   return (
     <div>
@@ -80,22 +90,6 @@ export default function Hero() {
                 />
               )}
               <div className="p-10 pt-4">
-                <h3 className=" font-semibold ">Integrations</h3>
-                <p className="mt-2  font-medium tracking-tight ">
-                  Connect your favorite tools
-                </p>
-                <p className="mt-2 max-w-lg  ">
-                  Maecenas at augue sed elit dictum vulputate, in nisi aliquam
-                  maximus arcu.
-                </p>
-              </div>
-            </div>
-            <div className="pointer-events-none absolute inset-px rounded-lg  shadow-sm " />
-          </div>
-          <div className="relative  lg:col-span-2">
-            <div className="absolute inset-px rounded-lg  max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
-            <div className="relative bg-card  flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]">
-              <div className="p-10 pt-4">
                 <div>
                   <h2>Producers:</h2>
                   <ul>
@@ -120,6 +114,30 @@ export default function Hero() {
                       <li key={studio.mal_id}>{studio.name}</li>
                     ))}
                   </ul>
+                </div>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg  shadow-sm " />
+          </div>
+          <div className="relative  lg:col-span-2">
+            <div className="absolute inset-px rounded-lg  max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
+            <div className="relative bg-card  flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]">
+              <div className="p-10 pt-4">
+                <h2>Episode:</h2>
+                <div className="grid grid-cols-2">
+                  {episodes?.map((episode: Episode) => (
+                    <div key={episode.mal_id} className="flex gap-4">
+                      <div>
+                        <p>{episode.title}</p>
+                        <Image
+                          src={episode.images.jpg.image_url}
+                          alt={`Episode ${episode.mal_id} image`}
+                          width={100}
+                          height={150}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
