@@ -1,6 +1,6 @@
 "use client";
 
-import { MenuIcon } from "lucide-react";
+import { Clapperboard, MenuIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -11,23 +11,19 @@ import {
 } from "@/components/ui/sheet";
 import Image from "next/image";
 import HeaderUserConnection from "./HeaderUserConnection";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <section className="py-4 ">
       <div className="container mx-auto">
         <nav className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Image
-              src="https://shadcnblocks.com/images/block/block-1.svg"
-              alt="logo"
-              className="w-8"
-              width={32}
-              height={32}
-            />
-          </div>
+          <Link href={"/"} className="flex items-center gap-4">
+            <Clapperboard size={36} color="#e74d3c" strokeWidth={1} />
+            <span className=" font-semibold">Anima</span>
+          </Link>
           <div className="flex-grow text-center">
-            <span className="text-lg font-semibold">All Movie Series</span>
+            <span className=" font-semibold">All Movie Series</span>
           </div>
           <div className="hidden items-center gap-4 lg:flex">
             <HeaderUserConnection />
@@ -49,9 +45,7 @@ export default function Header() {
                       width={32}
                       height={32}
                     />
-                    <span className="text-lg font-semibold">
-                      Shadcnblocks.com
-                    </span>
+                    <span className=" font-semibold">Shadcnblocks.com</span>
                   </div>
                 </SheetTitle>
               </SheetHeader>
