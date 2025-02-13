@@ -1,17 +1,29 @@
 "use server";
 
-export async function fetchTopAnime(page: number) {
+export async function fetchTopAnime(
+  filter?: "airing" | "upcoming" | "bypopularity" | "favorite",
+  page: number = 1
+) {
   try {
-    const response = await fetch(
-      `https://api.jikan.moe/v4/top/anime?page=${page}&limit=10`
-    );
+    const url = filter
+      ? `https://api.jikan.moe/v4/top/anime?filter=${filter}&page=${page}&limit=10`
+      : `https://api.jikan.moe/v4/top/anime?page=${page}&limit=10`;
+
+    const response = await fetch(url);
+
     if (!response.ok) {
-      throw new Error("Failed to fetch top anime");
+      throw new Error(
+        `Failed to fetch top anime${filter ? ` with filter: ${filter}` : ""}`
+      );
     }
+
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error fetching top anime:", error);
+    console.error(
+      `Error fetching top anime${filter ? ` with filter ${filter}` : ""}:`,
+      error
+    );
     throw error;
   }
 }

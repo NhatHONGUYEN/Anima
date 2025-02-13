@@ -48,7 +48,7 @@ export default function TopAnimeSlider() {
     };
   }, [carouselApi]);
 
-  const { data: topAnime, error, isLoading } = useTopAnime(1);
+  const { data: topAnime, error, isLoading } = useTopAnime(undefined, 1);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;

@@ -5,10 +5,13 @@ import {
   fetchTopAnime,
 } from "../../app/actions/topAnime/route";
 
-export function useTopAnime(page: number) {
+export function useTopAnime(
+  filter?: "airing" | "upcoming" | "bypopularity" | "favorite" | "all",
+  page: number = 1
+) {
   return useQuery({
-    queryKey: ["topAnime", page],
-    queryFn: () => fetchTopAnime(page),
+    queryKey: ["topAnime", filter, page],
+    queryFn: () => fetchTopAnime(filter === "all" ? undefined : filter, page),
     staleTime: 5000,
   });
 }
@@ -19,6 +22,7 @@ export function useAnimeDetails(id: number) {
     queryFn: () => fetchAnimeDetails(id),
   });
 }
+
 export function useAnimeEpisodes(id: number) {
   return useQuery({
     queryKey: ["animeEpisodes", id],

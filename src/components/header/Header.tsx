@@ -22,9 +22,10 @@ export default function Header() {
             <span className=" font-semibold">Anima</span>
           </Link>
           <div className="flex gap-4 text-center">
-            <Link href={"/"}>All</Link>
-            <Link href={"/about"}>Movies</Link>
-            <Link href={"/contact"}>Series</Link>
+            <Link href={"/all"}>All</Link>
+            <Link href={"/upcoming"}>upcoming</Link>
+            <Link href={"/bypopularity"}>bypopularity</Link>
+            <Link href={"/favorite"}>favorite</Link>
           </div>
           <div className="hidden items-center gap-4 lg:flex">
             <HeaderUserConnection />

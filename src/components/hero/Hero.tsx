@@ -121,19 +121,24 @@ export default function Hero() {
           </div>
           <div className="relative  lg:col-span-2">
             <div className="absolute inset-px rounded-lg  max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
-            <div className="relative bg-card  flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]">
-              <div className="p-10 pt-4">
-                <h2>Episode:</h2>
-                <div className="grid grid-cols-2">
-                  {episodes?.map((episode: Episode) => (
+            <div className="relative bg-card   flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]">
+              <div className="p-10 mx-auto ">
+                <h2 className="pb-4">Episode:</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+                  {episodes?.slice(0, 6).map((episode: Episode) => (
                     <div key={episode.mal_id} className="flex gap-4">
                       <div>
-                        <p>{episode.title}</p>
+                        <p className="pb-2">
+                          {episode.title.length > 16
+                            ? `${episode.title.slice(0, 10)}...`
+                            : episode.title}
+                        </p>
                         <Image
                           src={episode.images.jpg.image_url}
                           alt={`Episode ${episode.mal_id} image`}
-                          width={100}
+                          width={150}
                           height={150}
+                          className="rounded-lg"
                         />
                       </div>
                     </div>
