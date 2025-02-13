@@ -9,7 +9,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import Image from "next/image";
 import HeaderUserConnection from "./HeaderUserConnection";
 import Link from "next/link";
 
@@ -19,7 +18,7 @@ export default function Header() {
       <div className="container mx-auto">
         <nav className="flex items-center justify-between">
           <Link href={"/"} className="flex items-center gap-4">
-            <Clapperboard size={36} color="#e74d3c" strokeWidth={1} />
+            <Clapperboard className="text-primary" strokeWidth={1} />
             <span className=" font-semibold">Anima</span>
           </Link>
           <div className="flex-grow text-center">
@@ -38,14 +37,10 @@ export default function Header() {
               <SheetHeader>
                 <SheetTitle>
                   <div className="flex items-center gap-4">
-                    <Image
-                      src="https://shadcnblocks.com/images/block/block-1.svg"
-                      alt="logo"
-                      className="w-8"
-                      width={32}
-                      height={32}
-                    />
-                    <span className=" font-semibold">Shadcnblocks.com</span>
+                    <Link href={"/"} className="flex items-center gap-4">
+                      <Clapperboard className="text-primary" strokeWidth={1} />
+                      <span className=" font-semibold">Anima</span>
+                    </Link>
                   </div>
                 </SheetTitle>
               </SheetHeader>
