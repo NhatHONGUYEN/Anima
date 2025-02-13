@@ -1,42 +1,42 @@
-"use client"; // ⬅️ Indique que c'est un Client Component
+"use client";
 
-import { useAnimeDetails } from "@/hooks/useTopAnime";
-import Image from "next/image";
-
-type Genre = {
-  name: string;
-};
+import { useAnimeDetails, useAnimeEpisodes } from "@/hooks/useTopAnime";
+import { Anime, Episode } from "@/lib/types";
+import ContentHero from "@/components/ContentHero";
 
 export default function AnimeDetails({ id }: { id: number }) {
   const { data: animeDetail, error, isLoading } = useAnimeDetails(id);
+  const {
+    data: animeEpisodes,
+    error: episodesError,
+    isLoading: episodesLoading,
+  } = useAnimeEpisodes(id);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading || episodesLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+  if (episodesError) return <div>Error: {episodesError.message}</div>;
 
-  const anime = animeDetail?.data;
+  const anime: Anime | undefined = animeDetail?.data;
   if (!anime) return <div>Anime not found</div>;
 
+  const episodes: Episode[] | undefined = animeEpisodes?.data;
+  if (!episodes) return <div>Episodes not found</div>;
+
   return (
-    <div>
-      <h1>{anime.title}</h1>
-      <Image
-        src={
-          anime.images?.webp?.image_url ||
-          anime.images?.jpg?.image_url ||
-          "/fallback-image.jpg"
-        }
-        alt={anime.title}
-        width={400}
-        height={600}
-      />
-      <p>{anime.synopsis}</p>
-      <p>
-        <strong>Genres:</strong>{" "}
-        {anime.genres?.map((genre: Genre) => genre.name).join(", ") || "N/A"}
-      </p>
-      <p>
-        <strong>Score:</strong> {anime.score || "N/A"}
-      </p>
-    </div>
+    <ContentHero
+      title={anime.title}
+      score={anime.score}
+      scoredBy={anime.scored_by}
+      rank={anime.rank}
+      synopsis={anime.synopsis}
+      themes={anime.themes}
+      trailerEmbedUrl={anime.trailer?.embed_url}
+      trailerImageUrl={anime.trailer?.images?.maximum_image_url}
+      largeImageUrl={anime.images?.jpg?.large_image_url}
+      producers={anime.producers}
+      licensors={anime.licensors}
+      studios={anime.studios}
+      episodes={episodes}
+    />
   );
 }

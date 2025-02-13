@@ -54,3 +54,19 @@ export type Episode = {
     };
   };
 };
+
+export type ContentHeroProps = {
+  title: string;
+  score: number;
+  scoredBy: number;
+  rank: number;
+  synopsis: string;
+  themes: { mal_id: number; name: string }[];
+  trailerEmbedUrl?: string;
+  trailerImageUrl?: string;
+  largeImageUrl?: string;
+  producers: { mal_id: number; name: string }[];
+  licensors: { mal_id: number; name: string }[];
+  studios: { mal_id: number; name: string }[];
+  episodes?: Episode[];
+};

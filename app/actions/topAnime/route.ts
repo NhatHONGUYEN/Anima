@@ -6,7 +6,7 @@ export async function fetchTopAnime(
 ) {
   try {
     const url = filter
-      ? `https://api.jikan.moe/v4/top/anime?filter=${filter}&page=${page}&limit=10`
+      ? `https://api.jikan.moe/v4/top/anime?filter=${filter}&page=${page}&limit=8`
       : `https://api.jikan.moe/v4/top/anime?page=${page}&limit=10`;
 
     const response = await fetch(url);
