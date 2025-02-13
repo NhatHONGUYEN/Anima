@@ -70,3 +70,33 @@ export type ContentHeroProps = {
   studios: { mal_id: number; name: string }[];
   episodes?: Episode[];
 };
+
+export type HeroEpisodesProps = {
+  episodes: Episode[];
+};
+
+export type HeroDetailsProps = {
+  trailerImageUrl?: string;
+  title: string;
+  producers: { mal_id: number; name: string }[];
+  licensors: { mal_id: number; name: string }[];
+  studios: { mal_id: number; name: string }[];
+};
+
+export type HeroImageProps = {
+  largeImageUrl?: string;
+  title: string;
+};
+
+export type HeroTrailerProps = {
+  trailerEmbedUrl?: string;
+};
+
+export type HeroHeaderProps = {
+  title: string;
+  score: number;
+  scoredBy: number;
+  rank: number;
+  synopsis: string;
+  themes: { mal_id: number; name: string }[];
+};

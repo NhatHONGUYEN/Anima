@@ -2,14 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-
-interface HeroDetailsProps {
-  trailerImageUrl?: string;
-  title: string;
-  producers: { mal_id: number; name: string }[];
-  licensors: { mal_id: number; name: string }[];
-  studios: { mal_id: number; name: string }[];
-}
+import { HeroDetailsProps } from "@/lib/types";
 
 export default function HeroDetails({
   trailerImageUrl,

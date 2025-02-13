@@ -2,11 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-
-interface HeroImageProps {
-  largeImageUrl?: string;
-  title: string;
-}
+import { HeroImageProps } from "@/lib/types";
 
 export default function HeroImage({ largeImageUrl, title }: HeroImageProps) {
   const [largeImageError, setLargeImageError] = useState(false);

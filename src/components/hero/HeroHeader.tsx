@@ -1,15 +1,7 @@
 "use client";
 
+import { HeroHeaderProps } from "@/lib/types";
 import React from "react";
-
-interface HeroHeaderProps {
-  title: string;
-  score: number;
-  scoredBy: number;
-  rank: number;
-  synopsis: string;
-  themes: { mal_id: number; name: string }[];
-}
 
 export default function HeroHeader({
   title,

@@ -1,10 +1,7 @@
 "use client";
 
+import { HeroTrailerProps } from "@/lib/types";
 import React from "react";
-
-interface HeroTrailerProps {
-  trailerEmbedUrl?: string;
-}
 
 export default function HeroTrailer({ trailerEmbedUrl }: HeroTrailerProps) {
   return (

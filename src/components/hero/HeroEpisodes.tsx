@@ -2,11 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Episode } from "@/lib/types";
-
-interface HeroEpisodesProps {
-  episodes: Episode[];
-}
+import { HeroEpisodesProps } from "@/lib/types";
 
 export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
   return (
