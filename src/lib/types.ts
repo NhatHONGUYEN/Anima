@@ -100,3 +100,8 @@ export type HeroHeaderProps = {
   synopsis: string;
   themes: { mal_id: number; name: string }[];
 };
+
+export type AccordionSectionProps = {
+  title: string;
+  items: { mal_id: number; name: string }[];
+};

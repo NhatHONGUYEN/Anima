@@ -12,13 +12,15 @@ export default function HeroImage({ largeImageUrl, title }: HeroImageProps) {
       <div className="absolute inset-px rounded-lg lg:rounded-bl-[2rem]" />
       <div className="relative ring-1 ring-border flex h-full flex-col overflow-hidden rounded-xl lg:rounded-bl-[calc(2rem+1px)]">
         {largeImageUrl && !largeImageError ? (
-          <Image
-            src={largeImageUrl}
-            alt={`${title} Large`}
-            width={400}
-            height={600}
-            onError={() => setLargeImageError(true)}
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src={largeImageUrl}
+              alt={`${title} Large`}
+              layout="fill"
+              objectFit="cover"
+              onError={() => setLargeImageError(true)}
+            />
+          </div>
         ) : (
           <p>Image non disponible</p>
         )}
