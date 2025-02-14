@@ -55,20 +55,45 @@ export type Episode = {
   };
 };
 
+export type Characters = {
+  mal_id: number;
+  images: {
+    webp: {
+      image_url: string;
+    };
+  };
+  name: string;
+  role: string;
+  favorites: number;
+  voice_actors: {
+    person: {
+      mal_id: number;
+      images: {
+        jpg: {
+          image_url: string;
+        };
+      };
+      name: string;
+    };
+    language: string;
+  }[];
+};
+
 export type ContentHeroProps = {
   title: string;
   score: number;
   scoredBy: number;
   rank: number;
   synopsis: string;
-  themes: { mal_id: number; name: string }[];
+  themes: Entity[];
   trailerEmbedUrl?: string;
   trailerImageUrl?: string;
   largeImageUrl?: string;
-  producers: { mal_id: number; name: string }[];
-  licensors: { mal_id: number; name: string }[];
-  studios: { mal_id: number; name: string }[];
+  producers: Entity[];
+  licensors: Entity[];
+  studios: Entity[];
   episodes?: Episode[];
+  characters: Characters[];
 };
 
 export type HeroEpisodesProps = {

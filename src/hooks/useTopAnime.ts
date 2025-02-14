@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import {
+  fetchAnimeCharacters,
   fetchAnimeDetails,
   fetchAnimeEpisodes,
   fetchAnimeRecommendations,
@@ -35,5 +36,12 @@ export function useAnimeRecommendations(id: number) {
   return useQuery({
     queryKey: ["animeRecommendations", id],
     queryFn: () => fetchAnimeRecommendations(id),
+  });
+}
+
+export function useAnimeCharacters(id: number) {
+  return useQuery({
+    queryKey: ["animeCharacters", id],
+    queryFn: () => fetchAnimeCharacters(id),
   });
 }

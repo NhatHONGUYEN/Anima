@@ -1,7 +1,11 @@
 "use client";
 
-import { useAnimeDetails, useAnimeEpisodes } from "@/hooks/useTopAnime";
-import { Anime, Episode } from "@/lib/types";
+import {
+  useAnimeCharacters,
+  useAnimeDetails,
+  useAnimeEpisodes,
+} from "@/hooks/useTopAnime";
+import { Anime, Characters, Episode } from "@/lib/types";
 import ContentHero from "@/components/ContentHero";
 
 export default function AnimeDetails({ id }: { id: number }) {
@@ -11,16 +15,26 @@ export default function AnimeDetails({ id }: { id: number }) {
     error: episodesError,
     isLoading: episodesLoading,
   } = useAnimeEpisodes(id);
+  const {
+    data: animeCharacters,
+    error: charactersError,
+    isLoading: charactersLoading,
+  } = useAnimeCharacters(id);
 
-  if (isLoading || episodesLoading) return <div>Loading...</div>;
+  if (isLoading || episodesLoading || charactersLoading)
+    return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   if (episodesError) return <div>Error: {episodesError.message}</div>;
+  if (charactersError) return <div>Error: {charactersError.message}</div>;
 
   const anime: Anime | undefined = animeDetail?.data;
   if (!anime) return <div>Anime not found</div>;
 
   const episodes: Episode[] | undefined = animeEpisodes?.data;
   if (!episodes) return <div>Episodes not found</div>;
+
+  const characters: Characters[] | undefined = animeCharacters?.data;
+  if (!characters) return <div>Characters not found</div>;
 
   return (
     <ContentHero
@@ -37,6 +51,7 @@ export default function AnimeDetails({ id }: { id: number }) {
       licensors={anime.licensors}
       studios={anime.studios}
       episodes={episodes}
+      characters={characters}
     />
   );
 }

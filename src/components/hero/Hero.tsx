@@ -3,7 +3,7 @@
 import React from "react";
 import { useAnimeDetails, useAnimeEpisodes } from "@/hooks/useTopAnime";
 import { Anime, Episode } from "@/lib/types";
-import ContentHero from "@/components/ContentHero";
+import ContentHero from "../ContentHero";
 
 export default function Hero() {
   const { data: animeDetail, error, isLoading } = useAnimeDetails(38524);
@@ -38,6 +38,7 @@ export default function Hero() {
       licensors={anime.licensors}
       studios={anime.studios}
       episodes={episodes}
+      characters={[]}
     />
   );
 }

@@ -82,3 +82,22 @@ export async function fetchAnimeRecommendations(id: number) {
     throw error;
   }
 }
+
+export async function fetchAnimeCharacters(id: number) {
+  try {
+    const response = await fetch(
+      `https://api.jikan.moe/v4/anime/${id}/characters`
+    );
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Anime recommendations not found (404)");
+      }
+      throw new Error("Failed to fetch anime characters");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching anime characters:", error);
+    throw error;
+  }
+}

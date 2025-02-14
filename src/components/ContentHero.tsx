@@ -7,6 +7,8 @@ import HeroTrailer from "./hero/HeroTrailer";
 import HeroImage from "./hero/HeroImage";
 import HeroDetails from "./hero/HeroDetails";
 import HeroEpisodes from "./hero/HeroEpisodes";
+import HeroCharacters from "./hero/HeroCharacters";
+import HeroVoiceActors from "./hero/HeroVoiceActors";
 
 export default function ContentHero({
   title,
@@ -22,6 +24,7 @@ export default function ContentHero({
   licensors,
   studios,
   episodes,
+  characters,
 }: ContentHeroProps) {
   return (
     <section className="pb-16">
@@ -47,6 +50,17 @@ export default function ContentHero({
           {episodes && episodes.length > 0 && (
             <HeroEpisodes episodes={episodes} />
           )}
+          {characters && characters.length > 0 && (
+            <HeroCharacters characters={characters} />
+          )}
+          {characters &&
+            characters.length > 0 &&
+            characters.map((character, charIndex) => (
+              <HeroVoiceActors
+                key={`${character.mal_id}-${charIndex}`}
+                voiceActors={character.voice_actors}
+              />
+            ))}
         </div>
       </div>
     </section>
