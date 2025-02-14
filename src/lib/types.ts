@@ -57,14 +57,17 @@ export type Episode = {
 
 export type Characters = {
   mal_id: number;
-  images: {
-    webp: {
-      image_url: string;
+  character: {
+    mal_id: number;
+    images: {
+      webp: {
+        image_url: string;
+      };
     };
+    name: string;
+    favorites: number;
   };
-  name: string;
   role: string;
-  favorites: number;
   voice_actors: {
     person: {
       mal_id: number;
