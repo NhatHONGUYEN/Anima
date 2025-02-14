@@ -10,11 +10,14 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { useTopAnime } from "@/hooks/useTopAnime";
+import { useAnimeRecommendations } from "@/hooks/useTopAnime";
 import AnimeCard from "@/components/AnimeCard";
-import { Anime } from "@/lib/types";
 
-export default function TopAnimeSlider() {
+type TopAnimeSliderProps = {
+  animeId: number;
+};
+
+export default function TopAnimeSlider({ animeId }: TopAnimeSliderProps) {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -36,17 +39,25 @@ export default function TopAnimeSlider() {
     };
   }, [carouselApi]);
 
-  const { data: topAnime, error, isLoading } = useTopAnime(undefined, 1);
+  const {
+    data: animeRecommendations,
+    error,
+    isLoading,
+  } = useAnimeRecommendations(animeId);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+
+  const recommendedAnime = animeRecommendations?.data.slice(0, 8);
+  if (!Array.isArray(recommendedAnime))
+    return <div>No recommendations found</div>;
 
   return (
     <section className="py-32">
       <div className="container max-w-6xl mx-auto ">
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
-          <div className="flex  flex-col gap-4">
-            <p className="max-w-lg text-muted-foreground">Trending Movies</p>
+          <div className="flex flex-col gap-4">
+            <p className="max-w-lg text-muted-foreground">Recommended Anime</p>
           </div>
           <div className="hidden shrink-0 gap-2 md:flex">
             <Button
@@ -86,20 +97,20 @@ export default function TopAnimeSlider() {
           }}
         >
           <CarouselContent className="ml-5 mr-5 2xl:ml-[calc(50vw-700px+20px)] 2xl:mr-[calc(50vw-700px+20px)]">
-            {topAnime.data.map((anime: Anime) => (
+            {recommendedAnime.map((recommendation, index) => (
               <CarouselItem
-                key={anime.mal_id}
+                key={`${recommendation.entry.mal_id}-${index}`}
                 className="max-w-[320px] pl-[20px] lg:max-w-[360px]"
               >
-                <AnimeCard anime={anime} />
+                <AnimeCard anime={recommendation.entry} />
               </CarouselItem>
             ))}
           </CarouselContent>
         </Carousel>
         <div className="mt-8 flex justify-center gap-2">
-          {Array.from({ length: 8 }).map((_, index) => (
+          {Array.from({ length: recommendedAnime.length }).map((_, index) => (
             <button
-              key={index}
+              key={`dot-${index}`}
               className={`h-2 w-2 rounded-full transition-colors ${
                 currentSlide === index ? "bg-primary" : "bg-primary/20"
               }`}

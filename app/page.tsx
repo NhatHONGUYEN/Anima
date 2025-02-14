@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <TopAnimeSlider />
+      <TopAnimeSlider animeId={38524} />
     </div>
   );
 }

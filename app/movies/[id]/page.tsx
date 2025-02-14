@@ -1,4 +1,5 @@
 import AnimeDetails from "@/components/AnimeDetails";
+import TopAnimeSlider from "@/components/TopAnimeSlider";
 
 export default async function MovieDetails(props: {
   params: Promise<{ id: string }>;
@@ -10,5 +11,10 @@ export default async function MovieDetails(props: {
     return <div>Invalid ID</div>;
   }
 
-  return <AnimeDetails id={animeId} />;
+  return (
+    <div>
+      <AnimeDetails id={animeId} />
+      <TopAnimeSlider animeId={animeId} />
+    </div>
+  );
 }
