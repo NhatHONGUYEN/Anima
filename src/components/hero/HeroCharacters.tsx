@@ -24,8 +24,8 @@ export default function HeroCharacters({ characters }: HeroCharactersProps) {
 
   return (
     <div className="relative lg:col-span-3">
-      <div className="absolute inset-px rounded-lg ring-1 ring-border bg-card max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
-      <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)] min-h-[300px] lg:min-h-[400px]">
+      <div className="absolute inset-px rounded-lg ring-1 ring-border bg-card max-lg:rounded-t-[2rem] lg:rounded-bl-[2rem]" />
+      <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-bl-[calc(2rem+1px)] min-h-[300px] lg:min-h-[400px]">
         <div className="container mt-16 grid gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
           {displayedCharacters.map((characterObj, charIndex) => (
             <div
@@ -63,7 +63,6 @@ export default function HeroCharacters({ characters }: HeroCharactersProps) {
           )}
         </div>
       </div>
-      <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
     </div>
   );
 }
