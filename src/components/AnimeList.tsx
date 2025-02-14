@@ -8,9 +8,14 @@ import { Anime } from "@/lib/types";
 type AnimeListProps = {
   filter: "airing" | "upcoming" | "bypopularity" | "favorite" | "all";
   title: string;
+  description: string;
 };
 
-export default function AnimeList({ filter, title }: AnimeListProps) {
+export default function AnimeList({
+  filter,
+  title,
+  description,
+}: AnimeListProps) {
   const { data, error, isLoading } = useTopAnime(filter);
 
   if (isLoading) return <div>Loading...</div>;
@@ -25,9 +30,7 @@ export default function AnimeList({ filter, title }: AnimeListProps) {
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">{title}</h1>
           <p className="text-muted-foreground lg:max-w-3xl lg:text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig
-            doloremque mollitia fugiat omnis! Porro facilis quo animi
-            consequatur. Explicabo.
+            {description}
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

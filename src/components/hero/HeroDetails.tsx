@@ -27,7 +27,9 @@ export default function HeroDetails({
             onError={() => setTrailerImageError(true)}
           />
         ) : (
-          <p>Image non disponible</p>
+          <div className="flex items-center justify-center h-full">
+            <p>404 Not Found</p>
+          </div>
         )}
         <div className="p-10 pt-4">
           <AccordionSection title="Producers" items={producers} />

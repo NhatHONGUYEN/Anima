@@ -4,5 +4,11 @@ import React from "react";
 import AnimeList from "@/components/AnimeList";
 
 export default function ByPopularityAnimePage() {
-  return <AnimeList filter="bypopularity" title="Popular Anime" />;
+  return (
+    <AnimeList
+      filter="bypopularity"
+      title="Popular Anime"
+      description="Discover the most popular anime series currently airing. These shows are trending and have captured the hearts of many fans around the world."
+    />
+  );
 }

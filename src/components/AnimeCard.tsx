@@ -30,7 +30,9 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
               : anime.title}
           </h1>
           <h3 className="mb-8 line-clamp-2 md:mb-12 lg:mb-9">
-            {anime.synopsis}
+            {anime.synopsis.length > 30
+              ? `${anime.synopsis.slice(0, 30)}...`
+              : anime.synopsis}
           </h3>
           <Link href={`/movies/${anime.mal_id}`} className="flex items-center ">
             Read more{" "}

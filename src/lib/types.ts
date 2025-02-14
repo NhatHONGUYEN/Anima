@@ -105,3 +105,8 @@ export type AccordionSectionProps = {
   title: string;
   items: { mal_id: number; name: string }[];
 };
+
+export type Theme = {
+  mal_id: number;
+  name: string;
+};

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   fetchAnimeDetails,
   fetchAnimeEpisodes,
+  fetchAnimeRecommendations,
   fetchTopAnime,
 } from "../../app/actions/topAnime/route";
 
@@ -27,5 +28,12 @@ export function useAnimeEpisodes(id: number) {
   return useQuery({
     queryKey: ["animeEpisodes", id],
     queryFn: () => fetchAnimeEpisodes(id),
+  });
+}
+
+export function useAnimeRecommendations(id: number) {
+  return useQuery({
+    queryKey: ["animeRecommendations", id],
+    queryFn: () => fetchAnimeRecommendations(id),
   });
 }
