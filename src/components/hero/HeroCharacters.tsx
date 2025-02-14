@@ -1,20 +1,33 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Characters } from "@/lib/types";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
 
 type HeroCharactersProps = {
   characters: Characters[];
 };
 
 export default function HeroCharacters({ characters }: HeroCharactersProps) {
+  const [visibleCount, setVisibleCount] = useState(6);
+
+  const displayedCharacters = characters.slice(0, visibleCount);
+
+  const handleShowMore = () => {
+    setVisibleCount((prevCount) => prevCount + 6);
+  };
+
+  const handleShowLess = () => {
+    setVisibleCount((prevCount) => Math.max(prevCount - 6, 6));
+  };
+
   return (
     <div className="relative lg:col-span-3">
       <div className="absolute inset-px rounded-lg ring-1 ring-border bg-card max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
       <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)] min-h-[300px] lg:min-h-[400px]">
-        <div className="container mt-16 grid gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3 overflow-y-auto max-h-[400px]">
-          {characters.map((characterObj, charIndex) => (
+        <div className="container mt-16 grid gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
+          {displayedCharacters.map((characterObj, charIndex) => (
             <div
               key={`${characterObj.character.mal_id}-${charIndex}`}
               className="flex flex-col items-center"
@@ -26,6 +39,7 @@ export default function HeroCharacters({ characters }: HeroCharactersProps) {
                     "/path/to/default/image.jpg"
                   }
                   alt={`Image of ${characterObj.character.name}`}
+                  className="object-cover"
                 />
                 <AvatarFallback> {characterObj.character.name}</AvatarFallback>
               </Avatar>
@@ -37,6 +51,16 @@ export default function HeroCharacters({ characters }: HeroCharactersProps) {
               </p>
             </div>
           ))}
+        </div>
+        <div className="mt-4 flex justify-center space-x-4">
+          {visibleCount < characters.length && (
+            <Button onClick={handleShowMore}>Show More</Button>
+          )}
+          {visibleCount > 6 && (
+            <Button variant={"outline"} onClick={handleShowLess}>
+              Show Less
+            </Button>
+          )}
         </div>
       </div>
       <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />

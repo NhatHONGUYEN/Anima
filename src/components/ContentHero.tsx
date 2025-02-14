@@ -53,14 +53,13 @@ export default function ContentHero({
           {characters && characters.length > 0 && (
             <HeroCharacters characters={characters} />
           )}
-          {characters &&
-            characters.length > 0 &&
-            characters.map((character, charIndex) => (
-              <HeroVoiceActors
-                key={`${character.mal_id}-${charIndex}`}
-                voiceActors={character.voice_actors}
-              />
-            ))}
+          {characters && characters.length > 0 && (
+            <HeroVoiceActors
+              voiceActors={characters.flatMap(
+                (character) => character.voice_actors
+              )}
+            />
+          )}
         </div>
       </div>
     </section>
