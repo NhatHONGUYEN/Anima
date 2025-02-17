@@ -9,4 +9,5 @@ export default {
       clientSecret: process.env.AUTH_GITHUB_SECRET,
     }),
   ],
+  secret: process.env.AUTH_SECRET,
 } satisfies NextAuthConfig;

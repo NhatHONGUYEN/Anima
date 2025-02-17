@@ -69,11 +69,14 @@ export async function fetchAnimeRecommendations(id: number) {
     );
     if (!response.ok) {
       if (response.status === 404) {
-        throw new Error("Anime recommendations not found (404)");
+        return null; // Return null instead of throwing an error
       }
       throw new Error("Failed to fetch anime recommendations");
     }
     const data = await response.json();
+    if (data.data.length === 0) {
+      return null; // Return null if the data array is empty
+    }
     return data;
   } catch (error) {
     console.error("Error fetching anime recommendations:", error);

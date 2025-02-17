@@ -27,8 +27,8 @@ export default function ContentHero({
   characters,
 }: ContentHeroProps) {
   return (
-    <section className="pb-16">
-      <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+    <section className="py-16">
+      <div className="mx-auto container ">
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-1">
           <HeroHeader
             title={title}

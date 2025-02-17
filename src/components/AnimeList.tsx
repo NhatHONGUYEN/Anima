@@ -36,7 +36,7 @@ export default function AnimeList({
 
   return (
     <section className="py-16">
-      <div className="container max-w-6xl mx-auto">
+      <div className="container ">
         <div className="text-center flex flex-col items-center mb-8">
           <h1 className=" mb-4">{title}</h1>
           <p>{description}</p>
