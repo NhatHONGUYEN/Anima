@@ -6,7 +6,7 @@ import React from "react";
 export default function HeroTrailer({ trailerEmbedUrl }: HeroTrailerProps) {
   return (
     <div className="relative lg:col-span-3">
-      <div className="relative ring-1 ring-border flex h-full flex-col overflow-hidden rounded-xl lg:rounded-tr-[calc(2rem+1px)]">
+      <div className="relative ring-1 ring-border flex h-96 lg:h-full flex-col overflow-hidden rounded-xl lg:rounded-tr-[calc(2rem+1px)]">
         {trailerEmbedUrl ? (
           <div className="video-container w-full h-full">
             <iframe

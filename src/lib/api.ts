@@ -1,3 +1,5 @@
+"use server";
+
 export async function fetchTopAnime(
   filter?: "airing" | "upcoming" | "bypopularity" | "favorite",
   page: number = 1

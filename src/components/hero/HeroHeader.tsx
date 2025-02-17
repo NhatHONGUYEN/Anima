@@ -22,7 +22,7 @@ export default function HeroHeader({
       <div className="absolute inset-px rounded-lg ring-1 ring-border bg-card max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
       <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)] min-h-[300px] lg:min-h-[400px]">
         <div className="p-10 flex flex-col justify-center h-full">
-          <h3 className="mb-4">{title}</h3>
+          <h1 className="mb-4">{title}</h1>
           <div className="flex gap-4 mb-4">
             {themes.map((theme: Theme) => (
               <Badge variant="accent" key={theme.mal_id}>

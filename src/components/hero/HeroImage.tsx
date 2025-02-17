@@ -12,7 +12,7 @@ export default function HeroImage({ largeImageUrl, title }: HeroImageProps) {
       <div className="absolute inset-px rounded-lg lg:rounded-bl-[2rem]" />
       <div className="relative ring-1 ring-border flex h-full flex-col overflow-hidden rounded-xl lg:rounded-bl-[calc(2rem+1px)]">
         {largeImageUrl && !largeImageError ? (
-          <div className="relative w-full h-[300px] md:h-[400px] lg:h-[600px]">
+          <div className="relative w-full h-96  lg:h-[600px]">
             <Image
               src={largeImageUrl}
               alt={`${title} Large`}
