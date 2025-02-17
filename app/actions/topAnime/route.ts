@@ -1,49 +1,58 @@
 import {
-  fetchAnimeCharacters,
+  fetchTopAnime,
   fetchAnimeDetails,
   fetchAnimeEpisodes,
   fetchAnimeRecommendations,
-  fetchTopAnime,
+  fetchAnimeCharacters,
 } from "@/lib/api";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { id, type, filter, page } = req.query;
+// Cette fonction traite toutes les requêtes GET
+export async function GET(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const type = searchParams.get("type");
+  const id = searchParams.get("id");
+  const filter = searchParams.get("filter") as
+    | "airing"
+    | "upcoming"
+    | "bypopularity"
+    | "favorite";
+  const page = parseInt(searchParams.get("page") || "1", 10);
 
   try {
     let data;
+
+    // Traitement en fonction du type
     switch (type) {
       case "topAnime":
-        data = await fetchTopAnime(
-          filter as "airing" | "upcoming" | "bypopularity" | "favorite",
-          parseInt(page as string, 10)
-        );
+        data = await fetchTopAnime(filter, page);
         break;
       case "animeDetails":
-        data = await fetchAnimeDetails(parseInt(id as string, 10));
+        if (!id) throw new Error("ID is required for animeDetails");
+        data = await fetchAnimeDetails(parseInt(id, 10));
         break;
       case "animeEpisodes":
-        data = await fetchAnimeEpisodes(parseInt(id as string, 10));
+        if (!id) throw new Error("ID is required for animeEpisodes");
+        data = await fetchAnimeEpisodes(parseInt(id, 10));
         break;
       case "animeRecommendations":
-        data = await fetchAnimeRecommendations(parseInt(id as string, 10));
+        if (!id) throw new Error("ID is required for animeRecommendations");
+        data = await fetchAnimeRecommendations(parseInt(id, 10));
         break;
       case "animeCharacters":
-        data = await fetchAnimeCharacters(parseInt(id as string, 10));
+        if (!id) throw new Error("ID is required for animeCharacters");
+        data = await fetchAnimeCharacters(parseInt(id, 10));
         break;
       default:
-        res.status(400).json({ error: "Invalid type" });
-        return;
+        return NextResponse.json({ error: "Invalid type" }, { status: 400 });
     }
-    res.status(200).json(data);
+
+    // Réponse avec les données
+    return NextResponse.json(data);
   } catch (error) {
-    if (error instanceof Error) {
-      res.status(500).json({ error: error.message });
-    } else {
-      res.status(500).json({ error: "An unknown error occurred" });
-    }
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 }
+    );
   }
 }
