@@ -19,7 +19,9 @@ export default function HeroTrailer({ trailerEmbedUrl }: HeroTrailerProps) {
             ></iframe>
           </div>
         ) : (
-          <p>Trailer non disponible</p>
+          <div className="flex items-center justify-center w-full h-full">
+            <p>Trailer non disponible</p>
+          </div>
         )}
       </div>
     </div>

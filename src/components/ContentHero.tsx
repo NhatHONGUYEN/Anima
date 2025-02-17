@@ -13,7 +13,10 @@ import HeroVoiceActors from "./hero/HeroVoiceActors";
 export default function ContentHero({
   title,
   score,
-  scoredBy,
+  type,
+  episode,
+  duration,
+  favorites,
   rank,
   synopsis,
   themes,
@@ -33,7 +36,10 @@ export default function ContentHero({
           <HeroHeader
             title={title}
             score={score}
-            scoredBy={scoredBy}
+            type={type}
+            episode={episode}
+            duration={duration}
+            favorites={favorites}
             rank={rank}
             synopsis={synopsis}
             themes={themes}

@@ -10,6 +10,7 @@ type HeroListProps<T> = {
   getImageUrl: (item: T) => string;
   getName: (item: T) => string;
   noItemsMessage: string;
+  isCharacterList?: boolean;
 };
 
 export default function HeroList<T>({
@@ -18,6 +19,7 @@ export default function HeroList<T>({
   getImageUrl,
   getName,
   noItemsMessage,
+  isCharacterList = false, // Default to false if not provided
 }: HeroListProps<T>) {
   const [visibleCount, setVisibleCount] = useState(4);
 
@@ -33,8 +35,18 @@ export default function HeroList<T>({
 
   return (
     <div className="relative py-16 lg:col-span-3">
-      <div className="absolute inset-px rounded-lg ring-1 ring-border bg-card max-lg:rounded-t-[2rem] lg:rounded-br-[2rem]" />
-      <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)] min-h-[300px] lg:min-h-[400px]">
+      <div
+        className={`absolute inset-px rounded-lg ring-1 ring-border bg-card max-lg:rounded-t-[2rem] ${
+          isCharacterList ? "lg:rounded-bl-[2rem]" : "lg:rounded-br-[2rem]"
+        }`}
+      />
+      <div
+        className={`relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] ${
+          isCharacterList
+            ? "lg:rounded-bl-[calc(2rem+1px)]"
+            : "lg:rounded-br-[calc(2rem+1px)]"
+        } min-h-[300px] lg:min-h-[400px]`}
+      >
         <h1 className="mb-8 text-center">{title}</h1>
         <div className="container grid gap-8 md:grid-cols-2">
           {displayedItems.length > 0 ? (

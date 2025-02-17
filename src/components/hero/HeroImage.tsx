@@ -9,8 +9,8 @@ export default function HeroImage({ largeImageUrl, title }: HeroImageProps) {
 
   return (
     <div className="relative lg:col-span-2 lg:grid-rows-1">
-      <div className="absolute inset-px rounded-lg lg:rounded-bl-[2rem]" />
-      <div className="relative ring-1 ring-border flex h-full flex-col overflow-hidden rounded-xl lg:rounded-bl-[calc(2rem+1px)]">
+      <div className="absolute inset-px rounded-lg " />
+      <div className="relative ring-1 ring-border flex h-full flex-col overflow-hidden rounded-xl ">
         {largeImageUrl && !largeImageError ? (
           <div className="relative w-full h-96  lg:h-[600px]">
             <Image

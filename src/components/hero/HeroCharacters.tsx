@@ -18,6 +18,7 @@ export default function HeroCharacters({ characters }: HeroCharactersProps) {
       }
       getName={(characterObj) => characterObj.character.name}
       noItemsMessage="No characters found."
+      isCharacterList={true}
     />
   );
 }

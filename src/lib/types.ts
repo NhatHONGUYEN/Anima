@@ -7,6 +7,7 @@ export type Entity = {
 
 export type Anime = {
   mal_id: number;
+  type: string;
   title: string;
   source: string;
   episodes: number;
@@ -85,8 +86,11 @@ export type Characters = {
 export type ContentHeroProps = {
   title: string;
   score: number;
-  scoredBy: number;
   rank: number;
+  type: string;
+  episode: number;
+  duration: string;
+  favorites: number;
   synopsis: string;
   themes: Entity[];
   trailerEmbedUrl?: string;
@@ -123,10 +127,13 @@ export type HeroTrailerProps = {
 export type HeroHeaderProps = {
   title: string;
   score: number;
-  scoredBy: number;
   rank: number;
   synopsis: string;
   themes: { mal_id: number; name: string }[];
+  type: string;
+  episode: number;
+  duration: string;
+  favorites: number;
 };
 
 export type AccordionSectionProps = {

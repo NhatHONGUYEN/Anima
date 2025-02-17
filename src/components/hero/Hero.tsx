@@ -28,7 +28,10 @@ export default function Hero() {
     <ContentHero
       title={anime.title}
       score={anime.score}
-      scoredBy={anime.scored_by}
+      duration={anime.duration}
+      episode={anime.episodes}
+      favorites={anime.favorites}
+      type={anime.type}
       rank={anime.rank}
       synopsis={anime.synopsis}
       themes={anime.themes}

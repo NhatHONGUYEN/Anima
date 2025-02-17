@@ -9,19 +9,28 @@ export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
   return (
     <div className="relative lg:col-span-2">
       {/* Background effect */}
-      <div className="absolute inset-px rounded-lg max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
+      <div className="absolute inset-px rounded-xl  " />
 
-      <div className="relative bg-card flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]">
-        <div className="p-10 mx-auto">
+      <div className="relative bg-card flex h-full flex-col overflow-hidden rounded-xl ">
+        <div className="p-10 ">
           {/* Vérification si des épisodes existent */}
           {!episodes || episodes.length === 0 ? (
-            <p>No Episode</p>
+            <div className="flex flex-col justify-center items-center h-full min-h-[500px]">
+              <h1 className="mb-4">Sorry !</h1>
+              <Image
+                src="/noEpisode.webp"
+                alt="no episode"
+                width={400}
+                height={400}
+                className="rounded-lg object-cover"
+              />
+            </div>
           ) : (
             <>
-              <h2 className="pb-4">Episodes:</h2>
-              <div className="grid grid-cols-1  gap-4">
+              <h2 className="pb-4 text-center">Episodes</h2>
+              <div className="flex flex-col  gap-4">
                 {episodes.slice(0, 2).map((episode) => (
-                  <div key={episode.mal_id} className="flex flex-col gap-4">
+                  <div key={episode.mal_id}>
                     {/* Image de l'épisode */}
                     <div className="relative  ">
                       {episode?.images?.jpg?.image_url ? (
@@ -34,13 +43,13 @@ export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
                           priority
                         />
                       ) : (
-                        <div className="flex items-center justify-center w-full h-full bg-accent rounded-lg">
-                          <ImageOff size={40} />
+                        <div className="bg-accent flex justify-center items-center p-10 rounded-lg">
+                          <ImageOff size={50} />
                         </div>
                       )}
                     </div>
                     {/* Titre de l'épisode */}
-                    <p>
+                    <p className="text-center py-4">
                       {episode.title.length > 16
                         ? `${episode.title.slice(0, 16)}...`
                         : episode.title}
@@ -54,7 +63,7 @@ export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
       </div>
 
       {/* Contour avec effet de shadow */}
-      <div className="pointer-events-none ring-1 ring-border absolute inset-px rounded-lg shadow-sm max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
+      <div className="pointer-events-none ring-1 ring-border absolute inset-px rounded-lg shadow-sm " />
     </div>
   );
 }
