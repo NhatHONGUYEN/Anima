@@ -43,7 +43,7 @@ export default function HeroList<T>({
                 <Image
                   alt={`Image of ${getName(item)}`}
                   src={getImageUrl(item) || "/path/to/default/image.jpg"}
-                  className="rounded-lg w-full h-40 object-cover object-center"
+                  className="rounded-lg w-80 h-80 mx-auto md:w-full md:h-40 object-cover object-center"
                   width={400}
                   height={400}
                 />

@@ -19,17 +19,17 @@ export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
           ) : (
             <>
               <h2 className="pb-4">Episodes:</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {episodes.slice(0, 6).map((episode) => (
+              <div className="grid grid-cols-1  gap-4">
+                {episodes.slice(0, 2).map((episode) => (
                   <div key={episode.mal_id} className="flex flex-col gap-4">
                     {/* Image de l'épisode */}
-                    <div className="relative w-[100px] h-[100px]">
+                    <div className="relative  ">
                       {episode?.images?.jpg?.image_url ? (
                         <Image
                           src={episode.images.jpg.image_url}
                           alt={`Episode ${episode.mal_id}`}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          width={400}
+                          height={400}
                           className="rounded-lg object-cover"
                           priority
                         />
