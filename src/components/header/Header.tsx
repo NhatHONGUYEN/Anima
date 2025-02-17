@@ -19,7 +19,7 @@ export default function Header() {
         <nav className="flex items-center justify-between">
           <Link href={"/"} className="flex items-center gap-4">
             <Clapperboard className="text-primary" strokeWidth={1} />
-            <span className=" font-semibold">Anima</span>
+            <h1>Anima</h1>
           </Link>
           <div className="flex gap-4 text-center uppercase">
             <Link href={"/all"}>All</Link>

@@ -35,7 +35,7 @@ export default function HeroList<T>({
     <div className="relative py-16 lg:col-span-3">
       <div className="absolute inset-px rounded-lg ring-1 ring-border bg-card max-lg:rounded-t-[2rem] lg:rounded-br-[2rem]" />
       <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)] min-h-[300px] lg:min-h-[400px]">
-        <h1 className="mb-8 text-center font-bold">{title}</h1>
+        <h1 className="mb-8 text-center">{title}</h1>
         <div className="container grid gap-8 md:grid-cols-2">
           {displayedItems.length > 0 ? (
             displayedItems.map((item, index) => (
