@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useTopAnime } from "@/hooks/useTopAnime";
 import AnimeCard from "@/components/AnimeCard";
 import { Anime } from "@/lib/types";
+import Loader from "./ui/loader";
 
 type AnimeListProps = {
   filter: "airing" | "upcoming" | "bypopularity" | "favorite" | "all";
@@ -26,7 +27,7 @@ export default function AnimeList({
     }
   }, [data]);
 
-  if (isLoading && page === 1) return <div>Loading...</div>;
+  if (isLoading && page === 1) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   const handleLoadMore = () => {

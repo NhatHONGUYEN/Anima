@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import { useAnimeRecommendations } from "@/hooks/useTopAnime";
 import AnimeCard from "@/components/AnimeCard";
+import Loader from "./ui/loader";
 
 type TopAnimeSliderProps = {
   animeId: number;
@@ -45,7 +46,7 @@ export default function TopAnimeSlider({ animeId }: TopAnimeSliderProps) {
     isLoading,
   } = useAnimeRecommendations(animeId);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   const recommendedAnime = animeRecommendations?.data.slice(0, 8);

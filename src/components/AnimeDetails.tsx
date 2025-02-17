@@ -7,6 +7,7 @@ import {
 } from "@/hooks/useTopAnime";
 import { Anime, Characters, Episode } from "@/lib/types";
 import ContentHero from "@/components/ContentHero";
+import Loader from "./ui/loader";
 
 export default function AnimeDetails({ id }: { id: number }) {
   const { data: animeDetail, error, isLoading } = useAnimeDetails(id);
@@ -21,8 +22,7 @@ export default function AnimeDetails({ id }: { id: number }) {
     isLoading: charactersLoading,
   } = useAnimeCharacters(id);
 
-  if (isLoading || episodesLoading || charactersLoading)
-    return <div>Loading...</div>;
+  if (isLoading || episodesLoading || charactersLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
   if (episodesError) return <div>Error: {episodesError.message}</div>;
   if (charactersError) return <div>Error: {charactersError.message}</div>;
