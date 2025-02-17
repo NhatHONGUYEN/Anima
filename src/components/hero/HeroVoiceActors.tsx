@@ -41,9 +41,9 @@ export default function HeroVoiceActors({ voiceActors }: HeroVoiceActorsProps) {
                     actor.person.images?.jpg?.image_url ||
                     "/path/to/default/image.jpg"
                   }
-                  className=" ring-1 ring-border w-full h-48  rounded-lg object-cover"
-                  width={300}
-                  height={450}
+                  className="rounded-lg w-full h-40 object-cover object-center"
+                  width={400}
+                  height={400}
                 />
                 <p className="py-8 text-center">{actor.person.name}</p>
               </div>

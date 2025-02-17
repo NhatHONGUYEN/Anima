@@ -59,7 +59,7 @@ export default function TopAnimeSlider({ animeId }: TopAnimeSliderProps) {
       <div className="container ">
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
           <div className="flex flex-col gap-4">
-            <p className="text-muted-foreground">Recommended Anime</p>
+            <h1>Recommended Anime</h1>
           </div>
           <div className="hidden shrink-0 gap-2 md:flex">
             <Button

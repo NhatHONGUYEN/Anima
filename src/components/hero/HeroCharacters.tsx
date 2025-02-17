@@ -31,18 +31,17 @@ export default function HeroCharacters({ characters }: HeroCharactersProps) {
           {displayedCharacters.length > 0 ? (
             displayedCharacters.map((characterObj, charIndex) => (
               <div key={`${characterObj.character.mal_id}-${charIndex}`}>
-                <div className="relative w-full h-48">
-                  <Image
-                    alt={`Image of ${characterObj.character.name}`}
-                    src={
-                      characterObj.character.images?.webp?.image_url ||
-                      "/path/to/default/image.jpg"
-                    }
-                    className="rounded-lg  object-cover"
-                    width={400}
-                    height={450}
-                  />
-                </div>
+                <Image
+                  alt={`Image of ${characterObj.character.name}`}
+                  src={
+                    characterObj.character.images?.webp?.image_url ||
+                    "/path/to/default/image.jpg"
+                  }
+                  className="rounded-lg w-full h-40 object-cover object-center"
+                  width={400}
+                  height={400}
+                />
+
                 <p className="py-8 text-center">
                   {characterObj.character.name}
                 </p>

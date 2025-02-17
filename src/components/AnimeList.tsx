@@ -38,8 +38,8 @@ export default function AnimeList({
     <section className="py-16">
       <div className="container ">
         <div className="text-center flex flex-col items-center mb-8">
-          <h1 className=" mb-4">{title}</h1>
-          <p>{description}</p>
+          <h1 className=" mb-4 text-xl uppercase">{title}</h1>
+          <p className="max-w-md">{description}</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {allAnime.map((anime: Anime, index) => (

@@ -17,8 +17,8 @@ export default function AccordionSection({
     <Accordion type="single" collapsible>
       <AccordionItem value={title.toLowerCase()}>
         <AccordionTrigger>
-          <div className=" sm:py-1 lg:py-2 lg:text-lg">
-            <h3>{title}:</h3>
+          <div className=" sm:py-1 lg:py-2 ">
+            <h1>{title}:</h1>
           </div>
         </AccordionTrigger>
         <AccordionContent className="sm:mb-1 lg:mb-2">
