@@ -109,18 +109,28 @@ export default function TopAnimeSlider({ animeId }: TopAnimeSliderProps) {
             ))}
           </CarouselContent>
         </Carousel>
-        <div className="mt-8 flex justify-center gap-2">
-          {Array.from({ length: recommendedAnime.length }).map((_, index) => (
-            <button
-              key={`dot-${index}`}
-              className={`h-2 w-2 rounded-full transition-colors ${
-                currentSlide === index ? "bg-primary" : "bg-primary/20"
-              }`}
-              onClick={() => carouselApi?.scrollTo(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
+        {recommendedAnime.length > 0 && (
+          <div className="mt-8 flex justify-center gap-2">
+            {Array.from({ length: Math.min(6, recommendedAnime.length) }).map(
+              (_, index) => {
+                const step = Math.floor(recommendedAnime.length / 6);
+                const targetIndex = step * index;
+                return (
+                  <button
+                    key={`dot-${index}`}
+                    className={`h-2 w-2 rounded-full transition-colors ${
+                      currentSlide === targetIndex
+                        ? "bg-primary"
+                        : "bg-primary/20"
+                    }`}
+                    onClick={() => carouselApi?.scrollTo(targetIndex)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                );
+              }
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

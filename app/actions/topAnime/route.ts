@@ -1,103 +1,49 @@
-"use server";
+import {
+  fetchAnimeCharacters,
+  fetchAnimeDetails,
+  fetchAnimeEpisodes,
+  fetchAnimeRecommendations,
+  fetchTopAnime,
+} from "@/lib/api";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export async function fetchTopAnime(
-  filter?: "airing" | "upcoming" | "bypopularity" | "favorite",
-  page: number = 1
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
 ) {
+  const { id, type, filter, page } = req.query;
+
   try {
-    const url = filter
-      ? `https://api.jikan.moe/v4/top/anime?filter=${filter}&page=${page}&limit=8`
-      : `https://api.jikan.moe/v4/top/anime?page=${page}&limit=8`;
-
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error(
-        `Failed to fetch top anime${filter ? ` with filter: ${filter}` : ""}`
-      );
+    let data;
+    switch (type) {
+      case "topAnime":
+        data = await fetchTopAnime(
+          filter as "airing" | "upcoming" | "bypopularity" | "favorite",
+          parseInt(page as string, 10)
+        );
+        break;
+      case "animeDetails":
+        data = await fetchAnimeDetails(parseInt(id as string, 10));
+        break;
+      case "animeEpisodes":
+        data = await fetchAnimeEpisodes(parseInt(id as string, 10));
+        break;
+      case "animeRecommendations":
+        data = await fetchAnimeRecommendations(parseInt(id as string, 10));
+        break;
+      case "animeCharacters":
+        data = await fetchAnimeCharacters(parseInt(id as string, 10));
+        break;
+      default:
+        res.status(400).json({ error: "Invalid type" });
+        return;
     }
-
-    const data = await response.json();
-    return data;
+    res.status(200).json(data);
   } catch (error) {
-    console.error(
-      `Error fetching top anime${filter ? ` with filter ${filter}` : ""}:`,
-      error
-    );
-    throw error;
-  }
-}
-
-export async function fetchAnimeDetails(id: number) {
-  try {
-    const response = await fetch(`https://api.jikan.moe/v4/anime/${id}`);
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error("Anime details not found (404)");
-      }
-      throw new Error("Failed to fetch anime details");
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: "An unknown error occurred" });
     }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching anime details:", error);
-    throw error;
-  }
-}
-
-export async function fetchAnimeEpisodes(id: number) {
-  try {
-    const response = await fetch(
-      `https://api.jikan.moe/v4/anime/${id}/videos/episodes`
-    );
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error("Anime episodes not found (404)");
-      }
-      throw new Error("Failed to fetch anime episodes");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching anime episodes:", error);
-    throw error;
-  }
-}
-
-export async function fetchAnimeRecommendations(id: number) {
-  try {
-    const response = await fetch(
-      `https://api.jikan.moe/v4/anime/${id}/recommendations`
-    );
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error("Anime recommendations not found (404)");
-      }
-      throw new Error("Failed to fetch anime recommendations");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching anime recommendations:", error);
-    throw error;
-  }
-}
-
-export async function fetchAnimeCharacters(id: number) {
-  try {
-    const response = await fetch(
-      `https://api.jikan.moe/v4/anime/${id}/characters`
-    );
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error("Anime recommendations not found (404)");
-      }
-      throw new Error("Failed to fetch anime characters");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching anime characters:", error);
-    throw error;
   }
 }

@@ -1,11 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
 import {
   fetchAnimeCharacters,
   fetchAnimeDetails,
   fetchAnimeEpisodes,
   fetchAnimeRecommendations,
   fetchTopAnime,
-} from "../../app/actions/topAnime/route";
+} from "@/lib/api";
+import { useQuery } from "@tanstack/react-query";
 
 export function useTopAnime(
   filter?: "airing" | "upcoming" | "bypopularity" | "favorite" | "all",
