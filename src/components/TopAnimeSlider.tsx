@@ -56,10 +56,10 @@ export default function TopAnimeSlider({ animeId }: TopAnimeSliderProps) {
 
   return (
     <section className="py-32">
-      <div className="container max-w-6xl mx-auto ">
+      <div className="container ">
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
           <div className="flex flex-col gap-4">
-            <p className="max-w-lg text-muted-foreground">Recommended Anime</p>
+            <p className="text-muted-foreground">Recommended Anime</p>
           </div>
           <div className="hidden shrink-0 gap-2 md:flex">
             <Button
@@ -98,11 +98,11 @@ export default function TopAnimeSlider({ animeId }: TopAnimeSliderProps) {
             },
           }}
         >
-          <CarouselContent className="ml-5 mr-5 2xl:ml-[calc(50vw-700px+20px)] 2xl:mr-[calc(50vw-700px+20px)]">
+          <CarouselContent className="ml-5 mr-5 2xl:ml-[calc(50vw-800px)] 2xl:mr-[calc(50vw-900px+20px)]">
             {recommendedAnime.map((recommendation, index) => (
               <CarouselItem
                 key={`${recommendation.entry.mal_id}-${index}`}
-                className="max-w-[320px] pl-[20px] lg:max-w-[360px]"
+                className="max-w-[320px] pl-5 lg:max-w-[360px]"
               >
                 <AnimeCard anime={recommendation.entry} />
               </CarouselItem>
