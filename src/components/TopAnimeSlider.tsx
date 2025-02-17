@@ -50,8 +50,9 @@ export default function TopAnimeSlider({ animeId }: TopAnimeSliderProps) {
   if (error) return <div>Error: {error.message}</div>;
 
   const recommendedAnime = animeRecommendations?.data.slice(0, 8);
-  if (!Array.isArray(recommendedAnime))
-    return <div>No recommendations found</div>;
+  if (!Array.isArray(recommendedAnime) || recommendedAnime.length === 0) {
+    return null;
+  }
 
   return (
     <section className="py-32">

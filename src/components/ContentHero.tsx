@@ -23,7 +23,7 @@ export default function ContentHero({
   producers,
   licensors,
   studios,
-  episodes,
+  episodes = [], // Provide a default value of an empty array
   characters,
 }: ContentHeroProps) {
   return (
@@ -47,9 +47,7 @@ export default function ContentHero({
             licensors={licensors}
             studios={studios}
           />
-          {episodes && episodes.length > 0 && (
-            <HeroEpisodes episodes={episodes} />
-          )}
+          <HeroEpisodes episodes={episodes} />
           {characters && characters.length > 0 && (
             <HeroCharacters characters={characters} />
           )}

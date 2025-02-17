@@ -20,7 +20,7 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
   const imageUrl =
     anime?.images?.jpg?.large_image_url || "/path/to/default/image.jpg";
   const title = anime?.title ?? "Unknown Title";
-  const synopsis = anime?.synopsis ?? "No synopsis available";
+  const synopsis = anime?.synopsis;
 
   return (
     <div className="group rounded-xl">
@@ -38,9 +38,11 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
           <h1 className="mb-2 pt-4 font-semibold md:mb-3 md:pt-4 lg:pt-4">
             {title.length > 30 ? `${title.slice(0, 30)}...` : title}
           </h1>
-          <h3 className="mb-8 line-clamp-2 md:mb-12 lg:mb-9">
-            {synopsis.length > 30 ? `${synopsis.slice(0, 30)}...` : synopsis}
-          </h3>
+          {synopsis && (
+            <h3 className="mb-8 line-clamp-2 md:mb-12 lg:mb-9">
+              {synopsis.length > 30 ? `${synopsis.slice(0, 30)}...` : synopsis}
+            </h3>
+          )}
           <Link href={`/movies/${anime.mal_id}`} className="flex items-center">
             Read more{" "}
             <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />

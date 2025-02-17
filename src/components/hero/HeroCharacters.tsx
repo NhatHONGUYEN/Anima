@@ -39,7 +39,8 @@ export default function HeroCharacters({ characters }: HeroCharactersProps) {
                       "/path/to/default/image.jpg"
                     }
                     className="rounded-lg  object-cover"
-                    layout="fill"
+                    width={400}
+                    height={450}
                   />
                 </div>
                 <p className="py-8 text-center">
