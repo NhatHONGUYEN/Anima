@@ -4,6 +4,7 @@ import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 import Header from "@/components/header/Header";
 import QueryProvider from "@/lib/QueryProvider";
+import { Footer } from "@/components/Footer";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -34,7 +35,10 @@ export default function RootLayout({
       >
         <SessionProvider>
           <QueryProvider>
-            <Header /> {children}
+            <Header />
+
+            {children}
+            <Footer />
           </QueryProvider>
         </SessionProvider>
       </body>

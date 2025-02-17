@@ -27,7 +27,7 @@ export default function ContentHero({
   characters,
 }: ContentHeroProps) {
   return (
-    <section className="py-16">
+    <section>
       <div className="mx-auto container ">
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-1">
           <HeroHeader
