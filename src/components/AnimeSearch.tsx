@@ -4,7 +4,6 @@ import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-
 import {
   Popover,
   PopoverContent,
@@ -15,13 +14,13 @@ import { useRouter } from "next/navigation";
 import Fuse from "fuse.js";
 import { useAnimeList } from "@/hooks/useTopAnime";
 import {
-  CommandDialog,
+  Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from "cmdk";
+} from "@/components/ui/command";
 
 export function AnimeSearch() {
   const [open, setOpen] = React.useState(false);
@@ -70,7 +69,7 @@ export function AnimeSearch() {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-96 p-0">
-        <CommandDialog>
+        <Command>
           <CommandInput
             placeholder="Type your search..."
             value={searchQuery}
@@ -113,7 +112,7 @@ export function AnimeSearch() {
               ))}
             </CommandGroup>
           </CommandList>
-        </CommandDialog>
+        </Command>
       </PopoverContent>
     </Popover>
   );
