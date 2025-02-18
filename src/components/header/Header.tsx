@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import HeaderUserConnection from "./HeaderUserConnection";
 import Link from "next/link";
+import { AnimeSearch } from "../AnimeSearch";
 
 export default function Header() {
   return (
@@ -28,6 +29,7 @@ export default function Header() {
             <Link href={"/favorite"}>favorite</Link>
           </div>
           <div className="hidden items-center gap-4 lg:flex">
+            <AnimeSearch />
             <HeaderUserConnection />
           </div>
           <Sheet>

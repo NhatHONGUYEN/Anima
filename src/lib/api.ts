@@ -1,5 +1,7 @@
 "use server";
 
+import { Anime } from "./types";
+
 export async function fetchTopAnime(
   filter?: "airing" | "upcoming" | "bypopularity" | "favorite",
   page: number = 1
@@ -102,5 +104,19 @@ export async function fetchAnimeCharacters(id: number) {
   } catch (error) {
     console.error("Error fetching anime characters:", error);
     throw error;
+  }
+}
+
+export async function fetchAnimeList(): Promise<Anime[]> {
+  try {
+    const response = await fetch("https://api.jikan.moe/v4/top/anime");
+    if (!response.ok)
+      throw new Error("Erreur lors de la récupération des animes");
+
+    const data = await response.json();
+    return data.data as Anime[]; // Ensure the data is an array of Anime
+  } catch (error) {
+    console.error("Erreur lors du fetch des animes:", error);
+    return [];
   }
 }

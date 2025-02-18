@@ -2,9 +2,11 @@ import {
   fetchAnimeCharacters,
   fetchAnimeDetails,
   fetchAnimeEpisodes,
+  fetchAnimeList,
   fetchAnimeRecommendations,
   fetchTopAnime,
 } from "@/lib/api";
+import { Anime } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 
 export function useTopAnime(
@@ -43,5 +45,13 @@ export function useAnimeCharacters(id: number) {
   return useQuery({
     queryKey: ["animeCharacters", id],
     queryFn: () => fetchAnimeCharacters(id),
+  });
+}
+
+export function useAnimeList() {
+  return useQuery<Anime[], Error>({
+    queryKey: ["animeList"],
+    queryFn: () => fetchAnimeList(),
+    staleTime: 5000,
   });
 }

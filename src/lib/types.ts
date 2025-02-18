@@ -7,6 +7,7 @@ export type Entity = {
 
 export type Anime = {
   mal_id: number;
+  title_english: string;
   type: string;
   title: string;
   source: string;
