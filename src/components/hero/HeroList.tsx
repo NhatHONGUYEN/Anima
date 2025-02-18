@@ -3,6 +3,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 
 type HeroListProps<T> = {
   items: T[];
@@ -52,14 +58,33 @@ export default function HeroList<T>({
           {displayedItems.length > 0 ? (
             displayedItems.map((item, index) => (
               <div key={index}>
-                <Image
-                  alt={`Image of ${getName(item)}`}
-                  src={getImageUrl(item) || "/path/to/default/image.jpg"}
-                  className="rounded-lg w-80 h-80 mx-auto md:w-full md:h-40 object-cover object-center"
-                  width={400}
-                  height={400}
-                />
-                <p className="py-8 text-center">{getName(item)}</p>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button>
+                      <Image
+                        alt={`Image of ${getName(item)}`}
+                        src={getImageUrl(item) || "/path/to/default/image.jpg"}
+                        className="rounded-lg w-80 h-80 mx-auto md:w-full md:h-40 object-cover object-center"
+                        width={400}
+                        height={400}
+                      />
+                      <p className="py-8 text-center">{getName(item)}</p>
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px]">
+                    <DialogTitle>{getName(item)}</DialogTitle>
+
+                    <Image
+                      alt={`Image of ${getName(item)}`}
+                      src={getImageUrl(item) || "/path/to/default/image.jpg"}
+                      className="rounded-lg w-80 h-80 mx-auto md:w-full md:h-full object-cover object-center"
+                      width={500}
+                      height={500}
+                      priority
+                      quality={100}
+                    />
+                  </DialogContent>
+                </Dialog>
               </div>
             ))
           ) : (
