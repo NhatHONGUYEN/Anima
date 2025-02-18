@@ -13,6 +13,7 @@ type HeroListProps<T> = {
   getName: (item: T) => string;
   noItemsMessage: string;
   isCharacterList?: boolean;
+  name: string;
 };
 
 export default function HeroList<T>({
@@ -36,7 +37,7 @@ export default function HeroList<T>({
   };
 
   return (
-    <div className="relative py-16 lg:col-span-3">
+    <div className="relative p-10 lg:col-span-3">
       <div
         className={`absolute inset-px rounded-lg ring-1 ring-border bg-card max-lg:rounded-t-[2rem] ${
           isCharacterList ? "lg:rounded-bl-[2rem]" : "lg:rounded-br-[2rem]"
@@ -50,7 +51,7 @@ export default function HeroList<T>({
         } min-h-[300px] lg:min-h-[400px]`}
       >
         <h1 className="mb-8 text-center">{title}</h1>
-        <div className="container grid gap-8 md:grid-cols-2">
+        <div className=" grid gap-8 md:grid-cols-2">
           {displayedItems.length > 0 ? (
             displayedItems.map((item, index) => (
               <div key={index}>
@@ -58,16 +59,15 @@ export default function HeroList<T>({
                   imageSrc={getImageUrl(item) || "/path/to/default/image.jpg"}
                   imageAlt={`Image of ${getName(item)}`}
                   animationStyle="from-center"
-                  className="w-80 h-80 mx-auto md:w-full md:h-40 "
+                  name={getName(item)}
                 />
-                <p className="py-8 text-center">{getName(item)}</p>
               </div>
             ))
           ) : (
             <p className="text-center">{noItemsMessage}</p>
           )}
         </div>
-        <div className="mt-4 flex justify-center space-x-4">
+        <div className="mt-8 flex justify-center space-x-4">
           {visibleCount < items.length && (
             <Button onClick={handleShowMore}>Show More</Button>
           )}

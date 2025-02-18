@@ -23,6 +23,7 @@ interface HeroImageProps {
   imageSrc: string;
   imageAlt?: string;
   className?: string;
+  name: string;
 }
 
 const animationVariants = {
@@ -73,6 +74,7 @@ export function HeroImageDialog({
   imageSrc,
   imageAlt = "Image",
   className,
+  name,
 }: HeroImageProps) {
   const [isImageOpen, setIsImageOpen] = useState(false);
   const selectedAnimation = animationVariants[animationStyle];
@@ -90,6 +92,7 @@ export function HeroImageDialog({
           width={800}
           height={800}
         />
+        <p className="text-center pt-4">{name}</p>
       </div>
       <AnimatePresence>
         {isImageOpen && (
