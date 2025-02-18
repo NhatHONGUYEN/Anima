@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Loader from "./ui/loader";
 import { useAnimeReviews } from "@/hooks/useTopAnime";
 import { AnimeReview } from "@/lib/types";
@@ -18,28 +18,23 @@ export default function AnimeReviews({ id }: { id: number }) {
   const animeRewies: AnimeReview[] = data?.data ?? [];
   const shortReviews = animeRewies.slice(0, 6);
 
-  const [expandedReviews, setExpandedReviews] = useState<number[]>([]);
-
-  const toggleExpand = (mal_id: number) => {
-    setExpandedReviews((prev) =>
-      prev.includes(mal_id)
-        ? prev.filter((id) => id !== mal_id)
-        : [...prev, mal_id]
-    );
-  };
-
   if (isLoading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
-  if (!animeRewies.length) return <div>Reviews not found</div>;
+  if (!animeRewies.length)
+    return (
+      <div className="container py-32">
+        <div className="text-center">
+          <h1>No Reviews</h1>
+        </div>
+      </div>
+    );
 
   return (
     <section className="py-32">
       <div className="container">
         <Carousel className="w-full">
           <div className="mb-8 flex justify-between px-1 lg:mb-12">
-            <h2 className="text-2xl font-semibold lg:text-5xl">
-              Why Clients Love Us
-            </h2>
+            <h1>Reviews</h1>
             <div className="flex items-center space-x-2">
               <CarouselPrevious className="static translate-y-0" />
               <CarouselNext className="static translate-y-0" />
@@ -47,10 +42,7 @@ export default function AnimeReviews({ id }: { id: number }) {
           </div>
           <CarouselContent>
             {shortReviews.map((review) => {
-              const isExpanded = expandedReviews.includes(review.mal_id);
-              const reviewText = isExpanded
-                ? review.review
-                : review.review.slice(0, 300);
+              const reviewText = review.review.slice(0, 500);
 
               return (
                 <CarouselItem
@@ -59,20 +51,7 @@ export default function AnimeReviews({ id }: { id: number }) {
                 >
                   <div className="h-full p-1">
                     <div className="flex h-full flex-col justify-between rounded-lg border p-6">
-                      <q className="leading-7 text-foreground/70">
-                        {reviewText}
-                        {review.review.length > 300 && (
-                          <>
-                            {!isExpanded ? "..." : ""}
-                            <button
-                              onClick={() => toggleExpand(review.mal_id)}
-                              className="text-blue-500 ml-2"
-                            >
-                              {isExpanded ? "Voir moins" : "Voir plus"}
-                            </button>
-                          </>
-                        )}
-                      </q>
+                      <q>{reviewText} ...</q>
                       <div className="mt-6 flex gap-4 leading-5">
                         <Avatar className="size-9 rounded-full ring-1 ring-input">
                           <AvatarImage
@@ -85,6 +64,7 @@ export default function AnimeReviews({ id }: { id: number }) {
                           <p className="text-muted-foreground">
                             {new Date(review.date).toLocaleDateString()}
                           </p>
+                          <p>score : {review.score} </p>
                         </div>
                       </div>
                     </div>

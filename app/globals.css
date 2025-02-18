@@ -10,7 +10,13 @@ body {
 }
 
 p,
+q,
 li {
+  color: hsl(var(--muted-foreground));
+  font-size: small;
+}
+
+.link-style {
   color: hsl(var(--muted-foreground));
   font-size: small;
 }

@@ -22,12 +22,12 @@ export default function Header() {
             <Clapperboard className="text-primary" strokeWidth={1} />
             <h1>Anima</h1>
           </Link>
-          <div className="flex gap-4 text-center uppercase">
+          <h1 className="flex gap-4 text-center  uppercase">
             <Link href={"/all"}>All</Link>
             <Link href={"/upcoming"}>upcoming</Link>
             <Link href={"/bypopularity"}>popularity</Link>
             <Link href={"/favorite"}>favorite</Link>
-          </div>
+          </h1>
           <div className="hidden items-center gap-4 lg:flex">
             <AnimeSearch />
             <HeaderUserConnection />
