@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { HeroEpisodesProps } from "@/lib/types";
-import { ImageOff } from "lucide-react";
+
 import { ScrollArea } from "../ui/scroll-area";
 
 export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
@@ -17,9 +17,11 @@ export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
           {/* Vérification si des épisodes existent */}
           {!episodes || episodes.length === 0 ? (
             <div className="flex flex-col justify-center items-center h-full min-h-[500px]">
-              <h1 className="mb-4">Sorry !</h1>
+              <h1 className="mb-4 text-center">
+                Sorry ! <br /> No Episodes
+              </h1>
               <Image
-                src="/noEpisode.webp"
+                src="/sorry.gif"
                 alt="no episode"
                 width={400}
                 height={400}
@@ -44,8 +46,17 @@ export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
                           priority
                         />
                       ) : (
-                        <div className="bg-accent flex justify-center items-center p-10 rounded-lg">
-                          <ImageOff size={50} />
+                        <div className="flex justify-center items-center ">
+                          <h1 className="text-center">
+                            Sorry <br /> No Image
+                          </h1>
+                          <Image
+                            src="/sorry.gif"
+                            alt="no episode"
+                            width={100}
+                            height={100}
+                            className="rounded-lg object-cover"
+                          />
                         </div>
                       )}
                     </div>
