@@ -4,6 +4,7 @@ import {
   fetchAnimeEpisodes,
   fetchAnimeList,
   fetchAnimeRecommendations,
+  fetchAnimeReviews,
   fetchTopAnime,
 } from "@/lib/api";
 import { Anime } from "@/lib/types";
@@ -53,5 +54,11 @@ export function useAnimeList() {
     queryKey: ["animeList"],
     queryFn: () => fetchAnimeList(),
     staleTime: 5000,
+  });
+}
+export function useAnimeReviews(id: number) {
+  return useQuery({
+    queryKey: ["animeReviews", id],
+    queryFn: () => fetchAnimeReviews(id),
   });
 }

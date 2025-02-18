@@ -120,3 +120,22 @@ export async function fetchAnimeList(): Promise<Anime[]> {
     return [];
   }
 }
+
+export async function fetchAnimeReviews(id: number) {
+  try {
+    const response = await fetch(
+      `https://api.jikan.moe/v4/anime/${id}/reviews`
+    );
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Anime Reviews not found (404)");
+      }
+      throw new Error("Failed to fetch Anime Reviews");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching Anime Reviews:", error);
+    throw error;
+  }
+}

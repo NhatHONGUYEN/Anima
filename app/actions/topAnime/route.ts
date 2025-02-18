@@ -4,6 +4,7 @@ import {
   fetchAnimeEpisodes,
   fetchAnimeRecommendations,
   fetchAnimeCharacters,
+  fetchAnimeReviews,
 } from "@/lib/api";
 import { NextResponse } from "next/server";
 
@@ -42,6 +43,10 @@ export async function GET(req: Request) {
       case "animeCharacters":
         if (!id) throw new Error("ID is required for animeCharacters");
         data = await fetchAnimeCharacters(parseInt(id, 10));
+        break;
+      case "animeReviews":
+        if (!id) throw new Error("ID is required for animeReviews");
+        data = await fetchAnimeReviews(parseInt(id, 10));
         break;
       default:
         return NextResponse.json({ error: "Invalid type" }, { status: 400 });

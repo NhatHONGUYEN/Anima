@@ -1,4 +1,5 @@
 import AnimeDetails from "@/components/AnimeDetails";
+import AnimeReviews from "@/components/AnimeReviews";
 import TopAnimeSlider from "@/components/TopAnimeSlider";
 
 export default async function MovieDetails(props: {
@@ -14,6 +15,7 @@ export default async function MovieDetails(props: {
   return (
     <div>
       <AnimeDetails id={animeId} />
+      <AnimeReviews id={animeId} />
       <TopAnimeSlider animeId={animeId} />
     </div>
   );
