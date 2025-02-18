@@ -122,7 +122,9 @@ export type HeroImageProps = {
 };
 
 export type HeroTrailerProps = {
+  title: string;
   trailerEmbedUrl?: string;
+  trailerImageUrl?: string;
 };
 
 export type HeroHeaderProps = {

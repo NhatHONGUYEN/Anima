@@ -44,7 +44,11 @@ export default function ContentHero({
             synopsis={synopsis}
             themes={themes}
           />
-          <HeroTrailer trailerEmbedUrl={trailerEmbedUrl} />
+          <HeroTrailer
+            title={title}
+            trailerEmbedUrl={trailerEmbedUrl}
+            trailerImageUrl={trailerImageUrl}
+          />
           <HeroImage largeImageUrl={largeImageUrl} title={title} />
           <HeroDetails
             trailerImageUrl={trailerImageUrl}

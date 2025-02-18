@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Play, XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 type AnimationStyle =
   | "from-bottom"
@@ -16,7 +17,7 @@ type AnimationStyle =
   | "top-in-bottom-out"
   | "left-in-right-out";
 
-interface HeroVideoProps {
+interface HeroVideoDialogProps {
   animationStyle?: AnimationStyle;
   videoSrc: string;
   thumbnailSrc: string;
@@ -71,24 +72,24 @@ export default function HeroVideoDialog({
   animationStyle = "from-center",
   videoSrc,
   thumbnailSrc,
-  thumbnailAlt = "Video thumbnail",
+  thumbnailAlt = "Video Thumbnail",
   className,
-}: HeroVideoProps) {
+}: HeroVideoDialogProps) {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const selectedAnimation = animationVariants[animationStyle];
 
   return (
-    <div className={cn("relative", className)}>
+    <div className={cn("relative w-full h-full", className)}>
       <div
-        className="group relative cursor-pointer"
+        className="group relative cursor-pointer w-full h-full"
         onClick={() => setIsVideoOpen(true)}
       >
-        <img
+        <Image
           src={thumbnailSrc}
           alt={thumbnailAlt}
-          width={1920}
-          height={1080}
-          className="w-full rounded-md border shadow-lg transition-all duration-200 ease-out group-hover:brightness-[0.8]"
+          className="w-full h-full object-cover rounded-md border shadow-lg transition-all duration-200 ease-out group-hover:brightness-[0.8]"
+          width={800}
+          height={800}
         />
         <div className="absolute inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out group-hover:scale-100">
           <div className="flex size-28 items-center justify-center rounded-full bg-primary/10 backdrop-blur-md">
@@ -118,18 +119,21 @@ export default function HeroVideoDialog({
             <motion.div
               {...selectedAnimation}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="relative mx-4 aspect-video w-full max-w-4xl md:mx-0"
+              className="relative mx-4 w-full max-w-4xl"
             >
-              <motion.button className="absolute -top-16 right-0 rounded-full bg-neutral-900/50 p-2 text-xl text-white ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black">
-                <XIcon className="size-5" />
+              <motion.button
+                onClick={() => setIsVideoOpen(false)}
+                className="absolute top-4 right-4 rounded-full bg-neutral-900/50 p-2 text-xl text-white ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black"
+              >
+                <XIcon className="h-5 w-5" />
               </motion.button>
-              <div className="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-white">
+              <div className="relative isolate z-[1] w-full overflow-hidden rounded-2xl border-2 border-white">
                 <iframe
                   src={videoSrc}
-                  className="size-full rounded-2xl"
+                  title="Hero Video"
+                  className="w-full h-96 md:h-[500px] lg:h-[600px] rounded-2xl"
                   allowFullScreen
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                ></iframe>
+                />
               </div>
             </motion.div>
           </motion.div>
