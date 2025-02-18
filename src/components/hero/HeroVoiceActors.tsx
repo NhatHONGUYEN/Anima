@@ -20,7 +20,6 @@ export default function HeroVoiceActors({ voiceActors }: HeroVoiceActorsProps) {
       getImageUrl={(actor) => actor.person.images?.jpg?.image_url}
       getName={(actor) => actor.person.name}
       noItemsMessage="No Japanese voice actors found."
-      name={""}
     />
   );
 }

@@ -13,7 +13,6 @@ type HeroListProps<T> = {
   getName: (item: T) => string;
   noItemsMessage: string;
   isCharacterList?: boolean;
-  name: string;
 };
 
 export default function HeroList<T>({
