@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { HeroEpisodesProps } from "@/lib/types";
 import { ImageOff } from "lucide-react";
+import { ScrollArea } from "../ui/scroll-area";
 
 export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
   return (
@@ -11,8 +12,8 @@ export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
       {/* Background effect */}
       <div className="absolute inset-px rounded-xl  " />
 
-      <div className="relative bg-card flex h-full flex-col overflow-hidden rounded-xl ">
-        <div className="p-10 ">
+      <div className="relative bg-card flex h-[600px]  flex-col overflow-hidden rounded-xl ">
+        <ScrollArea className="p-10 ">
           {/* Vérification si des épisodes existent */}
           {!episodes || episodes.length === 0 ? (
             <div className="flex flex-col justify-center items-center h-full min-h-[500px]">
@@ -29,7 +30,7 @@ export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
             <>
               <h2 className="pb-4 text-center">Episodes</h2>
               <div className="flex flex-col  gap-4">
-                {episodes.slice(0, 2).map((episode) => (
+                {episodes.map((episode) => (
                   <div key={episode.mal_id}>
                     {/* Image de l'épisode */}
                     <div className="relative  ">
@@ -59,7 +60,7 @@ export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
               </div>
             </>
           )}
-        </div>
+        </ScrollArea>
       </div>
 
       {/* Contour avec effet de shadow */}
