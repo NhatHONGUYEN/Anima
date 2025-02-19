@@ -27,7 +27,7 @@ export default function HeaderUserConnection() {
           <Button onClick={() => signOut()}>Déconnexion</Button>
         </div>
       ) : (
-        <SignIn />
+        <SignIn buttonText="Sign In" />
       )}
     </>
   );

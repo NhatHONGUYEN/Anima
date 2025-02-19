@@ -15,14 +15,14 @@ import { AnimeSearch } from "../AnimeSearch";
 
 export default function Header() {
   return (
-    <section className="py-4 ">
+    <section className="py-4">
       <div className="container mx-auto">
-        <nav className="flex items-center justify-between">
+        <nav className="flex items-center justify-between relative z-20">
           <Link href={"/"} className="flex items-center gap-4">
             <Clapperboard className="text-primary" strokeWidth={1} />
             <h1>Anima</h1>
           </Link>
-          <h1 className="flex gap-4 text-center  uppercase">
+          <h1 className="flex gap-4 text-center uppercase">
             <Link href={"/all"}>All</Link>
             <Link href={"/upcoming"}>upcoming</Link>
             <Link href={"/bypopularity"}>popularity</Link>
@@ -44,7 +44,7 @@ export default function Header() {
                   <div className="flex items-center gap-4">
                     <Link href={"/"} className="flex items-center gap-4">
                       <Clapperboard className="text-primary" strokeWidth={1} />
-                      <span className=" font-semibold">Anima</span>
+                      <span className="font-semibold">Anima</span>
                     </Link>
                   </div>
                 </SheetTitle>

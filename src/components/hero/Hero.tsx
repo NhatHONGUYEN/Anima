@@ -1,53 +1,36 @@
-"use client";
-
-import { Heart, Play } from "lucide-react";
-import { useState } from "react";
-
+import { Heart } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import Image from "next/image";
+import SignIn from "../header/SignIn";
 
 export default function Hero() {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
-
   return (
     <section className="bg-background py-12 md:py-32">
       <div className="container ">
         <div className="flex flex-col gap-4 md:flex-row">
           <div className="flex flex-col gap-6">
-            <h1 className="text-4xl font-medium leading-tight lg:text-6xl">
-              Advanced Framer Expert Tutorials
+            <h1 className="text-4xl w-96 font-medium leading-tight lg:text-6xl">
+              Explore the World of Anime
             </h1>
+            <h2 className="text-2xl font-medium leading-tight lg:text-4xl"></h2>
             <p className="text-lg text-muted-foreground lg:max-w-[80%]">
-              Unlock exclusive access to premium tutorials, insider insights,
-              and more. Enhance your creativity and elevate your learning
-              journey.
+              Dive into exclusive content, behind-the-scenes insights, and more.
+              Enhance your anime experience and join our community.
             </p>
             <div className="relative z-10 flex flex-wrap items-center gap-6">
-              <Button asChild variant="default">
-                <a href="#">Become a Member</a>
-              </Button>
-              <Button
-                variant="ghost"
-                className="group flex items-center gap-2 hover:bg-transparent"
-                onClick={() => setIsVideoOpen(true)}
-              >
-                <div className="flex h-10 w-10 rounded-full bg-orange-500 transition-transform group-hover:scale-110">
-                  <Play className="m-auto h-5 w-5 fill-primary-foreground stroke-primary-foreground" />
-                </div>
-                <div>Presentation Video</div>
-              </Button>
+              <SignIn buttonText="Become a member" />
+              <Image
+                className="w-20 h-20 bg-secondary rounded-full border-4 border-primary-foreground"
+                src="/seraph.gif"
+                alt=""
+                width={40}
+                height={40}
+              />
             </div>
           </div>
           <div>
             <div className="relative mx-auto mt-28 h-[21.25rem] w-[21.25rem] rounded-full bg-secondary md:mx-0 md:mt-0 lg:h-[25rem] lg:w-[25rem]">
-              <div className="absolute bottom-0 left-1/2 w-[21.25rem] -translate-x-1/2 overflow-hidden rounded-b-full lg:w-[25rem]">
+              <div className=" absolute bottom-0 left-1/2 w-[21.25rem] -translate-x-1/2 overflow-hidden rounded-b-full lg:w-[25rem]">
                 <Image
                   src="/sasuke.webp"
                   alt=""
@@ -94,19 +77,19 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="mt-20 rounded-3xl border p-6">
+        <div className="mt-20 rounded-3xl  border p-6">
           <div className=" flex w-full flex-col md:flex-row">
             <div className="flex flex-1 flex-col gap-3 border-b-[1px] p-6 md:border-b-0 md:border-r-[1px]">
               <div className="text-2xl font-medium text-primary lg:text-4xl">
-                87
+                500+
               </div>
               <div className="text-muted-foreground lg:text-lg">
-                Courses by Experts
+                Anime Series
               </div>
             </div>
             <div className="flex flex-1 flex-col gap-3 border-b-[1px] p-6 md:border-b-0 md:border-r-[1px]">
               <div className="text-2xl font-medium text-primary lg:text-4xl">
-                200+
+                1000+
               </div>
               <div className="text-muted-foreground lg:text-lg">
                 Hours of Content
@@ -114,7 +97,7 @@ export default function Hero() {
             </div>
             <div className="flex flex-1 flex-col gap-3 p-6">
               <div className="text-2xl font-medium text-primary lg:text-4xl">
-                100%
+                99%
               </div>
               <div className="text-muted-foreground lg:text-lg">
                 User Satisfaction Rating
@@ -123,23 +106,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
-        <DialogContent className="sm:max-w-[800px]">
-          <DialogHeader>
-            <DialogTitle>Presentation Video</DialogTitle>
-          </DialogHeader>
-          <div className="aspect-video">
-            <iframe
-              className="h-full w-full"
-              src="https://www.youtube.com/embed/your-video-id"
-              title="Presentation Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 }
