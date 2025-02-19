@@ -97,7 +97,7 @@ export default function BentoGridVideoDialog({
               className={`relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-b from-primary/30 to-primary shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2]`}
             >
               <Play
-                className="size-8 scale-100 fill-white text-white transition-transform duration-200 ease-out group-hover:scale-105"
+                className="size-8 scale-100 fill-primary-foreground text-primary-foreground transition-transform duration-200 ease-out group-hover:scale-105"
                 style={{
                   filter:
                     "drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06))",
@@ -123,11 +123,11 @@ export default function BentoGridVideoDialog({
             >
               <motion.button
                 onClick={() => setIsVideoOpen(false)}
-                className="absolute top-4 right-4 rounded-full bg-neutral-900/50 p-2 text-xl text-white ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black"
+                className="absolute top-4 right-4 rounded-full bg-neutral-900/50 p-2 text-xl text-primary-foreground ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black"
               >
                 <XIcon className="h-5 w-5" />
               </motion.button>
-              <div className="relative isolate z-[1] w-full overflow-hidden rounded-2xl border-2 border-white">
+              <div className="relative isolate z-[1] w-full overflow-hidden rounded-2xl border-2 border-primary-foreground">
                 <iframe
                   src={videoSrc}
                   title="BentoGrid Video"
