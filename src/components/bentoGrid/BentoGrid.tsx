@@ -3,10 +3,11 @@
 import React from "react";
 import { useAnimeDetails, useAnimeEpisodes } from "@/hooks/useTopAnime";
 import { Anime, Episode } from "@/lib/types";
-import ContentHero from "../ContentHero";
-import Loader from "../ui/loader";
 
-export default function Hero() {
+import Loader from "../ui/loader";
+import ContentBentoGrid from "../ContentBentoGrid";
+
+export default function BentoGrid() {
   const { data: animeDetail, error, isLoading } = useAnimeDetails(38524);
   const {
     data: animeEpisodes,
@@ -25,7 +26,7 @@ export default function Hero() {
   if (!episodes) return <div>Episodes not found</div>;
 
   return (
-    <ContentHero
+    <ContentBentoGrid
       title={anime.title}
       score={anime.score}
       duration={anime.duration}

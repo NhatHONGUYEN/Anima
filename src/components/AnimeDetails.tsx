@@ -6,8 +6,9 @@ import {
   useAnimeEpisodes,
 } from "@/hooks/useTopAnime";
 import { Anime, Characters, Episode } from "@/lib/types";
-import ContentHero from "@/components/ContentHero";
+
 import Loader from "./ui/loader";
+import ContentBentoGrid from "./ContentBentoGrid";
 
 export default function AnimeDetails({ id }: { id: number }) {
   const { data: animeDetail, error, isLoading } = useAnimeDetails(id);
@@ -37,7 +38,7 @@ export default function AnimeDetails({ id }: { id: number }) {
   if (!characters) return <div>Characters not found</div>;
 
   return (
-    <ContentHero
+    <ContentBentoGrid
       title={anime.title}
       score={anime.score}
       duration={anime.duration}

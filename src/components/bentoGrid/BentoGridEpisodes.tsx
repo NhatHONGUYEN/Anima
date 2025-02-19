@@ -2,11 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
-import { HeroEpisodesProps } from "@/lib/types";
+import { BentoGridEpisodesProps } from "@/lib/types";
 
 import { ScrollArea } from "../ui/scroll-area";
 
-export default function HeroEpisodes({ episodes }: HeroEpisodesProps) {
+export default function BentoGridEpisodes({
+  episodes,
+}: BentoGridEpisodesProps) {
   return (
     <div className="relative lg:col-span-2">
       {/* Background effect */}

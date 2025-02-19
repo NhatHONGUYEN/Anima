@@ -2,15 +2,17 @@
 
 import React from "react";
 import { Characters } from "@/lib/types";
-import HeroList from "./HeroList";
+import BentoGridList from "../bentoGrid/BentoGridList";
 
-type HeroCharactersProps = {
+type BentoGridCharactersProps = {
   characters: Characters[];
 };
 
-export default function HeroCharacters({ characters }: HeroCharactersProps) {
+export default function BentoGridCharacters({
+  characters,
+}: BentoGridCharactersProps) {
   return (
-    <HeroList
+    <BentoGridList
       items={characters}
       title="Characters"
       getImageUrl={(characterObj) =>

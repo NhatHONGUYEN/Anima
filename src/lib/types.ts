@@ -119,7 +119,7 @@ export type Characters = {
   }[];
 };
 
-export type ContentHeroProps = {
+export type ContentBentoGridProps = {
   title: string;
   score: number;
   rank: number;
@@ -139,11 +139,11 @@ export type ContentHeroProps = {
   characters: Characters[];
 };
 
-export type HeroEpisodesProps = {
+export type BentoGridEpisodesProps = {
   episodes: Episode[];
 };
 
-export type HeroDetailsProps = {
+export type BentoGridDetailsProps = {
   trailerImageUrl?: string;
   title: string;
   producers: { mal_id: number; name: string }[];
@@ -151,18 +151,18 @@ export type HeroDetailsProps = {
   studios: { mal_id: number; name: string }[];
 };
 
-export type HeroImageProps = {
+export type BentoGridImageProps = {
   largeImageUrl?: string;
   title: string;
 };
 
-export type HeroTrailerProps = {
+export type BentoGridTrailerProps = {
   title: string;
   trailerEmbedUrl?: string;
   trailerImageUrl?: string;
 };
 
-export type HeroHeaderProps = {
+export type BentoGridHeaderProps = {
   title: string;
   score: number;
   rank: number;

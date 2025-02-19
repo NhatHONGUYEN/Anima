@@ -2,19 +2,21 @@
 
 import React from "react";
 import { Characters } from "@/lib/types";
-import HeroList from "./HeroList";
+import BentoGridList from "../bentoGrid/BentoGridList";
 
-type HeroVoiceActorsProps = {
+type BentoGridVoiceActorsProps = {
   voiceActors: Characters["voice_actors"];
 };
 
-export default function HeroVoiceActors({ voiceActors }: HeroVoiceActorsProps) {
+export default function BentoGridVoiceActors({
+  voiceActors,
+}: BentoGridVoiceActorsProps) {
   const japaneseVoiceActors = voiceActors.filter(
     (actor) => actor.language === "Japanese"
   );
 
   return (
-    <HeroList
+    <BentoGridList
       items={japaneseVoiceActors}
       title="Voice Actors"
       getImageUrl={(actor) => actor.person.images?.jpg?.image_url}

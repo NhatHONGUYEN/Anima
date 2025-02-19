@@ -1,16 +1,16 @@
 "use client";
 
 import React from "react";
-import { ContentHeroProps } from "@/lib/types";
-import HeroHeader from "./hero/HeroHeader";
-import HeroTrailer from "./hero/HeroTrailer";
-import HeroImage from "./hero/HeroImage";
-import HeroDetails from "./hero/HeroDetails";
-import HeroEpisodes from "./hero/HeroEpisodes";
-import HeroCharacters from "./hero/HeroCharacters";
-import HeroVoiceActors from "./hero/HeroVoiceActors";
+import { ContentBentoGridProps } from "@/lib/types";
+import BentoGridHeader from "./bentoGrid/BentoGridHeader";
+import BentoGridTrailer from "./bentoGrid/BentoGridTrailer";
+import BentoGridImage from "./bentoGrid/BentoGridImage";
+import BentoGridDetails from "./bentoGrid/BentoGridDetails";
+import BentoGridEpisodes from "./bentoGrid/BentoGridEpisodes";
+import BentoGridCharacters from "./bentoGrid/BentoGridCharacters";
+import BentoGridVoiceActors from "./bentoGrid/BentoGridVoiceActors";
 
-export default function ContentHero({
+export default function ContentBentoGrid({
   title,
   score,
   type,
@@ -28,12 +28,12 @@ export default function ContentHero({
   studios,
   episodes = [], // Provide a default value of an empty array
   characters,
-}: ContentHeroProps) {
+}: ContentBentoGridProps) {
   return (
     <section>
       <div className="mx-auto container ">
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-1">
-          <HeroHeader
+          <BentoGridHeader
             title={title}
             score={score}
             type={type}
@@ -44,25 +44,25 @@ export default function ContentHero({
             synopsis={synopsis}
             themes={themes}
           />
-          <HeroTrailer
+          <BentoGridTrailer
             title={title}
             trailerEmbedUrl={trailerEmbedUrl}
             trailerImageUrl={trailerImageUrl}
           />
-          <HeroImage largeImageUrl={largeImageUrl} title={title} />
-          <HeroDetails
+          <BentoGridImage largeImageUrl={largeImageUrl} title={title} />
+          <BentoGridDetails
             trailerImageUrl={trailerImageUrl}
             title={title}
             producers={producers}
             licensors={licensors}
             studios={studios}
           />
-          <HeroEpisodes episodes={episodes} />
+          <BentoGridEpisodes episodes={episodes} />
           {characters && characters.length > 0 && (
-            <HeroCharacters characters={characters} />
+            <BentoGridCharacters characters={characters} />
           )}
           {characters && characters.length > 0 && (
-            <HeroVoiceActors
+            <BentoGridVoiceActors
               voiceActors={characters.flatMap(
                 (character) => character.voice_actors
               )}

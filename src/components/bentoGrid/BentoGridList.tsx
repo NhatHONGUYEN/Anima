@@ -3,10 +3,9 @@
 import React, { useState } from "react";
 
 import { Button } from "../ui/button";
+import { BentoGridImageDialog } from "@/animations/BentoGridImageDialog";
 
-import { HeroImageDialog } from "@/animations/HeroImageDialog";
-
-type HeroListProps<T> = {
+type BentoGridListProps<T> = {
   items: T[];
   title: string;
   getImageUrl: (item: T) => string;
@@ -15,14 +14,14 @@ type HeroListProps<T> = {
   isCharacterList?: boolean;
 };
 
-export default function HeroList<T>({
+export default function BentoGridList<T>({
   items,
   title,
   getImageUrl,
   getName,
   noItemsMessage,
   isCharacterList = false, // Default to false if not provided
-}: HeroListProps<T>) {
+}: BentoGridListProps<T>) {
   const [visibleCount, setVisibleCount] = useState(4);
 
   const displayedItems = items.slice(0, visibleCount);
@@ -54,7 +53,7 @@ export default function HeroList<T>({
           {displayedItems.length > 0 ? (
             displayedItems.map((item, index) => (
               <div key={index}>
-                <HeroImageDialog
+                <BentoGridImageDialog
                   imageSrc={getImageUrl(item) || "/path/to/default/image.jpg"}
                   imageAlt={`Image of ${getName(item)}`}
                   animationStyle="from-center"

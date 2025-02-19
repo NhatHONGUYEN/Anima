@@ -3,10 +3,10 @@
 import React from "react";
 
 import { Badge } from "../ui/badge";
-import { HeroHeaderProps, Theme } from "@/lib/types";
+import { BentoGridHeaderProps, Theme } from "@/lib/types";
 import { Heart, Star } from "lucide-react";
 
-export default function HeroHeader({
+export default function BentoGridHeader({
   title,
   score,
   synopsis,
@@ -15,7 +15,7 @@ export default function HeroHeader({
   episode,
   duration,
   favorites,
-}: HeroHeaderProps) {
+}: BentoGridHeaderProps) {
   return (
     <div className="relative lg:col-span-3">
       <div className="absolute inset-px rounded-lg ring-1 ring-border bg-card max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />

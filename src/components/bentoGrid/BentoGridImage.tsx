@@ -2,13 +2,16 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { HeroImageProps } from "@/lib/types";
+import { BentoGridImageProps } from "@/lib/types";
 
-export default function HeroImage({ largeImageUrl, title }: HeroImageProps) {
+export default function BentoGridImage({
+  largeImageUrl,
+  title,
+}: BentoGridImageProps) {
   const [largeImageError, setLargeImageError] = useState(false);
 
   return (
-    <div className="relative lg:col-span-2 lg:grid-rows-1">
+    <div className="relative lg:col-span-2 lg:BentoGrid-rows-1">
       <div className="absolute inset-px rounded-lg " />
       <div className="relative ring-1 ring-border flex h-full flex-col overflow-hidden rounded-xl ">
         {largeImageUrl && !largeImageError ? (

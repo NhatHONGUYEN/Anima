@@ -1,13 +1,13 @@
 "use client";
 
-import { HeroDetailsProps } from "@/lib/types";
+import { BentoGridDetailsProps } from "@/lib/types";
 import AccordionSection from "../AccordionSection";
 
-export default function HeroDetails({
+export default function BentoGridDetails({
   producers,
   licensors,
   studios,
-}: HeroDetailsProps) {
+}: BentoGridDetailsProps) {
   return (
     <div className="relative lg:col-span-2">
       <div className="absolute inset-px rounded-lg" />
