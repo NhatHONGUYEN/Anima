@@ -43,3 +43,21 @@ export const sections = [
     ],
   },
 ];
+
+export const avatars = [
+  {
+    src: "https://bumbeishvili.github.io/avatars/avatars/portrait9.png",
+    fallback: "Avatar 1",
+    alt: "User Avatar 1",
+  },
+  {
+    src: "https://bumbeishvili.github.io/avatars/avatars/portrait74.png",
+    fallback: "Avatar 2",
+    alt: "User Avatar 2",
+  },
+  {
+    src: "https://avatars.githubusercontent.com/u/59228569",
+    fallback: "Avatar 3",
+    alt: "User Avatar 3",
+  },
+];

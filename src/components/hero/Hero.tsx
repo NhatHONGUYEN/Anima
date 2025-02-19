@@ -2,6 +2,7 @@ import { Heart } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import SignIn from "../header/SignIn";
+import { avatars } from "@/lib/data";
 
 export default function Hero() {
   return (
@@ -22,7 +23,7 @@ export default function Hero() {
               <Image
                 className="w-20 h-20 bg-secondary rounded-full border-4 border-primary-foreground"
                 src="/seraph.gif"
-                alt=""
+                alt="Seraph animation"
                 width={40}
                 height={40}
               />
@@ -33,7 +34,7 @@ export default function Hero() {
               <div className=" absolute bottom-0 left-1/2 w-[21.25rem] -translate-x-1/2 overflow-hidden rounded-b-full lg:w-[25rem]">
                 <Image
                   src="/sasuke.webp"
-                  alt=""
+                  alt="Sasuke character"
                   className="w-full translate-y-20 scale-90 object-cover object-center "
                   width={425}
                   height={425}
@@ -41,25 +42,12 @@ export default function Hero() {
               </div>
               <div className="absolute -right-5 bottom-10 flex w-[17.5rem] items-center justify-center gap-1 rounded-full bg-primary-foreground px-4 py-3 shadow-md">
                 <div className="flex -space-x-[0.875rem]">
-                  {[
-                    {
-                      src: "https://bumbeishvili.github.io/avatars/avatars/portrait9.png",
-                      fallback: "Avatar 1",
-                    },
-                    {
-                      src: "https://bumbeishvili.github.io/avatars/avatars/portrait74.png",
-                      fallback: "Avatar 2",
-                    },
-                    {
-                      src: "https://avatars.githubusercontent.com/u/59228569",
-                      fallback: "Avatar 3",
-                    },
-                  ].map(({ src, fallback }, i) => (
+                  {avatars.map(({ src, fallback, alt }, i) => (
                     <Avatar
                       key={i}
                       className="flex h-12 w-12 flex-shrink-0 rounded-full border-4 border-primary-foreground object-cover"
                     >
-                      <AvatarImage src={src} alt="" />
+                      <AvatarImage src={src} alt={alt} />
                       <AvatarFallback>{fallback}</AvatarFallback>
                     </Avatar>
                   ))}
