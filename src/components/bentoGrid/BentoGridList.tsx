@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-
-import { Button } from "../ui/button";
 import { BentoGridImageDialog } from "@/animations/BentoGridImageDialog";
+import CustomButton from "../CustomButton";
 
 type BentoGridListProps<T> = {
   items: T[];
@@ -67,12 +66,15 @@ export default function BentoGridList<T>({
         </div>
         <div className="mt-8 flex justify-center space-x-4">
           {visibleCount < items.length && (
-            <Button onClick={handleShowMore}>Show More</Button>
+            <CustomButton label="Show More" onClick={handleShowMore} />
           )}
+
           {visibleCount > 4 && (
-            <Button variant="outline" onClick={handleShowLess}>
-              Show Less
-            </Button>
+            <CustomButton
+              label="Show Less"
+              variant="outline"
+              onClick={handleShowLess}
+            />
           )}
         </div>
       </div>

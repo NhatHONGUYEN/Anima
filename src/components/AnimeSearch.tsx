@@ -21,6 +21,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { PopoverSkeleton } from "./PopoverSkeleton";
 
 export function AnimeSearch() {
   const [open, setOpen] = React.useState(false);
@@ -48,7 +49,7 @@ export function AnimeSearch() {
   }, [searchQuery, fuse]);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <PopoverSkeleton />;
   }
 
   if (isError) {

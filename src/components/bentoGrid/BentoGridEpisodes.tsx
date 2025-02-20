@@ -32,7 +32,7 @@ export default function BentoGridEpisodes({
             </div>
           ) : (
             <>
-              <h2 className="pb-4 text-center">Episodes</h2>
+              <h1 className="pb-4 text-center">Episodes</h1>
               <div className="flex flex-col  gap-4">
                 {episodes.map((episode) => (
                   <div key={episode.mal_id}>

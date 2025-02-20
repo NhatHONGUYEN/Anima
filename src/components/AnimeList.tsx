@@ -5,7 +5,7 @@ import { useTopAnime } from "@/hooks/useTopAnime";
 import AnimeCard from "@/components/AnimeCard";
 import { Anime } from "@/lib/types";
 import Loader from "./ui/loader";
-import { Button } from "./ui/button";
+import CustomButton from "./CustomButton";
 
 type AnimeListProps = {
   filter: "airing" | "upcoming" | "bypopularity" | "favorite" | "all";
@@ -31,7 +31,7 @@ export default function AnimeList({
   if (isLoading && page === 1) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
-  const handleLoadMore = () => {
+  const handleShowMore = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
@@ -48,7 +48,7 @@ export default function AnimeList({
           ))}
         </div>
         <div className="flex justify-center mt-8">
-          <Button onClick={handleLoadMore}>Load More</Button>
+          <CustomButton label="Show More" onClick={handleShowMore} />
         </div>
       </div>
     </section>

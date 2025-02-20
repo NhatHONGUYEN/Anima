@@ -88,7 +88,10 @@ export default function HeaderUserConnection() {
                       </div>
                     </NavigationMenuLink>
 
-                    <Button variant={"ghost"} onClick={() => signOut()}>
+                    <Button
+                      variant={"ghost"}
+                      onClick={() => signOut({ redirectTo: "/" })}
+                    >
                       <p>Déconnexion</p>
                     </Button>
                   </div>

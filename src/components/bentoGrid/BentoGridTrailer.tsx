@@ -3,6 +3,7 @@
 import React from "react";
 import { BentoGridTrailerProps } from "@/lib/types";
 import BentoGridVideoDialog from "@/animations/BentoGridVideoDialog";
+import Image from "next/image";
 
 export default function BentoGridTrailer({
   title,
@@ -32,8 +33,15 @@ export default function BentoGridTrailer({
             />
           </div>
         ) : (
-          <div className="flex items-center justify-center w-full h-full">
-            <p>Trailer non disponible</p>
+          <div className="flex flex-col items-center justify-center gap-4 w-full h-full">
+            <h1>Trailer not available </h1>
+            <Image
+              src="/notrailer.gif"
+              alt="No trailer available"
+              width={200}
+              height={200}
+              className="rounded-lg"
+            />
           </div>
         )}
       </div>

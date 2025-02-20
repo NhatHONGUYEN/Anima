@@ -21,7 +21,7 @@ export default function BentoGridImage({
               alt={`${title} Large`}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover"
+              className="object-cover hover:scale-105 transition-transform duration-300"
               onError={() => setLargeImageError(true)}
               priority
             />
