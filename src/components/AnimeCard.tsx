@@ -67,9 +67,7 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
             <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
-
-        {/* ✅ Correction : Passer `handleLike` et `isLiked` au LikeButton */}
-        <LikeButton onLike={handleLike} defaultLiked={isLiked} />
+        {session && <LikeButton onLike={handleLike} defaultLiked={isLiked} />}
       </div>
     </div>
   );

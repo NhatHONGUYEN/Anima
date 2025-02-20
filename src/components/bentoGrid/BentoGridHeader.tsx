@@ -75,7 +75,7 @@ export default function BentoGridHeader({
               </Badge>
             ))}
           </div>
-          <LikeButton onLike={handleLike} defaultLiked={isLiked} />
+          {session && <LikeButton onLike={handleLike} defaultLiked={isLiked} />}
         </div>
       </div>
       <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />

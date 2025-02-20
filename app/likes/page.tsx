@@ -1,49 +1,48 @@
 "use client";
 
+import { useState } from "react";
+import AnimeLike from "@/components/AnimeLike";
+import { Button } from "@/components/ui/button";
 import { useLikeStore } from "@/lib/store";
-
-import { useQueries } from "@tanstack/react-query";
-import React from "react";
-import Image from "next/image";
-import { fetchAnimeDetails } from "@/lib/actions.ts/anime";
+import { useRouter } from "next/navigation";
 
 export default function LikesPage() {
   const { likedAnimes } = useLikeStore();
+  const [visibleCount, setVisibleCount] = useState(4);
 
-  // Effectuer plusieurs requêtes en parallèle
-  const animeQueries = useQueries({
-    queries: likedAnimes.map((animeId) => ({
-      queryKey: ["animeDetails", animeId],
-      queryFn: () => fetchAnimeDetails(animeId),
-    })),
-  });
+  const handleLoadMore = () => {
+    setVisibleCount((prevCount) => prevCount + 4);
+  };
+
+  const router = useRouter();
 
   return (
     <div>
-      <h1>Mes Animes Likés</h1>
       {likedAnimes.length > 0 ? (
-        <ul>
-          {animeQueries.map((query, index) => {
-            if (query.isLoading) return <p key={index}>Chargement...</p>;
-            if (query.isError) return <p key={index}>Erreur de chargement</p>;
-
-            const anime = query.data?.data;
-
-            return (
-              <li key={anime.mal_id}>
-                <Image
-                  src={anime.images.jpg.image_url}
-                  alt={anime.title}
-                  width={400}
-                  height={400}
-                />
-                <p>{anime.title}</p>
-              </li>
-            );
-          })}
-        </ul>
+        <div>
+          <h1>Mes Animes Likés</h1>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {likedAnimes.slice(0, visibleCount).map((animeId) => (
+              <AnimeLike key={animeId} animeId={animeId} />
+            ))}
+          </ul>
+          <div className="flex justify-center mt-8">
+            <Button onClick={handleLoadMore}>Load More</Button>
+          </div>
+        </div>
       ) : (
-        <p>Aucun anime liké pour le moment.</p>
+        <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
+          <p className="text-base/8 font-semibold text-white">Oops</p>
+          <h1 className="mt-4 text-5xl font-semibold tracking-tight text-balance text-primary-foreground sm:text-7xl">
+            No Anime Likes yet
+          </h1>
+          <p className="mt-6">Maybe you should expolore some animes first</p>
+          <div className="mt-10 flex justify-center">
+            <Button onClick={() => router.push("/all")}>
+              <span aria-hidden="true">&larr;</span> Check our Anime List
+            </Button>
+          </div>
+        </div>
       )}
     </div>
   );
