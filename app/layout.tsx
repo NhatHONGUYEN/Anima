@@ -6,6 +6,7 @@ import Header from "@/components/header/Header";
 import QueryProvider from "@/lib/QueryProvider";
 import { Footer } from "@/components/Footer";
 import { ScreenSize } from "@/components/ScreenSize";
+import { Toaster } from "react-hot-toast";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -41,6 +42,7 @@ export default function RootLayout({
             {children}
             <Footer />
             <ScreenSize />
+            <Toaster position="bottom-right" reverseOrder={true} />
           </QueryProvider>
         </SessionProvider>
       </body>
