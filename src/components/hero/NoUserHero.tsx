@@ -1,10 +1,15 @@
 import { Heart } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
-import SignIn from "../header/SignIn";
 import { avatars } from "@/lib/data";
+import CustomButton from "../CustomButton";
+import { signIn } from "next-auth/react";
 
 export default function NoUserHero() {
+  const handleSignIn = () => {
+    signIn("github", { redirectTo: "/" });
+  };
+
   return (
     <section className="bg-background py-12 md:py-32">
       <div className="container ">
@@ -19,9 +24,9 @@ export default function NoUserHero() {
               Enhance your anime experience and join our community.
             </p>
             <div className="relative z-10 flex flex-wrap items-center gap-6">
-              <SignIn buttonText="Become a member" />
+              <CustomButton label="Become a member" onClick={handleSignIn} />
               <Image
-                className="w-20 h-20 bg-secondary rounded-full border-4 border-primary-foreground"
+                className="w-16 h-16 bg-secondary rounded-full border-4 border-primary-foreground"
                 src="/seraph.gif"
                 alt="Seraph animation"
                 width={40}

@@ -1,10 +1,8 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import SignIn from "./SignIn";
 import { useSessionStore } from "@/lib/store";
 import { useEffect } from "react"; // Import useEffect
 import FullyHeart from "../FullyHeart";
@@ -15,10 +13,18 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
+import CustomButton from "../CustomButton";
 
 export default function HeaderUserConnection() {
   const { data: session } = useSession();
   const setUserId = useSessionStore((state) => state.setUserId);
+  const handleSignIn = () => {
+    signIn("github", { redirectTo: "/" });
+  };
+  const handleSignOut = () => {
+    signOut({ redirectTo: "/" });
+    setUserId(null);
+  };
 
   // Utilise useEffect pour mettre à jour l'état
   useEffect(() => {
@@ -88,12 +94,7 @@ export default function HeaderUserConnection() {
                       </div>
                     </NavigationMenuLink>
 
-                    <Button
-                      variant={"ghost"}
-                      onClick={() => signOut({ redirectTo: "/" })}
-                    >
-                      <p>Déconnexion</p>
-                    </Button>
+                    <CustomButton label="Sign Out" onClick={handleSignOut} />
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -101,7 +102,7 @@ export default function HeaderUserConnection() {
           </div>
         </div>
       ) : (
-        <SignIn buttonText="Sign In" />
+        <CustomButton label="Sign In" onClick={handleSignIn} />
       )}
     </>
   );
