@@ -15,10 +15,7 @@ export default function HeaderUserConnection() {
   // Utilise useEffect pour mettre à jour l'état
   useEffect(() => {
     if (session?.user?.id) {
-      console.log("User ID found:", session.user.id);
       setUserId(session.user.id);
-    } else {
-      console.log("User ID not found in session:", session);
     }
   }, [session, setUserId]);
 

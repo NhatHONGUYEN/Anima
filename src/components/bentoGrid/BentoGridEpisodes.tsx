@@ -44,7 +44,7 @@ export default function BentoGridEpisodes({
                           alt={`Episode ${episode.mal_id}`}
                           width={400}
                           height={400}
-                          className="rounded-lg object-cover"
+                          className="rounded-lg w-auto h-auto object-cover"
                           priority
                         />
                       ) : (

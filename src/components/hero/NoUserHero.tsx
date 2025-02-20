@@ -38,6 +38,7 @@ export default function NoUserHero() {
                   className="w-full translate-y-20 scale-90 object-cover object-center "
                   width={425}
                   height={425}
+                  priority
                 />
               </div>
               <div className="absolute -right-5 bottom-10 flex w-[17.5rem] items-center justify-center gap-1 rounded-full bg-primary-foreground px-4 py-3 shadow-md">

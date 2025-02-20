@@ -1,5 +1,4 @@
 import { ArrowRight, Heart } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -18,7 +17,7 @@ export default function UserIntro() {
         <div className="flex w-full flex-col justify-center gap-2 sm:flex-row">
           <Button className="w-full sm:w-auto">
             <ArrowRight className="mr-2 size-4" />
-            Exlore Now
+            Explore Now
           </Button>
           <Button variant="outline" className="w-full sm:w-auto">
             Check Your <Heart className="mr-2 size-4" />
@@ -28,33 +27,36 @@ export default function UserIntro() {
       <div className="mt-16 flex flex-col items-center justify-center lg:mt-32">
         <div className="b relative mx-auto aspect-square w-[95%] max-w-[31.25rem] sm:w-full">
           <div className="z-5 absolute inset-0 m-auto flex aspect-[29/36] w-4/5 max-w-[16rem] translate-x-[-75%] translate-y-[10%] rotate-[-15deg] scale-[0.85] justify-center rounded-lg border border-border bg-accent opacity-60 md:w-[21.25rem] md:max-w-[21.25rem]">
-            {" "}
             <Image
               src="/detective_conan.gif"
               alt="hero"
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Add sizes prop
+              style={{ objectFit: "cover" }} // Use style prop instead of objectFit
               className="rounded-lg"
+              priority
             />
           </div>
           <div className="absolute inset-0 z-10 m-auto flex aspect-[29/36] w-4/5 max-w-[16rem] justify-center rounded-lg border border-border bg-accent md:w-[21.25rem] md:max-w-[21.25rem]">
-            {" "}
             <Image
               src="/detective_conan.gif"
               alt="hero"
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Add sizes prop
+              style={{ objectFit: "cover" }} // Use style prop instead of objectFit
               className="rounded-lg"
+              priority
             />
           </div>
           <div className="z-5 absolute inset-0 m-auto flex aspect-[29/36] w-4/5 max-w-[16rem] translate-x-[75%] translate-y-[10%] rotate-[15deg] scale-[0.85] justify-center rounded-lg border border-border bg-accent opacity-60 md:w-[21.25rem] md:max-w-[21.25rem]">
-            {" "}
             <Image
               src="/detective_conan.gif"
               alt="hero"
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Add sizes prop
+              style={{ objectFit: "cover" }} // Use style prop instead of objectFit
               className="rounded-lg"
+              priority
             />
           </div>
         </div>

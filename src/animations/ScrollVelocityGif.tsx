@@ -56,6 +56,7 @@ export default function ScrollVelocityGif() {
                   src={thumbnail}
                   alt={title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="h-full w-full object-cover object-center"
                 />
               </div>
