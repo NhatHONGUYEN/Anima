@@ -36,6 +36,7 @@ export default function AnimeLike({ animeId }: { animeId: number }) {
             width={400}
             height={450}
             quality={100}
+            priority
             className="absolute h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 h-full bg-[linear-gradient(hsl(var(--muted)/0),hsl(var(--muted)/0.4),hsl(var(--muted)/0.8)_100%)] mix-blend-multiply" />

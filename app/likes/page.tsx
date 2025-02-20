@@ -19,17 +19,23 @@ export default function LikesPage() {
   return (
     <div>
       {likedAnimes.length > 0 ? (
-        <div>
-          <h1>Mes Animes Likés</h1>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {likedAnimes.slice(0, visibleCount).map((animeId) => (
-              <AnimeLike key={animeId} animeId={animeId} />
-            ))}
-          </ul>
-          <div className="flex justify-center mt-8">
-            <Button onClick={handleLoadMore}>Load More</Button>
+        <section className="py-16">
+          <div className="container">
+            <div className="text-center flex flex-col items-center mb-8">
+              <h1>Mes Animes Likés</h1>
+            </div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {likedAnimes.slice(0, visibleCount).map((animeId) => (
+                <AnimeLike key={animeId} animeId={animeId} />
+              ))}
+            </ul>
+            {likedAnimes.length >= visibleCount && (
+              <div className="flex justify-center mt-8">
+                <Button onClick={handleLoadMore}>Load More</Button>
+              </div>
+            )}
           </div>
-        </div>
+        </section>
       ) : (
         <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
           <p className="text-base/8 font-semibold text-white">Oops</p>
