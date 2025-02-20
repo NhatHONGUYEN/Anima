@@ -1,13 +1,10 @@
-import { ArrowRight, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function UserIntro() {
   const router = useRouter();
-  const likesLink = () => {
-    router.push("/likes");
-  };
 
   return (
     <section className="overflow-hidden py-32">
@@ -21,12 +18,9 @@ export default function UserIntro() {
           animated series and share your favorites.
         </p>
         <div className="flex w-full flex-col justify-center gap-2 sm:flex-row">
-          <Button className="w-full sm:w-auto">
-            <ArrowRight className="mr-2 size-4" />
-            Explore Now
-          </Button>
+          qs
           <Button
-            onClick={likesLink}
+            onClick={() => router.push("/likes")}
             variant="outline"
             className="w-full sm:w-auto"
           >
