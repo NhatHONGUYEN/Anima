@@ -1,8 +1,13 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 
 export default function FullyHeart() {
+  const router = useRouter();
+
   return (
-    <Button>
+    <Button onClick={() => router.push("/likes")}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
