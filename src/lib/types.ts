@@ -120,22 +120,23 @@ export type Characters = {
 };
 
 export type ContentBentoGridProps = {
+  mal_id: number;
   title: string;
   score: number;
-  rank: number;
-  type: string;
-  episode: number;
   duration: string;
+  episode: number;
   favorites: number;
+  type: string;
+  rank: number;
   synopsis: string;
   themes: Entity[];
-  trailerEmbedUrl?: string;
-  trailerImageUrl?: string;
-  largeImageUrl?: string;
+  trailerEmbedUrl: string;
+  trailerImageUrl: string;
+  largeImageUrl: string;
   producers: Entity[];
   licensors: Entity[];
   studios: Entity[];
-  episodes?: Episode[];
+  episodes: Episode[];
   characters: Characters[];
 };
 
@@ -172,6 +173,7 @@ export type BentoGridHeaderProps = {
   episode: number;
   duration: string;
   favorites: number;
+  mal_id: number;
 };
 
 export type AccordionSectionProps = {

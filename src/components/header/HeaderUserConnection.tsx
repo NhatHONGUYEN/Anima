@@ -5,9 +5,22 @@ import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import SignIn from "./SignIn";
+import { useSessionStore } from "@/lib/store";
+import { useEffect } from "react"; // Import useEffect
 
 export default function HeaderUserConnection() {
   const { data: session } = useSession();
+  const setUserId = useSessionStore((state) => state.setUserId);
+
+  // Utilise useEffect pour mettre à jour l'état
+  useEffect(() => {
+    if (session?.user?.id) {
+      console.log("User ID found:", session.user.id);
+      setUserId(session.user.id);
+    } else {
+      console.log("User ID not found in session:", session);
+    }
+  }, [session, setUserId]);
 
   return (
     <>

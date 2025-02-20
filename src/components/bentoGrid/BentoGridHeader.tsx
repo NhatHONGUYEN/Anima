@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 import { Badge } from "../ui/badge";
 import { BentoGridHeaderProps, Theme } from "@/lib/types";
 import { Heart, Star } from "lucide-react";
@@ -15,6 +13,7 @@ export default function BentoGridHeader({
   episode,
   duration,
   favorites,
+  mal_id,
 }: BentoGridHeaderProps) {
   return (
     <div className="relative lg:col-span-3">
@@ -22,6 +21,9 @@ export default function BentoGridHeader({
       <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)] min-h-[300px] lg:min-h-[400px]">
         <div className="p-10 flex flex-col justify-center h-full">
           <h1 className="mb-4">{title}</h1>
+          <h2 className="text-lg font-semibold text-primary-foreground">
+            {mal_id}
+          </h2>
           <div className="flex gap-4 mb-4 flex-wrap">
             {type && (
               <Badge variant="outline" className="shrink-0">
@@ -50,7 +52,6 @@ export default function BentoGridHeader({
               </Badge>
             )}
           </div>
-
           <p className="max-w-lg">{synopsis}</p>
           <div className="flex mt-4 gap-4 flex-wrap">
             {themes.map((theme: Theme) => (

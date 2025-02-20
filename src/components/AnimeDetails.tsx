@@ -39,6 +39,7 @@ export default function AnimeDetails({ id }: { id: number }) {
 
   return (
     <ContentBentoGrid
+      mal_id={anime.mal_id}
       title={anime.title}
       score={anime.score}
       duration={anime.duration}

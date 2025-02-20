@@ -1,3 +1,5 @@
+import { Anime } from "@/lib/types";
+import { useQuery } from "@tanstack/react-query";
 import {
   fetchAnimeCharacters,
   fetchAnimeDetails,
@@ -6,9 +8,7 @@ import {
   fetchAnimeRecommendations,
   fetchAnimeReviews,
   fetchTopAnime,
-} from "@/lib/api";
-import { Anime } from "@/lib/types";
-import { useQuery } from "@tanstack/react-query";
+} from "../../app/actions/topAnime/route";
 
 export function useTopAnime(
   filter?: "airing" | "upcoming" | "bypopularity" | "favorite" | "all",

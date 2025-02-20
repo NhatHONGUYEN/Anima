@@ -11,6 +11,7 @@ import BentoGridCharacters from "./bentoGrid/BentoGridCharacters";
 import BentoGridVoiceActors from "./bentoGrid/BentoGridVoiceActors";
 
 export default function ContentBentoGrid({
+  mal_id,
   title,
   score,
   type,
@@ -34,6 +35,7 @@ export default function ContentBentoGrid({
       <div className="mx-auto container ">
         <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-1">
           <BentoGridHeader
+            mal_id={mal_id}
             title={title}
             score={score}
             type={type}
