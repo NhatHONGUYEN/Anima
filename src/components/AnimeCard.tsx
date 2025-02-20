@@ -5,12 +5,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Anime } from "@/lib/types";
+import EmptyHeart from "./EmptyHeart";
+import FullyHeart from "./FullyHeart";
+import { useSession } from "next-auth/react"; // Pour vérifier si l'utilisateur est connecté
+import { useLikeStore } from "@/lib/store";
 
 type AnimeCardProps = {
   anime: Anime;
 };
 
 export default function AnimeCard({ anime }: AnimeCardProps) {
+  const { data: session } = useSession(); // Vérifie si l'utilisateur est connecté
+  const { likedAnimes, toggleLike } = useLikeStore(); // Utilise le store
+
+  // Vérifie si cet anime est liké
+  const isLiked = likedAnimes[anime.mal_id] || false;
+
+  const handleLike = async () => {
+    if (!session) {
+      alert("You need to be logged in to like this.");
+      return;
+    }
+
+    toggleLike(anime.mal_id); // Met à jour l'état du like pour cet anime
+  };
+
   if (!anime) {
     return (
       <div className="text-center text-red-500">Anime data not available</div>
@@ -47,6 +66,9 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
             Read more{" "}
             <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
           </Link>
+        </div>
+        <div className="absolute top-0 right-0 p-4" onClick={handleLike}>
+          {isLiked ? <FullyHeart /> : <EmptyHeart />}
         </div>
       </div>
     </div>

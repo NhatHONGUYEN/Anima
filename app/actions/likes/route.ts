@@ -1,5 +1,6 @@
 "use server";
 
+import { addLike } from "@/lib/actions.ts/likes";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
@@ -42,23 +43,8 @@ export async function POST(req: Request) {
       );
     }
 
-    const existingLike = await prisma.like.findUnique({
-      where: { userId_mal_id: { userId, mal_id } },
-    });
-
-    if (existingLike) {
-      await prisma.like.delete({
-        where: { userId_mal_id: { userId, mal_id } },
-      });
-
-      return NextResponse.json({ liked: false });
-    } else {
-      await prisma.like.create({
-        data: { userId, mal_id },
-      });
-
-      return NextResponse.json({ liked: true });
-    }
+    const result = await addLike(userId, mal_id);
+    return NextResponse.json(result);
   } catch (error) {
     console.error("Error in toggleLike:", error);
     return NextResponse.json(

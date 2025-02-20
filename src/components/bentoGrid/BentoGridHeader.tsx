@@ -3,6 +3,10 @@
 import { Badge } from "../ui/badge";
 import { BentoGridHeaderProps, Theme } from "@/lib/types";
 import { Heart, Star } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useLikeStore } from "@/lib/store";
+import FullyHeart from "../FullyHeart";
+import EmptyHeart from "../EmptyHeart";
 
 export default function BentoGridHeader({
   title,
@@ -15,15 +19,27 @@ export default function BentoGridHeader({
   favorites,
   mal_id,
 }: BentoGridHeaderProps) {
+  const { data: session } = useSession();
+  const { likedAnimes, toggleLike } = useLikeStore();
+
+  const isLiked = likedAnimes[mal_id] || false;
+
+  const handleLike = async () => {
+    if (!session) {
+      alert("You need to be logged in to like this.");
+      return;
+    }
+
+    toggleLike(mal_id); // Met à jour l'état global du like
+  };
+
   return (
     <div className="relative lg:col-span-3">
       <div className="absolute inset-px rounded-lg ring-1 ring-border bg-card max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
       <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)] min-h-[300px] lg:min-h-[400px]">
         <div className="p-10 flex flex-col justify-center h-full">
           <h1 className="mb-4">{title}</h1>
-          <h2 className="text-lg font-semibold text-primary-foreground">
-            {mal_id}
-          </h2>
+
           <div className="flex gap-4 mb-4 flex-wrap">
             {type && (
               <Badge variant="outline" className="shrink-0">
@@ -59,6 +75,9 @@ export default function BentoGridHeader({
                 {theme.name}
               </Badge>
             ))}
+          </div>
+          <div className="absolute top-0 right-0 p-4" onClick={handleLike}>
+            {isLiked ? <FullyHeart /> : <EmptyHeart />}
           </div>
         </div>
       </div>
