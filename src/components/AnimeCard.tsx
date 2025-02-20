@@ -5,10 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Anime } from "@/lib/types";
-import EmptyHeart from "./EmptyHeart";
-import FullyHeart from "./FullyHeart";
-import { useSession } from "next-auth/react"; // Pour vérifier si l'utilisateur est connecté
+import { useSession } from "next-auth/react"; // Vérifier si l'utilisateur est connecté
 import { useLikeStore } from "@/lib/store";
+import LikeButton from "./ui/LikeButton";
 
 type AnimeCardProps = {
   anime: Anime;
@@ -21,7 +20,7 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
   // Vérifie si cet anime est liké
   const isLiked = likedAnimes.includes(anime.mal_id);
 
-  const handleLike = async () => {
+  const handleLike = () => {
     if (!session) {
       alert("You need to be logged in to like this.");
       return;
@@ -68,9 +67,9 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
             <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
-        <div className="absolute top-0 right-0 p-4" onClick={handleLike}>
-          {isLiked ? <FullyHeart /> : <EmptyHeart />}
-        </div>
+
+        {/* ✅ Correction : Passer `handleLike` et `isLiked` au LikeButton */}
+        <LikeButton onLike={handleLike} defaultLiked={isLiked} />
       </div>
     </div>
   );

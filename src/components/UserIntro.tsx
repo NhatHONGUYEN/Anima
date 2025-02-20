@@ -1,8 +1,14 @@
 import { ArrowRight, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function UserIntro() {
+  const router = useRouter();
+  const likesLink = () => {
+    router.push("/likes");
+  };
+
   return (
     <section className="overflow-hidden py-32">
       <div className="container flex flex-col items-center text-center">
@@ -19,7 +25,11 @@ export default function UserIntro() {
             <ArrowRight className="mr-2 size-4" />
             Explore Now
           </Button>
-          <Button variant="outline" className="w-full sm:w-auto">
+          <Button
+            onClick={likesLink}
+            variant="outline"
+            className="w-full sm:w-auto"
+          >
             Check Your <Heart className="mr-2 size-4" />
           </Button>
         </div>

@@ -5,8 +5,7 @@ import { BentoGridHeaderProps, Theme } from "@/lib/types";
 import { Heart, Star } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useLikeStore } from "@/lib/store";
-import FullyHeart from "../FullyHeart";
-import EmptyHeart from "../EmptyHeart";
+import LikeButton from "../ui/LikeButton";
 
 export default function BentoGridHeader({
   title,
@@ -22,7 +21,7 @@ export default function BentoGridHeader({
   const { data: session } = useSession();
   const { likedAnimes, toggleLike } = useLikeStore();
 
-  const isLiked = likedAnimes[mal_id] || false;
+  const isLiked = likedAnimes.includes(mal_id);
 
   const handleLike = async () => {
     if (!session) {
@@ -76,9 +75,7 @@ export default function BentoGridHeader({
               </Badge>
             ))}
           </div>
-          <div className="absolute top-0 right-0 p-4" onClick={handleLike}>
-            {isLiked ? <FullyHeart /> : <EmptyHeart />}
-          </div>
+          <LikeButton onLike={handleLike} defaultLiked={isLiked} />
         </div>
       </div>
       <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
