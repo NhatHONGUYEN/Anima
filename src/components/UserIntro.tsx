@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { ArrowRight, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -18,7 +18,16 @@ export default function UserIntro() {
           animated series and share your favorites.
         </p>
         <div className="flex w-full flex-col justify-center gap-2 sm:flex-row">
-          qs
+          <Button
+            className="cursor-pointer transition-all bg-primary text-primary-foreground px-6 py-2 rounded-lg
+border-secondary-foreground
+border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
+active:border-b-[2px] active:brightness-90 active:translate-y-[2px]"
+            onClick={() => router.push("/all")}
+          >
+            <ArrowRight className="mr-2 size-4" />
+            Explore Now
+          </Button>
           <Button
             onClick={() => router.push("/likes")}
             variant="outline"
