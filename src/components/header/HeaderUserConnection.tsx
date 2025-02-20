@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import SignIn from "./SignIn";
 import { useSessionStore } from "@/lib/store";
 import { useEffect } from "react"; // Import useEffect
+import FullyHeart from "../FullyHeart";
 
 export default function HeaderUserConnection() {
   const { data: session } = useSession();
@@ -23,6 +24,7 @@ export default function HeaderUserConnection() {
     <>
       {session?.user ? (
         <div className="flex items-center gap-4">
+          <FullyHeart />
           <div className="flex items-center gap-2">
             {session?.user?.image ? (
               <Image

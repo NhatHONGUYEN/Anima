@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion"; // Import Framer Motion
 import FullyHeart from "../FullyHeart";
 import EmptyHeart from "../EmptyHeart";
 
@@ -18,17 +19,26 @@ const LikeButton = ({
   const handleLike = () => {
     setIsLiked(!isLiked);
     if (onLike) {
-      onLike(!isLiked); // Callback si besoin
+      onLike(!isLiked);
     }
   };
 
   return (
-    <div
+    <motion.div
       className={`absolute top-0 right-0 p-4 cursor-pointer ${className}`}
       onClick={handleLike}
+      whileTap={{ scale: 0.8 }} // Effet d'appui
+      whileHover={{ scale: 1.1 }} // Effet au survol
     >
-      {isLiked ? <FullyHeart /> : <EmptyHeart />}
-    </div>
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 300, damping: 10 }}
+        key={isLiked ? "liked" : "unliked"} // Change d'icône avec une animation
+      >
+        {isLiked ? <FullyHeart /> : <EmptyHeart />}
+      </motion.div>
+    </motion.div>
   );
 };
 
