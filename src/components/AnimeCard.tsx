@@ -19,7 +19,7 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
   const { likedAnimes, toggleLike } = useLikeStore(); // Utilise le store
 
   // Vérifie si cet anime est liké
-  const isLiked = likedAnimes[anime.mal_id] || false;
+  const isLiked = likedAnimes.includes(anime.mal_id);
 
   const handleLike = async () => {
     if (!session) {
@@ -27,6 +27,7 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
       return;
     }
 
+    console.log("Toggling like for anime ID:", anime.mal_id); // Debug
     toggleLike(anime.mal_id); // Met à jour l'état du like pour cet anime
   };
 
