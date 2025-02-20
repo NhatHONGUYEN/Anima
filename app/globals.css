@@ -9,6 +9,10 @@ body {
   @apply font-body;
 }
 
+li::marker {
+  content: none;
+}
+
 p,
 q,
 li {

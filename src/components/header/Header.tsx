@@ -12,6 +12,13 @@ import {
 import HeaderUserConnection from "./HeaderUserConnection";
 import Link from "next/link";
 import { AnimeSearch } from "../AnimeSearch";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuTrigger,
+} from "../ui/navigation-menu";
 
 export default function Header() {
   return (
@@ -22,12 +29,54 @@ export default function Header() {
             <Clapperboard className="text-primary" strokeWidth={1} />
             <h1>Anima</h1>
           </Link>
-          <h1 className="flex gap-4 text-center uppercase">
-            <Link href={"/all"}>All</Link>
-            <Link href={"/upcoming"}>upcoming</Link>
-            <Link href={"/bypopularity"}>popularity</Link>
-            <Link href={"/favorite"}>favorite</Link>
-          </h1>
+          <NavigationMenu>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid w-[600px] grid-cols-2 p-3">
+                  <NavigationMenuLink
+                    href="/all"
+                    className="rounded-md p-3 transition-colors hover:bg-muted/70"
+                  >
+                    <div>
+                      <p className="mb-1 font-semibold">All</p>
+                      <p>View all items</p>
+                    </div>
+                  </NavigationMenuLink>
+
+                  <NavigationMenuLink
+                    href="/upcoming"
+                    className="rounded-md p-3 transition-colors hover:bg-muted/70"
+                  >
+                    <div>
+                      <p className="mb-1 font-semibold">Upcoming</p>
+                      <p>Check what&apos;s coming next</p>
+                    </div>
+                  </NavigationMenuLink>
+
+                  <NavigationMenuLink
+                    href="/bypopularity"
+                    className="rounded-md p-3 transition-colors hover:bg-muted/70"
+                  >
+                    <div>
+                      <p className="mb-1 font-semibold">Popularity</p>
+                      <p>Most popular items</p>
+                    </div>
+                  </NavigationMenuLink>
+
+                  <NavigationMenuLink
+                    href="/favorite"
+                    className="rounded-md p-3 transition-colors hover:bg-muted/70"
+                  >
+                    <div>
+                      <p className="mb-1 font-semibold">Favorite</p>
+                      <p>Your favorite selections</p>
+                    </div>
+                  </NavigationMenuLink>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenu>
           <div className="hidden items-center gap-4 lg:flex">
             <AnimeSearch />
             <HeaderUserConnection />
