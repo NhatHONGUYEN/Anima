@@ -35,7 +35,7 @@ export default function NoUserHero() {
             </div>
           </div>
           <div>
-            <div className="relative mx-auto mt-28 h-[21.25rem] w-[21.25rem] rounded-full bg-secondary md:mx-0 md:mt-0 lg:h-[25rem] lg:w-[25rem]">
+            <div className="hidden sm:block relative mx-auto mt-28 h-[21.25rem] w-[21.25rem] rounded-full bg-secondary md:mx-0 md:mt-0 lg:h-[25rem] lg:w-[25rem]">
               <div className="absolute bottom-0 left-1/2 w-[21.25rem] -translate-x-1/2 overflow-hidden rounded-b-full lg:w-[25rem]">
                 <Image
                   src="/sasuke.webp"

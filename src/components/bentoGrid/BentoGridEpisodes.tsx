@@ -6,12 +6,12 @@ export default function BentoGridEpisodes({
   episodes,
 }: BentoGridEpisodesProps) {
   return (
-    <div className="hidden relative lg:col-span-2 overflow-hidden">
+    <div className="relative lg:col-span-2 overflow-hidden">
       {/* Background effect */}
       <div className="absolute inset-px rounded-xl" />
 
-      <div className="relative w-screen md:w-auto flex h-[600px] flex-col overflow-hidden rounded-xl">
-        <ScrollArea className="p-10 overflow-x-hidden">
+      <div className="relative flex h-[600px] flex-col overflow-hidden rounded-xl">
+        <ScrollArea className="p-4  overflow-x-hidden">
           {/* Vérification si des épisodes existent */}
           {!episodes || episodes.length === 0 ? (
             <div className="flex flex-col justify-center items-center h-full min-h-[500px]">
@@ -27,7 +27,7 @@ export default function BentoGridEpisodes({
               />
             </div>
           ) : (
-            <>
+            <div className="flex flex-col gap-4">
               <h1 className="pb-4 lg:text-center">Episodes</h1>
               <div className="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col gap-4">
                 {episodes.map((episode) => (
@@ -40,7 +40,7 @@ export default function BentoGridEpisodes({
                           alt={`Episode ${episode.mal_id}`}
                           width={400}
                           height={400}
-                          className="rounded-lg w-full h-auto object-cover max-w-full"
+                          className="rounded-lg w-full h-auto object-cover max-w-full "
                           priority
                           quality={100}
                         />
@@ -76,7 +76,7 @@ export default function BentoGridEpisodes({
                   </div>
                 ))}
               </div>
-            </>
+            </div>
           )}
         </ScrollArea>
       </div>
