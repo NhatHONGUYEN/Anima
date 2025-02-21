@@ -8,6 +8,7 @@ import Loader from "./ui/loader";
 import CustomButton from "./CustomButton";
 import { MoveLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+import FADE_DOWN_ANIMATION from "@/animations/FADE_DOWN_ANIMATION";
 
 type AnimeListProps = {
   filter: "airing" | "upcoming" | "bypopularity" | "favorite" | "all";
@@ -46,38 +47,40 @@ export default function AnimeList({
 
   return (
     <section className="py-16">
-      <div className="container mx-auto">
-        <div className="text-center flex flex-col items-center mb-8">
-          <h1 className="mb-4 text-xl uppercase">{title}</h1>
-          <p className="max-w-md">{description}</p>
-        </div>
-        <div className="mt-10">
-          <CustomButton
-            icon={MoveLeft}
-            label="Go Back"
-            onClick={() => router.back()}
-          />
-        </div>
-        <div className="grid mt-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {allAnime
-            .slice(0, visibleCount) // Affiche uniquement les premiers `visibleCount` éléments
-            .map((anime: Anime, index) => (
-              <AnimeCard key={`${anime.mal_id}-${index}`} anime={anime} />
-            ))}
-        </div>
-        <div className="flex justify-center mt-8 space-x-4">
-          {allAnime.length >= visibleCount && (
-            <CustomButton label="Show More" onClick={handleShowMore} />
-          )}
-          {visibleCount > 8 && (
+      <FADE_DOWN_ANIMATION>
+        <div className="container mx-auto">
+          <div className="text-center flex flex-col items-center mb-8">
+            <h1 className="mb-4 text-xl uppercase">{title}</h1>
+            <p className="max-w-md">{description}</p>
+          </div>
+          <div className="mt-10">
             <CustomButton
-              label="Show Less"
-              variant="outline"
-              onClick={handleShowLess}
+              icon={MoveLeft}
+              label="Go Back"
+              onClick={() => router.back()}
             />
-          )}
+          </div>
+          <div className="grid mt-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {allAnime
+              .slice(0, visibleCount) // Affiche uniquement les premiers `visibleCount` éléments
+              .map((anime: Anime, index) => (
+                <AnimeCard key={`${anime.mal_id}-${index}`} anime={anime} />
+              ))}
+          </div>
+          <div className="flex justify-center mt-8 space-x-4">
+            {allAnime.length >= visibleCount && (
+              <CustomButton label="Show More" onClick={handleShowMore} />
+            )}
+            {visibleCount > 8 && (
+              <CustomButton
+                label="Show Less"
+                variant="outline"
+                onClick={handleShowLess}
+              />
+            )}
+          </div>
         </div>
-      </div>
+      </FADE_DOWN_ANIMATION>
     </section>
   );
 }

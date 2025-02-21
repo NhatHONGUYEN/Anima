@@ -5,7 +5,7 @@ import { SessionProvider } from "next-auth/react";
 import Header from "@/components/header/Header";
 import QueryProvider from "@/lib/QueryProvider";
 import { Footer } from "@/components/Footer";
-import { ScreenSize } from "@/components/ScreenSize";
+// import { ScreenSize } from "@/components/ScreenSize";
 import { Toaster } from "react-hot-toast";
 import GoToTopButton from "@/components/GoToTopButton";
 
@@ -42,7 +42,7 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
-            <ScreenSize />
+            {/* <ScreenSize /> */}
             <GoToTopButton />
             <Toaster position="bottom-right" reverseOrder={true} />
           </QueryProvider>
