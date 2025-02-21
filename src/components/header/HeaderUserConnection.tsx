@@ -3,7 +3,7 @@
 import { signIn, useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
-import { useSessionStore } from "@/lib/store";
+import { useLikeStore, useSessionStore } from "@/lib/store";
 import { useEffect } from "react"; // Import useEffect
 import FullyHeart from "../FullyHeart";
 import {
@@ -14,10 +14,12 @@ import {
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
 import CustomButton from "../CustomButton";
+import { Badge } from "../ui/badge";
 
 export default function HeaderUserConnection() {
   const { data: session } = useSession();
   const setUserId = useSessionStore((state) => state.setUserId);
+  const likedAnimes = useLikeStore((state) => state.likedAnimes);
   const handleSignIn = () => {
     signIn("github", { redirectTo: "/" });
   };
@@ -37,7 +39,12 @@ export default function HeaderUserConnection() {
     <>
       {session?.user ? (
         <div className="flex items-center gap-4">
-          <FullyHeart />
+          <div className="relative">
+            <FullyHeart />
+            <Badge className="absolute -top-1 left-full min-w-5 rounded-full -translate-x-4 border-2 border-primary-foreground px-2 text-xs font-semibold bg-primary-foreground text-primary">
+              {likedAnimes.length}
+            </Badge>
+          </div>
           <div className="flex justify-center items-center gap-2">
             <NavigationMenu>
               <NavigationMenuItem>
