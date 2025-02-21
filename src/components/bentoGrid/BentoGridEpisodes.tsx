@@ -1,21 +1,17 @@
-"use client";
-
-import React from "react";
-import Image from "next/image";
 import { BentoGridEpisodesProps } from "@/lib/types";
-
 import { ScrollArea } from "../ui/scroll-area";
+import Image from "next/image";
 
 export default function BentoGridEpisodes({
   episodes,
 }: BentoGridEpisodesProps) {
   return (
-    <div className="relative lg:col-span-2">
+    <div className="hidden relative lg:col-span-2 overflow-hidden">
       {/* Background effect */}
-      <div className="absolute inset-px rounded-xl  " />
+      <div className="absolute inset-px rounded-xl" />
 
-      <div className="relative  flex h-[600px]  flex-col overflow-hidden rounded-xl ">
-        <ScrollArea className="p-10 ">
+      <div className="relative w-screen md:w-auto flex h-[600px] flex-col overflow-hidden rounded-xl">
+        <ScrollArea className="p-10 overflow-x-hidden">
           {/* Vérification si des épisodes existent */}
           {!episodes || episodes.length === 0 ? (
             <div className="flex flex-col justify-center items-center h-full min-h-[500px]">
@@ -27,29 +23,29 @@ export default function BentoGridEpisodes({
                 alt="no episode"
                 width={400}
                 height={400}
-                className="rounded-lg object-cover"
+                className="rounded-lg object-cover max-w-full"
               />
             </div>
           ) : (
             <>
               <h1 className="pb-4 lg:text-center">Episodes</h1>
-              <div className="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col  gap-4">
+              <div className="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col gap-4">
                 {episodes.map((episode) => (
-                  <div key={episode.mal_id}>
+                  <div key={episode.mal_id} className="max-w-full">
                     {/* Image de l'épisode */}
-                    <div className="relative  ">
+                    <div className="relative">
                       {episode?.images?.jpg?.image_url ? (
                         <Image
                           src={episode.images.jpg.image_url}
                           alt={`Episode ${episode.mal_id}`}
                           width={400}
                           height={400}
-                          className="rounded-lg  lg:w-auto w-full h-auto object-cover"
+                          className="rounded-lg w-full h-auto object-cover max-w-full"
                           priority
                           quality={100}
                         />
                       ) : (
-                        <div className="flex justify-center items-center ">
+                        <div className="flex justify-center items-center">
                           <h1 className="text-center">
                             Sorry <br /> No Image
                           </h1>
@@ -58,7 +54,7 @@ export default function BentoGridEpisodes({
                             alt="no episode"
                             width={400}
                             height={400}
-                            className="rounded-lg object-cover"
+                            className="rounded-lg object-cover max-w-full"
                             quality={100}
                             priority
                           />
@@ -86,7 +82,7 @@ export default function BentoGridEpisodes({
       </div>
 
       {/* Contour avec effet de shadow */}
-      <div className="pointer-events-none ring-2 ring-border absolute inset-px rounded-lg shadow-sm " />
+      <div className="pointer-events-none ring-2 ring-border absolute inset-px rounded-lg shadow-sm" />
     </div>
   );
 }
