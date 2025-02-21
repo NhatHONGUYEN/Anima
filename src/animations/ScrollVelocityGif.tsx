@@ -43,14 +43,14 @@ const velocity = [3, -3];
 
 export default function ScrollVelocityGif() {
   return (
-    <div className="container mx-auto pt-32">
+    <div className="container hidden pt-32 overflow-x-hidden">
       <div className="flex flex-col space-y-5 py-10">
         {velocity.map((v, index) => (
           <ScrollVelocity key={index} velocity={v}>
             {images.map(({ title, thumbnail }) => (
               <div
                 key={title}
-                className="relative h-[6rem] w-[9rem] md:h-[8rem] md:w-[12rem] xl:h-[12rem] xl:w-[18rem]"
+                className="relative h-[6rem] w-[9rem] md:h-[8rem] md:w-[12rem] xl:h-[12rem] xl:w-[18rem] max-w-full"
               >
                 <Image
                   src={thumbnail}
