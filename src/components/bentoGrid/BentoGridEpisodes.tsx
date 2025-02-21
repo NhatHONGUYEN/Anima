@@ -77,7 +77,7 @@ export default function BentoGridEpisodes({
       </div>
 
       {/* Contour avec effet de shadow */}
-      <div className="pointer-events-none ring-1 ring-border absolute inset-px rounded-lg shadow-sm " />
+      <div className="pointer-events-none ring-2 ring-border absolute inset-px rounded-lg shadow-sm " />
     </div>
   );
 }

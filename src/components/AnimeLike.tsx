@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import LikeButton from "./ui/LikeButton";
 import { useLikeStore } from "@/lib/store";
+import LikesSkeleton from "./LikesSkeleton";
 
 export default function AnimeLike({ animeId }: { animeId: number }) {
   const { data, isLoading, isError } = useQuery({
@@ -16,7 +17,7 @@ export default function AnimeLike({ animeId }: { animeId: number }) {
 
   const { likedAnimes, toggleLike } = useLikeStore();
 
-  if (isLoading) return <p>Chargement...</p>;
+  if (isLoading) return <LikesSkeleton />;
   if (isError) return <p>Erreur de chargement</p>;
 
   const anime = data?.data;

@@ -22,7 +22,7 @@ export default function UserIntro() {
 
   return (
     <section className="overflow-hidden py-32">
-      <div className="container flex flex-col items-center text-center">
+      <div className="container mx-auto flex flex-col items-center text-center">
         <p>Hello!</p>
         <h1 className="my-3 text-pretty text-2xl font-bold sm:text-4xl md:my-6 lg:text-5xl">
           Explore and Check Your Likes

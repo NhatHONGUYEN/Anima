@@ -30,7 +30,7 @@ export default function CustomButton({
   return (
     <Button
       className={clsx(
-        "cursor-pointer transition-all text-xs px-6 py-2 rounded-lg border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]",
+        "cursor-pointer transition-all  text-xs px-6 py-2 rounded-lg border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]",
         variant === "default"
           ? "bg-primary text-primary-foreground border-secondary-foreground"
           : "bg-primary-foreground text-secondary-foreground border-secondary-foreground hover:bg-primary-foreground/90"

@@ -4,7 +4,8 @@ import { useState } from "react";
 import AnimeLike from "@/components/AnimeLike";
 import { Button } from "@/components/ui/button";
 import { useLikeStore } from "@/lib/store";
-import { useRouter } from "next/navigation";
+import CustomButton from "@/components/CustomButton";
+import { MoveLeft } from "lucide-react";
 
 export default function LikesPage() {
   const { likedAnimes } = useLikeStore();
@@ -13,8 +14,6 @@ export default function LikesPage() {
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 4);
   };
-
-  const router = useRouter();
 
   return (
     <div>
@@ -44,9 +43,11 @@ export default function LikesPage() {
           </h1>
           <p className="mt-6">Maybe you should expolore some animes first</p>
           <div className="mt-10 flex justify-center">
-            <Button onClick={() => router.push("/all")}>
-              <span aria-hidden="true">&larr;</span> Check our Anime List
-            </Button>
+            <CustomButton
+              icon={MoveLeft}
+              label="Check our Anime List"
+              href="/all"
+            />
           </div>
         </div>
       )}
