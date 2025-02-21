@@ -6,12 +6,12 @@ import TopAnimeSlider from "@/components/TopAnimeSlider";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Hero />
       <BentoGrid />
       <ScrollVelocityGif />
       <TopAnimeSlider animeId={38524} />
       <Faq />
-    </div>
+    </>
   );
 }

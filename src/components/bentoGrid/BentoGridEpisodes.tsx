@@ -6,7 +6,7 @@ export default function BentoGridEpisodes({
   episodes,
 }: BentoGridEpisodesProps) {
   return (
-    <div className="relative hidden lg:col-span-2 overflow-hidden">
+    <div className="relative lg:col-span-2 overflow-hidden">
       {/* Background effect */}
       <div className="absolute inset-px rounded-xl" />
 
