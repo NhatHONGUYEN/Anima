@@ -18,7 +18,7 @@ export const Footer = () => {
                     <Clapperboard className="text-primary" strokeWidth={1} />
                     <h1>Anima</h1>
                   </span>
-                  <p className="mt-6  ">
+                  <p className="mt-6 text-left ">
                     {" "}
                     Welcome to Anima, your go-to destination for discovering
                     anime! Explore a wide range of series, from the latest hits
