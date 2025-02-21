@@ -46,14 +46,14 @@ export default function BentoGridTrailer({
             />
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center gap-4 w-full h-full">
-            <h1>Trailer not available</h1>
+          <div className="flex flex-col items-center justify-center w-full h-full">
+            <h1 className="py-4">Trailer not available</h1>
             <Image
               src="/notrailer.gif"
               alt="No trailer available"
               width={200}
               height={200}
-              className="rounded-lg"
+              className="rounded-lg p-4"
             />
           </div>
         )}

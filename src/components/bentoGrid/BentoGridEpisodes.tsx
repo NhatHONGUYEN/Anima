@@ -45,10 +45,8 @@ export default function BentoGridEpisodes({
                           quality={100}
                         />
                       ) : (
-                        <div className="flex justify-center items-center">
-                          <h1 className="text-center">
-                            Sorry <br /> No Image
-                          </h1>
+                        <div className="flex flex-col  pt-10 justify-center items-center h-full ">
+                          <h1>Sorry No Image</h1>
                           <Image
                             src="/sorry.gif"
                             alt="no episode"

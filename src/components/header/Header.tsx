@@ -20,7 +20,7 @@ import {
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
 import CustomButton from "../CustomButton";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useState } from "react"; // Importez useState
 
 const navigationLinks = [
@@ -48,6 +48,7 @@ const handleSignOut = () => {
 
 export default function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false); // État pour contrôler le Sheet
+  const { data: session } = useSession();
 
   return (
     <section className="py-4">
@@ -118,7 +119,9 @@ export default function Header() {
                       </div>
                     </Link>
                   ))}
-                  <CustomButton label="Sign Out" onClick={handleSignOut} />
+                  {session && (
+                    <CustomButton label="Sign Out" onClick={handleSignOut} />
+                  )}
                 </div>
               </SheetContent>
             </Sheet>
