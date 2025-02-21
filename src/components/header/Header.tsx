@@ -21,6 +21,7 @@ import {
 } from "../ui/navigation-menu";
 import CustomButton from "../CustomButton";
 import { signOut } from "next-auth/react";
+import { useState } from "react"; // Importez useState
 
 const navigationLinks = [
   { href: "/all", title: "All", description: "View all items" },
@@ -46,6 +47,8 @@ const handleSignOut = () => {
 };
 
 export default function Header() {
+  const [isSheetOpen, setIsSheetOpen] = useState(false); // État pour contrôler le Sheet
+
   return (
     <section className="py-4">
       <div className="container mx-auto">
@@ -89,7 +92,7 @@ export default function Header() {
 
           {/* BURGER MENU */}
           <div className="lg:hidden">
-            <Sheet>
+            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
                   <Menu className="size-4" />
@@ -106,6 +109,7 @@ export default function Header() {
                     <Link
                       key={href}
                       href={href}
+                      onClick={() => setIsSheetOpen(false)} // Fermer le Sheet après un clic
                       className="rounded-md p-3 transition-colors hover:bg-muted/70"
                     >
                       <div>

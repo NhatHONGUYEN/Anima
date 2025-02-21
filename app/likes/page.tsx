@@ -23,7 +23,7 @@ export default function LikesPage() {
             <div className="text-center flex flex-col items-center mb-8">
               <h1>My Liked Animes</h1>
             </div>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {likedAnimes.slice(0, visibleCount).map((animeId) => (
                 <AnimeLike key={animeId} animeId={animeId} />
               ))}
