@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Play, XIcon } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -23,6 +22,7 @@ interface BentoGridVideoDialogProps {
   thumbnailSrc: string;
   thumbnailAlt?: string;
   className?: string;
+  onClick?: () => void; // 🔥 Ajout de la prop onClick
 }
 
 const animationVariants = {
@@ -51,11 +51,6 @@ const animationVariants = {
     animate: { x: 0, opacity: 1 },
     exit: { x: "100%", opacity: 0 },
   },
-  fade: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-  },
   "top-in-bottom-out": {
     initial: { y: "-100%", opacity: 0 },
     animate: { y: 0, opacity: 1 },
@@ -66,6 +61,11 @@ const animationVariants = {
     animate: { x: 0, opacity: 1 },
     exit: { x: "100%", opacity: 0 },
   },
+  fade: {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+  },
 };
 
 export default function BentoGridVideoDialog({
@@ -74,6 +74,7 @@ export default function BentoGridVideoDialog({
   thumbnailSrc,
   thumbnailAlt = "Video Thumbnail",
   className,
+  onClick, // 🔥 Ajout de onClick en paramètre
 }: BentoGridVideoDialogProps) {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const selectedAnimation = animationVariants[animationStyle];
@@ -82,7 +83,10 @@ export default function BentoGridVideoDialog({
     <div className={cn("relative w-full h-full", className)}>
       <div
         className="group relative cursor-pointer w-full h-full"
-        onClick={() => setIsVideoOpen(true)}
+        onClick={() => {
+          setIsVideoOpen(true);
+          onClick?.(); // 🔥 Déclenche onClick (scroll) si défini
+        }}
       >
         <Image
           src={thumbnailSrc}
@@ -91,30 +95,23 @@ export default function BentoGridVideoDialog({
           width={800}
           height={800}
         />
-        <div className="absolute inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out group-hover:scale-100">
+        <div className="absolute inset-0 flex items-center justify-center">
           <div className="flex size-28 items-center justify-center rounded-full bg-primary/10 backdrop-blur-md">
-            <div
-              className={`relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-b from-primary/30 to-primary shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2]`}
-            >
-              <Play
-                className="size-8 scale-100 fill-primary-foreground text-primary-foreground transition-transform duration-200 ease-out group-hover:scale-105"
-                style={{
-                  filter:
-                    "drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06))",
-                }}
-              />
+            <div className="relative flex size-20 items-center justify-center rounded-full bg-gradient-to-b from-primary/30 to-primary shadow-md">
+              <Play className="size-8 text-primary-foreground" />
             </div>
           </div>
         </div>
       </div>
+
       <AnimatePresence>
         {isVideoOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            onClick={() => setIsVideoOpen(false)}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md"
+            onClick={() => setIsVideoOpen(false)}
           >
             <motion.div
               {...selectedAnimation}
@@ -123,11 +120,11 @@ export default function BentoGridVideoDialog({
             >
               <motion.button
                 onClick={() => setIsVideoOpen(false)}
-                className="absolute top-4 right-4 rounded-full bg-neutral-900/50 p-2 text-xl text-primary-foreground ring-1 backdrop-blur-md dark:bg-neutral-100/50 dark:text-black"
+                className="absolute top-4 right-4 p-2 text-xl text-primary-foreground bg-neutral-900/50 rounded-full backdrop-blur-md"
               >
                 <XIcon className="h-5 w-5" />
               </motion.button>
-              <div className="relative isolate z-[1] w-full overflow-hidden rounded-2xl border-2 border-primary-foreground">
+              <div className="relative w-full overflow-hidden rounded-2xl border-2 border-primary-foreground">
                 <iframe
                   src={videoSrc}
                   title="BentoGrid Video"
