@@ -32,7 +32,7 @@ export default function Faq({
     {
       question: "Which stack do I use?",
       answer:
-        "Next.js, Tailwind CSS, TypeScript, Vercel, TanStack Query, Prisma, PostgreSQL, Auth.js, Zustand, and Motion.",
+        "Next.js, Tailwind CSS, TypeScript, Vercel, TanStack Query, Prisma, PostgreSQL, Auth.js, Zustand, and Motion. And for the database, I use the API from Jikan API. Thanks to all the creators of these amazing tools! ",
     },
     {
       question: "Do you appreciate the project?",
