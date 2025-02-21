@@ -69,8 +69,8 @@ export default function HeaderUserConnection() {
                     <Image
                       src={session.user.image}
                       alt="user avatar"
-                      width={32}
-                      height={32}
+                      width={30}
+                      height={30}
                       className="rounded-full ring-2 ring-primary/10 hover:ring-primary/30 transition-all"
                     />
                   )}
