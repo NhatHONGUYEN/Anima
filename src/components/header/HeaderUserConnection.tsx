@@ -16,6 +16,25 @@ import {
 import CustomButton from "@/components/CustomButton";
 import SkeletonButton from "../SkeletonButton";
 
+const navLinks = [
+  { href: "/all", title: "All", description: "View all items" },
+  {
+    href: "/upcoming",
+    title: "Upcoming",
+    description: "Check what’s coming next",
+  },
+  {
+    href: "/bypopularity",
+    title: "Popularity",
+    description: "Most popular items",
+  },
+  {
+    href: "/favorite",
+    title: "Favorite",
+    description: "Your favorite selections",
+  },
+];
+
 export default function HeaderUserConnection() {
   const { data: session, status } = useSession();
   const likedAnimes = useLikeStore((state) => state.likedAnimes);
@@ -40,71 +59,66 @@ export default function HeaderUserConnection() {
               {likedAnimes.length}
             </Badge>
           </div>
-          <div className="flex justify-center items-center gap-2">
+
+          {/* Afficher la navigation menu uniquement sur les écrans lg et plus */}
+          <div className="hidden lg:flex justify-center items-center gap-2">
             <NavigationMenu>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>
-                  {session.user.image ? (
+                  {session.user.image && (
                     <Image
                       src={session.user.image}
                       alt="user avatar"
-                      width={20}
-                      height={20}
+                      width={32}
+                      height={32}
                       className="rounded-full ring-2 ring-primary/10 hover:ring-primary/30 transition-all"
                     />
-                  ) : null}
+                  )}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="flex w-72 flex-col gap-2 p-4">
-                    <NavigationMenuLink
-                      href="/all"
-                      className="rounded-md p-3 transition-colors hover:bg-muted/70"
-                    >
-                      <div>
-                        <p className="mb-1 font-semibold">All</p>
-                        <p>View all items</p>
-                      </div>
-                    </NavigationMenuLink>
-
-                    <NavigationMenuLink
-                      href="/upcoming"
-                      className="rounded-md p-3 transition-colors hover:bg-muted/70"
-                    >
-                      <div>
-                        <p className="mb-1 font-semibold">Upcoming</p>
-                        <p>Check what&apos;s coming next</p>
-                      </div>
-                    </NavigationMenuLink>
-
-                    <NavigationMenuLink
-                      href="/bypopularity"
-                      className="rounded-md p-3 transition-colors hover:bg-muted/70"
-                    >
-                      <div>
-                        <p className="mb-1 font-semibold">Popularity</p>
-                        <p>Most popular items</p>
-                      </div>
-                    </NavigationMenuLink>
-
-                    <NavigationMenuLink
-                      href="/favorite"
-                      className="rounded-md p-3 transition-colors hover:bg-muted/70"
-                    >
-                      <div>
-                        <p className="mb-1 font-semibold">Favorite</p>
-                        <p>Your favorite selections</p>
-                      </div>
-                    </NavigationMenuLink>
-
+                    {navLinks.map((link) => (
+                      <NavigationMenuLink
+                        key={link.href}
+                        href={link.href}
+                        className="rounded-md p-3 transition-colors hover:bg-muted/70"
+                      >
+                        <div>
+                          <p className="mb-1 font-semibold">{link.title}</p>
+                          <p>{link.description}</p>
+                        </div>
+                      </NavigationMenuLink>
+                    ))}
                     <CustomButton label="Sign Out" onClick={handleSignOut} />
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenu>
           </div>
+
+          {/* Afficher l'avatar uniquement sur les écrans plus petits (mobile) */}
+          <div className="flex  mx-auto gap-4  lg:hidden">
+            {session.user.image && (
+              <>
+                <Image
+                  src={session.user.image}
+                  alt="user avatar"
+                  width={30}
+                  height={30}
+                  className="rounded-full w-full h-full  "
+                />
+
+                {session.user.email && (
+                  <p className="pt-2">{session.user.email}</p>
+                )}
+              </>
+            )}
+          </div>
         </div>
       ) : (
-        <CustomButton label="Sign In" onClick={handleSignIn} />
+        <div>
+          <CustomButton label="Sign In" onClick={handleSignIn} />
+        </div>
       )}
     </>
   );

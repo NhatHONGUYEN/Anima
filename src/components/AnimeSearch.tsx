@@ -63,7 +63,7 @@ export function AnimeSearch() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-96 justify-between"
+          className="lg:w-96 justify-between"
         >
           {searchQuery || "Search anime..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
