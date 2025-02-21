@@ -33,7 +33,7 @@ export default function BentoGridEpisodes({
           ) : (
             <>
               <h1 className="pb-4 lg:text-center">Episodes</h1>
-              <div className="flex flex-col  gap-4">
+              <div className="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-col  gap-4">
                 {episodes.map((episode) => (
                   <div key={episode.mal_id}>
                     {/* Image de l'épisode */}
@@ -44,7 +44,7 @@ export default function BentoGridEpisodes({
                           alt={`Episode ${episode.mal_id}`}
                           width={400}
                           height={400}
-                          className="rounded-lg lg:w-auto w-full h-auto object-cover"
+                          className="rounded-lg  lg:w-auto w-full h-auto object-cover"
                           priority
                           quality={100}
                         />
@@ -56,9 +56,11 @@ export default function BentoGridEpisodes({
                           <Image
                             src="/sorry.gif"
                             alt="no episode"
-                            width={100}
-                            height={100}
+                            width={400}
+                            height={400}
                             className="rounded-lg object-cover"
+                            quality={100}
+                            priority
                           />
                         </div>
                       )}

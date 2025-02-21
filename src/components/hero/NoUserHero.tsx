@@ -12,7 +12,7 @@ export default function NoUserHero() {
 
   return (
     <section className="py-12  md:py-32">
-      <div className="container ">
+      <div className="container mx-auto ">
         <div className="flex flex-col gap-4 md:flex-row">
           <div className="flex text-center md:text-left flex-col gap-6">
             <h1 className="text-4xl lg:w-96  font-medium leading-tight lg:text-6xl">

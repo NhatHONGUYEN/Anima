@@ -42,9 +42,9 @@ export default function Faq({
 }: Faq1Props) {
   return (
     <section className="pb-24">
-      <div className="container">
+      <div className="container mx-auto">
         <h1
-          className="mb-4 pl-3 flex items-center
+          className="mb-4  pl-3 flex items-center
          gap-4 text-3xl font-semibold md:mb-11 md:text-5xl"
         >
           {heading}{" "}
