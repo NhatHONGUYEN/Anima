@@ -48,7 +48,7 @@ export default function BentoGridList<T>({
         } min-h-[300px] lg:min-h-[400px]`}
       >
         <h1 className="mb-8 text-center">{title}</h1>
-        <div className=" grid gap-8 md:grid-cols-2">
+        <div className=" grid gap-8 grid-cols-2">
           {displayedItems.length > 0 ? (
             displayedItems.map((item, index) => (
               <div key={index}>

@@ -58,7 +58,7 @@ export default function AnimeList({
             onClick={() => router.back()}
           />
         </div>
-        <div className="grid mt-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid mt-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {allAnime
             .slice(0, visibleCount) // Affiche uniquement les premiers `visibleCount` éléments
             .map((anime: Anime, index) => (

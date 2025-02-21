@@ -12,18 +12,18 @@ export default function NoUserHero() {
 
   return (
     <section className="py-12  md:py-32">
-      <div className="container  ">
+      <div className="container ">
         <div className="flex flex-col gap-4 md:flex-row">
-          <div className="flex flex-col gap-6">
-            <h1 className="text-4xl w-96 font-medium leading-tight lg:text-6xl">
+          <div className="flex text-center md:text-left flex-col gap-6">
+            <h1 className="text-4xl lg:w-96  font-medium leading-tight lg:text-6xl">
               Explore the World of Anime
             </h1>
             <h2 className="text-2xl font-medium leading-tight lg:text-4xl"></h2>
-            <p className=" lg:max-w-[80%]">
+            <p className="mx-auto md:mx-0 max-w-[80%]">
               Dive into exclusive content, behind-the-scenes insights, and more.
               Enhance your anime experience and join our community.
             </p>
-            <div className="relative z-10 flex flex-wrap items-center gap-6">
+            <div className="relative mx-auto md:mx-0 z-10 flex flex-wrap items-center gap-6">
               <CustomButton label="Become a member" onClick={handleSignIn} />
               <Image
                 className="w-16 h-16 bg-secondary rounded-full border-4 border-primary-foreground"

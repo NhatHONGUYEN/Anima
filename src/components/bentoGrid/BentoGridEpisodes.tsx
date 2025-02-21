@@ -32,7 +32,7 @@ export default function BentoGridEpisodes({
             </div>
           ) : (
             <>
-              <h1 className="pb-4 text-center">Episodes</h1>
+              <h1 className="pb-4 lg:text-center">Episodes</h1>
               <div className="flex flex-col  gap-4">
                 {episodes.map((episode) => (
                   <div key={episode.mal_id}>
@@ -44,8 +44,9 @@ export default function BentoGridEpisodes({
                           alt={`Episode ${episode.mal_id}`}
                           width={400}
                           height={400}
-                          className="rounded-lg w-auto h-auto object-cover"
+                          className="rounded-lg lg:w-auto w-full h-auto object-cover"
                           priority
+                          quality={100}
                         />
                       ) : (
                         <div className="flex justify-center items-center ">
@@ -63,10 +64,16 @@ export default function BentoGridEpisodes({
                       )}
                     </div>
                     {/* Titre de l'épisode */}
-                    <p className="text-center py-4">
-                      {episode.title.length > 16
-                        ? `${episode.title.slice(0, 16)}...`
-                        : episode.title}
+                    <p className="lg:text-center py-4">
+                      {/* Afficher le titre complet sur mobile */}
+                      <span className="lg:hidden">{episode.title}</span>
+
+                      {/* Appliquer le slice uniquement sur les écrans larges */}
+                      <span className="hidden lg:inline">
+                        {episode.title.length > 16
+                          ? `${episode.title.slice(0, 16)}...`
+                          : episode.title}
+                      </span>
                     </p>
                   </div>
                 ))}
