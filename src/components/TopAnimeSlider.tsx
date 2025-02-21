@@ -55,7 +55,7 @@ export default function TopAnimeSlider({ animeId }: TopAnimeSliderProps) {
   }
 
   return (
-    <section className="hidden py-32">
+    <section className=" py-32">
       <div className="container ">
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
           <div className="flex flex-col gap-4">
