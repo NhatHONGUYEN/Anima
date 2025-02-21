@@ -36,7 +36,7 @@ export default function BentoGridList<T>({
   return (
     <div className="relative p-10 lg:col-span-3">
       <div
-        className={`absolute inset-px rounded-lg ring-1 ring-border  max-lg:rounded-t-[2rem] ${
+        className={`absolute inset-px rounded-lg ring-1 ring-border   ${
           isCharacterList ? "lg:rounded-bl-[2rem]" : "lg:rounded-br-[2rem]"
         }`}
       />
