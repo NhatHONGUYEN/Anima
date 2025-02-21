@@ -9,6 +9,9 @@ import BentoGridDetails from "./bentoGrid/BentoGridDetails";
 import BentoGridEpisodes from "./bentoGrid/BentoGridEpisodes";
 import BentoGridCharacters from "./bentoGrid/BentoGridCharacters";
 import BentoGridVoiceActors from "./bentoGrid/BentoGridVoiceActors";
+import CustomButton from "./CustomButton";
+import { MoveLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function ContentBentoGrid({
   mal_id,
@@ -30,10 +33,19 @@ export default function ContentBentoGrid({
   episodes = [], // Provide a default value of an empty array
   characters,
 }: ContentBentoGridProps) {
+  const router = useRouter();
+
   return (
     <section>
       <div className="mx-auto container ">
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-1">
+        <div className="mt-10">
+          <CustomButton
+            icon={MoveLeft}
+            label="Go Back"
+            onClick={() => router.back()}
+          />
+        </div>
+        <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-6 lg:grid-rows-1">
           <BentoGridHeader
             mal_id={mal_id}
             title={title}

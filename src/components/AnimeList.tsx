@@ -6,6 +6,8 @@ import AnimeCard from "@/components/AnimeCard";
 import { Anime } from "@/lib/types";
 import Loader from "./ui/loader";
 import CustomButton from "./CustomButton";
+import { MoveLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 type AnimeListProps = {
   filter: "airing" | "upcoming" | "bypopularity" | "favorite" | "all";
@@ -21,6 +23,7 @@ export default function AnimeList({
   const [page, setPage] = useState(1);
   const [allAnime, setAllAnime] = useState<Anime[]>([]);
   const { data, error, isLoading } = useTopAnime(filter, page);
+  const router = useRouter();
 
   useEffect(() => {
     if (data?.data) {
@@ -42,7 +45,14 @@ export default function AnimeList({
           <h1 className="mb-4 text-xl uppercase">{title}</h1>
           <p className="max-w-md">{description}</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="mt-10">
+          <CustomButton
+            icon={MoveLeft}
+            label="Go Back"
+            onClick={() => router.back()}
+          />
+        </div>
+        <div className="grid mt-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {allAnime.map((anime: Anime, index) => (
             <AnimeCard key={`${anime.mal_id}-${index}`} anime={anime} />
           ))}
