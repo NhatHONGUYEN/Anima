@@ -19,7 +19,7 @@ export default function NoUserHero() {
               Explore the World of Anime
             </h1>
             <h2 className="text-2xl font-medium leading-tight lg:text-4xl"></h2>
-            <p className="text-lg text-muted-foreground lg:max-w-[80%]">
+            <p className=" lg:max-w-[80%]">
               Dive into exclusive content, behind-the-scenes insights, and more.
               Enhance your anime experience and join our community.
             </p>

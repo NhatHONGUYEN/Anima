@@ -24,6 +24,7 @@ export default function AnimeList({
   const [allAnime, setAllAnime] = useState<Anime[]>([]);
   const { data, error, isLoading } = useTopAnime(filter, page);
   const router = useRouter();
+  const [visibleCount, setVisibleCount] = useState(8); // État pour gérer le nombre d'éléments visibles
 
   useEffect(() => {
     if (data?.data) {
@@ -36,6 +37,11 @@ export default function AnimeList({
 
   const handleShowMore = () => {
     setPage((prevPage) => prevPage + 1);
+    setVisibleCount((prevCount) => prevCount + 8); // Augmente de 8 éléments
+  };
+
+  const handleShowLess = () => {
+    setVisibleCount((prevCount) => Math.max(8, prevCount - 8)); // Réduit de 8 éléments, avec un minimum de 8
   };
 
   return (
@@ -53,12 +59,23 @@ export default function AnimeList({
           />
         </div>
         <div className="grid mt-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {allAnime.map((anime: Anime, index) => (
-            <AnimeCard key={`${anime.mal_id}-${index}`} anime={anime} />
-          ))}
+          {allAnime
+            .slice(0, visibleCount) // Affiche uniquement les premiers `visibleCount` éléments
+            .map((anime: Anime, index) => (
+              <AnimeCard key={`${anime.mal_id}-${index}`} anime={anime} />
+            ))}
         </div>
-        <div className="flex justify-center mt-8">
-          <CustomButton label="Show More" onClick={handleShowMore} />
+        <div className="flex justify-center mt-8 space-x-4">
+          {allAnime.length >= visibleCount && (
+            <CustomButton label="Show More" onClick={handleShowMore} />
+          )}
+          {visibleCount > 8 && (
+            <CustomButton
+              label="Show Less"
+              variant="outline"
+              onClick={handleShowLess}
+            />
+          )}
         </div>
       </div>
     </section>
