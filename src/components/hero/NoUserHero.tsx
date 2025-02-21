@@ -11,7 +11,7 @@ export default function NoUserHero() {
   };
 
   return (
-    <section className="bg-background py-12 md:py-32">
+    <section className="py-12 md:py-32">
       <div className="container ">
         <div className="flex flex-col gap-4 md:flex-row">
           <div className="flex flex-col gap-6">

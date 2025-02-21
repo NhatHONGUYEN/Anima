@@ -14,7 +14,7 @@ export default function BentoGridEpisodes({
       {/* Background effect */}
       <div className="absolute inset-px rounded-xl  " />
 
-      <div className="relative bg-card flex h-[600px]  flex-col overflow-hidden rounded-xl ">
+      <div className="relative  flex h-[600px]  flex-col overflow-hidden rounded-xl ">
         <ScrollArea className="p-10 ">
           {/* Vérification si des épisodes existent */}
           {!episodes || episodes.length === 0 ? (

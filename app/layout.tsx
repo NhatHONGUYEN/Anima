@@ -35,10 +35,10 @@ export default function RootLayout({
       <body
         className={`${oswald.variable} ${roboto.variable} max-w-6xl mx-auto antialiased`}
       >
+        <div className="fixed inset-0 -z-10 h-full w-full [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#E74D3C)]"></div>
         <SessionProvider>
           <QueryProvider>
             <Header />
-
             {children}
             <Footer />
             <ScreenSize />
