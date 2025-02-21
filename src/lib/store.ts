@@ -1,14 +1,19 @@
+import { Session } from "next-auth";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 type SessionState = {
   userId: string | null;
-  setUserId: (userId: string | null) => void;
+  sessionData: Session | null;
+  setUserId: (id: string | null) => void;
+  setSessionData: (session: Session | null) => void;
 };
 
 export const useSessionStore = create<SessionState>((set) => ({
   userId: null,
-  setUserId: (userId) => set({ userId }),
+  sessionData: null,
+  setUserId: (id) => set({ userId: id }),
+  setSessionData: (session) => set({ sessionData: session }),
 }));
 
 type LikeState = {

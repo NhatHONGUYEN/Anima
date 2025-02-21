@@ -3,45 +3,40 @@
 import { signIn, useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
-import { useLikeStore, useSessionStore } from "@/lib/store";
-import { useEffect } from "react"; // Import useEffect
-import FullyHeart from "../FullyHeart";
+import { useLikeStore } from "@/lib/store";
+import FullyHeart from "@/components/FullyHeart";
+import { Badge } from "@/components/ui/badge";
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuTrigger,
-} from "../ui/navigation-menu";
-import CustomButton from "../CustomButton";
-import { Badge } from "../ui/badge";
+} from "@/components/ui/navigation-menu";
+import CustomButton from "@/components/CustomButton";
+import SkeletonButton from "../SkeletonButton";
 
 export default function HeaderUserConnection() {
-  const { data: session } = useSession();
-  const setUserId = useSessionStore((state) => state.setUserId);
+  const { data: session, status } = useSession();
   const likedAnimes = useLikeStore((state) => state.likedAnimes);
+
   const handleSignIn = () => {
     signIn("github", { redirectTo: "/" });
   };
+
   const handleSignOut = () => {
     signOut({ redirectTo: "/" });
-    setUserId(null);
   };
-
-  // Utilise useEffect pour mettre à jour l'état
-  useEffect(() => {
-    if (session?.user?.id) {
-      setUserId(session.user.id);
-    }
-  }, [session, setUserId]);
 
   return (
     <>
-      {session?.user ? (
+      {status === "loading" && !session ? (
+        <SkeletonButton />
+      ) : session?.user ? (
         <div className="flex items-center gap-4">
           <div className="relative">
             <FullyHeart />
-            <Badge className="absolute -top-1 left-full min-w-5 rounded-full -translate-x-4 border-2 border-primary-foreground px-2 text-xs font-semibold bg-primary-foreground text-primary">
+            <Badge className="absolute hover:bg-primary-foreground -top-1 left-full min-w-5 rounded-full -translate-x-4 border-2 border-primary-foreground px-2 text-xs font-semibold bg-primary-foreground text-primary">
               {likedAnimes.length}
             </Badge>
           </div>
@@ -49,12 +44,12 @@ export default function HeaderUserConnection() {
             <NavigationMenu>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>
-                  {session?.user?.image ? (
+                  {session.user.image ? (
                     <Image
                       src={session.user.image}
                       alt="user avatar"
-                      width={32}
-                      height={32}
+                      width={20}
+                      height={20}
                       className="rounded-full ring-2 ring-primary/10 hover:ring-primary/30 transition-all"
                     />
                   ) : null}
