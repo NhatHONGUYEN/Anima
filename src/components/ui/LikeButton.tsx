@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 import FullyHeart from "../FullyHeart";
 import EmptyHeart from "../EmptyHeart";
 import toast from "react-hot-toast";
@@ -18,15 +20,15 @@ const LikeButton = ({
 }: LikeButtonProps) => {
   const [isLiked, setIsLiked] = useState(defaultLiked);
 
-  const handleLike = () => {
+  const handleLike = (event: React.MouseEvent) => {
+    event.stopPropagation(); // Empêche la propagation de l'événement
     setIsLiked(!isLiked);
 
-    // Sélectionne le bon GIF et message selon l'état
+    // Affiche une notification avec un GIF
     const gifSrc = !isLiked ? "/like.gif" : "/dislike.gif";
-
     toast.custom((t) => (
       <div
-        className={`${t.visible ? "animate-enter" : "animate-leave"} maxw-3xl`}
+        className={`${t.visible ? "animate-enter" : "animate-leave"} max-w-3xl`}
       >
         <div className="relative p-4">
           <Image
@@ -40,6 +42,7 @@ const LikeButton = ({
       </div>
     ));
 
+    // Appelle la fonction onLike si elle est définie
     if (onLike) {
       onLike(!isLiked);
     }
@@ -48,7 +51,7 @@ const LikeButton = ({
   return (
     <motion.div
       className={`absolute top-0 right-0 p-4 cursor-pointer ${className}`}
-      onClick={handleLike}
+      onClick={handleLike} // Gère le clic ici
       whileTap={{ scale: 0.8 }} // Effet d'appui
       whileHover={{ scale: 1.1 }} // Effet au survol
     >
