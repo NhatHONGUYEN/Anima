@@ -118,7 +118,7 @@ export default function TopAnimeSlider({ animeId }: TopAnimeSliderProps) {
                   const step = Math.floor(recommendedAnime.length / 6);
                   const targetIndex = step * index;
                   return (
-                    <button
+                    <Button
                       key={`dot-${index}`}
                       className={`h-2 w-2 rounded-full transition-colors ${
                         currentSlide === targetIndex
