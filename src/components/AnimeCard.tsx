@@ -3,21 +3,20 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Anime } from "@/lib/types";
-import { useSession } from "next-auth/react"; // Vérifier si l'utilisateur est connecté
+import { useSession } from "next-auth/react";
 import { useLikeStore } from "@/lib/store";
 import LikeButton from "./ui/LikeButton";
+import { ArrowRight } from "lucide-react";
 
 type AnimeCardProps = {
   anime: Anime;
 };
 
 export default function AnimeCard({ anime }: AnimeCardProps) {
-  const { data: session } = useSession(); // Vérifie si l'utilisateur est connecté
-  const { likedAnimes, toggleLike } = useLikeStore(); // Utilise le store
+  const { data: session } = useSession();
+  const { likedAnimes, toggleLike } = useLikeStore();
 
-  // Vérifie si cet anime est liké
   const isLiked = likedAnimes.includes(anime.mal_id);
 
   const handleLike = () => {
@@ -26,8 +25,8 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
       return;
     }
 
-    console.log("Toggling like for anime ID:", anime.mal_id); // Debug
-    toggleLike(anime.mal_id); // Met à jour l'état du like pour cet anime
+    console.log("Toggling like for anime ID:", anime.mal_id);
+    toggleLike(anime.mal_id);
   };
 
   if (!anime) {
@@ -42,8 +41,8 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
   const synopsis = anime?.synopsis;
 
   return (
-    <div className="group rounded-xl">
-      <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9]">
+    <Link href={`/movies/${anime.mal_id}`} className="group rounded-xl block">
+      <div className="relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl cursor-pointer md:aspect-[5/4] lg:aspect-[16/9]">
         <Image
           src={imageUrl}
           alt={title}
@@ -62,13 +61,13 @@ export default function AnimeCard({ anime }: AnimeCardProps) {
               {synopsis.length > 30 ? `${synopsis.slice(0, 30)}...` : synopsis}
             </h3>
           )}
-          <Link href={`/movies/${anime.mal_id}`} className="flex items-center">
+          <div className="flex items-center">
             Read more{" "}
             <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
-          </Link>
+          </div>
         </div>
-        {session && <LikeButton onLike={handleLike} defaultLiked={isLiked} />}
       </div>
-    </div>
+      {session && <LikeButton onLike={handleLike} defaultLiked={isLiked} />}
+    </Link>
   );
 }
