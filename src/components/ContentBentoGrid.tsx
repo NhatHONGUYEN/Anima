@@ -38,7 +38,7 @@ export default function ContentBentoGrid({
   return (
     <section>
       <div className="mx-auto container ">
-        <div className="mt-10">
+        <div className="mt-10 hidden md:block">
           <CustomButton
             icon={MoveLeft}
             label="Go Back"

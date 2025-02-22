@@ -53,7 +53,7 @@ export default function AnimeList({
             <h1 className="mb-4 text-xl uppercase">{title}</h1>
             <p className="max-w-md">{description}</p>
           </div>
-          <div className="mt-10">
+          <div className="mt-10 hidden md:block">
             <CustomButton
               icon={MoveLeft}
               label="Go Back"
