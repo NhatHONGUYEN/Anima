@@ -4,7 +4,6 @@ import { signIn, useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { useLikeStore } from "@/lib/store";
-import FullyHeart from "@/components/FullyHeart";
 import { Badge } from "@/components/ui/badge";
 import {
   NavigationMenu,
@@ -15,6 +14,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import CustomButton from "@/components/CustomButton";
 import SkeletonButton from "../SkeletonButton";
+import HeaderHeart from "../HeaderHeart";
 
 const navLinks = [
   { href: "/all", title: "All", description: "View all items" },
@@ -54,7 +54,7 @@ export default function HeaderUserConnection() {
       ) : session?.user ? (
         <div className="flex items-center gap-4">
           <div className="relative">
-            <FullyHeart />
+            <HeaderHeart />
             <Badge className="absolute hover:bg-primary-foreground -top-1 left-full min-w-5 rounded-full -translate-x-4 border-2 border-primary-foreground px-2 text-xs font-semibold bg-primary-foreground text-primary">
               {likedAnimes.length}
             </Badge>
