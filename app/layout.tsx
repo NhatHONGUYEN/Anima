@@ -24,6 +24,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Anima",
   description: "Discover and explore the best anime recommendations.",
+  icons: {
+    icon: "/japanese-goblin.svg",
+  },
 };
 
 export default function RootLayout({
