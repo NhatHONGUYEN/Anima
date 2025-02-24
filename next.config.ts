@@ -31,6 +31,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "shadcnblocks.com",
       },
+      {
+        protocol: "https",
+        hostname: "anima-dusky.vercel.app",
+      },
     ],
   },
 };
