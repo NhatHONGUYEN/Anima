@@ -21,7 +21,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { PopoverSkeleton } from "./PopoverSkeleton";
+import { PopoverSkeleton } from "./skeleton/PopoverSkeleton";
 
 export function AnimeSearch() {
   const [open, setOpen] = React.useState(false);

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import LikeButton from "./ui/LikeButton";
 import { useLikeStore } from "@/lib/store";
-import LikesSkeleton from "./LikesSkeleton";
+import LikesSkeleton from "./skeleton/LikesSkeleton";
 
 export default function AnimeLike({ animeId }: { animeId: number }) {
   const { data, isLoading, isError } = useQuery({

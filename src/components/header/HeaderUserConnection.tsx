@@ -13,8 +13,8 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import CustomButton from "@/components/CustomButton";
-import SkeletonButton from "../SkeletonButton";
 import HeaderHeart from "../HeaderHeart";
+import SkeletonButton from "../skeleton/SkeletonButton";
 
 const navLinks = [
   { href: "/all", title: "All", description: "View all items" },
