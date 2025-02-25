@@ -4,7 +4,7 @@ import { useState } from "react";
 import AnimeLike from "@/components/AnimeLike";
 import { Button } from "@/components/ui/button";
 import { useLikeStore } from "@/lib/store";
-import CustomButton from "@/components/CustomButton";
+import CustomButton from "@/components/customButton/CustomButton";
 import { MoveLeft } from "lucide-react";
 import FADE_DOWN_ANIMATION from "@/animations/FADE_DOWN_ANIMATION";
 

@@ -5,7 +5,7 @@ import { BentoGridHeaderProps, Theme } from "@/lib/types";
 import { Heart, Star } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useLikeStore } from "@/lib/store";
-import LikeButton from "../ui/LikeButton";
+import LikeButton from "../customButton/LikeButton";
 
 export default function BentoGridHeader({
   title,

@@ -12,8 +12,8 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import CustomButton from "@/components/CustomButton";
-import HeaderHeart from "../HeaderHeart";
+import CustomButton from "@/components/customButton/CustomButton";
+import HeaderHeart from "../customButton/HeaderHeart";
 import SkeletonButton from "../skeleton/SkeletonButton";
 
 const navLinks = [

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { BentoGridImageDialog } from "@/animations/BentoGridImageDialog";
-import CustomButton from "../CustomButton";
+import CustomButton from "../customButton/CustomButton";
 
 type BentoGridListProps<T> = {
   items: T[];

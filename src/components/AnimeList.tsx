@@ -5,7 +5,7 @@ import { useTopAnime } from "@/hooks/useTopAnime";
 import AnimeCard from "@/components/AnimeCard";
 import { Anime } from "@/lib/types";
 import Loader from "./ui/loader";
-import CustomButton from "./CustomButton";
+import CustomButton from "./customButton/CustomButton";
 import { MoveLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import FADE_DOWN_ANIMATION from "@/animations/FADE_DOWN_ANIMATION";

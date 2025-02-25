@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Anime } from "@/lib/types";
 import { useSession } from "next-auth/react";
 import { useLikeStore } from "@/lib/store";
-import LikeButton from "./ui/LikeButton";
+import LikeButton from "./customButton/LikeButton";
 import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation"; // Pour la navigation manuelle
 

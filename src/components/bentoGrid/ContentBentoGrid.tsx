@@ -9,7 +9,7 @@ import BentoGridDetails from "./BentoGridDetails";
 import BentoGridEpisodes from "./BentoGridEpisodes";
 import BentoGridCharacters from "./BentoGridCharacters";
 import BentoGridVoiceActors from "./BentoGridVoiceActors";
-import CustomButton from "../CustomButton";
+import CustomButton from "../customButton/CustomButton";
 import { MoveLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 

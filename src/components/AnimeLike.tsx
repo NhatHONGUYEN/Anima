@@ -5,7 +5,7 @@ import Image from "next/image";
 import { fetchAnimeDetails } from "@/lib/actions.ts/anime";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import LikeButton from "./ui/LikeButton";
+import LikeButton from "./customButton/LikeButton";
 import { useLikeStore } from "@/lib/store";
 import LikesSkeleton from "./skeleton/LikesSkeleton";
 

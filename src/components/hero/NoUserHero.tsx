@@ -2,7 +2,7 @@ import { Heart } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import { avatars } from "@/lib/data";
-import CustomButton from "../CustomButton";
+import CustomButton from "../customButton/CustomButton";
 import { signIn } from "next-auth/react";
 import FADE_DOWN_ANIMATION from "@/animations/FADE_DOWN_ANIMATION";
 

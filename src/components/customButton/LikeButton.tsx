@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import FullyHeart from "../FullyHeart";
-import EmptyHeart from "../EmptyHeart";
+
 import toast from "react-hot-toast";
 import Image from "next/image";
+import EmptyHeart from "./EmptyHeart";
+import FullyHeart from "./FullyHeart";
 
 interface LikeButtonProps {
   onLike?: (liked: boolean) => void;

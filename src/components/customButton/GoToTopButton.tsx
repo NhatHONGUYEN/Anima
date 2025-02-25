@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
 
 export default function GoToTopButton() {
   const [isVisible, setIsVisible] = useState(false);

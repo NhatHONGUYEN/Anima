@@ -7,7 +7,7 @@ import QueryProvider from "@/lib/QueryProvider";
 import { Footer } from "@/components/Footer";
 // import { ScreenSize } from "@/components/ScreenSize";
 import { Toaster } from "react-hot-toast";
-import GoToTopButton from "@/components/GoToTopButton";
+import GoToTopButton from "@/components/customButton/GoToTopButton";
 
 const oswald = Oswald({
   variable: "--font-oswald",

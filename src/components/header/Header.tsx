@@ -19,7 +19,7 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
-import CustomButton from "../CustomButton";
+import CustomButton from "../customButton/CustomButton";
 import { signOut, useSession } from "next-auth/react";
 import { useState } from "react"; // Importez useState
 

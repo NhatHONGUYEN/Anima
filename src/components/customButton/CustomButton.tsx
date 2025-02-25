@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 type CustomButtonProps = {
   label: string;
