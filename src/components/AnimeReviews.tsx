@@ -31,7 +31,7 @@ export default function AnimeReviews({ id }: { id: number }) {
             <h1>No Reviews</h1>
             <Image
               className="rounded-xl"
-              src="/saitama.gif"
+              src="/gif/saitama.gif"
               width={300}
               height={300}
               alt="No Reviews"

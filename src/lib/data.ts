@@ -65,35 +65,35 @@ export const avatars = [
 export const ANIME_THUMBNAILS = [
   {
     title: "Dan1",
-    thumbnail: "/dandan (1).gif",
+    thumbnail: "/gif/dandan (1).gif",
   },
   {
     title: "Dan2",
-    thumbnail: "/dandan (2).gif",
+    thumbnail: "/gif/dandan (2).gif",
   },
   {
     title: "Dan3",
-    thumbnail: "/dandan (3).gif",
+    thumbnail: "/gif/dandan (3).gif",
   },
   {
     title: "Dan4",
-    thumbnail: "/dandan (4).gif",
+    thumbnail: "/gif/dandan (4).gif",
   },
   {
     title: "Dan5",
-    thumbnail: "/dandan (1).gif",
+    thumbnail: "/gif/dandan (1).gif",
   },
   {
     title: "Dan6",
-    thumbnail: "/dandan (2).gif",
+    thumbnail: "/gif/dandan (2).gif",
   },
   {
     title: "Dan7",
-    thumbnail: "/dandan (3).gif",
+    thumbnail: "/gif/dandan (3).gif",
   },
   {
     title: "Dan8",
-    thumbnail: "/dandan (4).gif",
+    thumbnail: "/gif/dandan (4).gif",
   },
 ];
 

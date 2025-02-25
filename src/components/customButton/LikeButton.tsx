@@ -20,7 +20,7 @@ export default function LikeButton({
     setIsLiked(!isLiked);
 
     // Affiche une notification avec un GIF
-    const gifSrc = !isLiked ? "/like.gif" : "/dislike.gif";
+    const gifSrc = !isLiked ? "/gif/like.gif" : "/gif/dislike.gif";
     toast.custom((t) => (
       <div
         className={`${t.visible ? "animate-enter" : "animate-leave"} max-w-3xl`}

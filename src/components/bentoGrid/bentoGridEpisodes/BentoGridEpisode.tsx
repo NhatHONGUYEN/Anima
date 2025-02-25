@@ -4,7 +4,7 @@ import BentoGridEpisodeTitle from "./BentoGridEpisodeTitle";
 import { Episode } from "@/lib/types";
 
 const NO_IMAGE_TEXT = "Sorry No Image";
-const NO_IMAGE_SRC = "/sorry.gif";
+const NO_IMAGE_SRC = "/gif/sorry.gif";
 
 export default function BentoGridEpisode({ episode }: { episode: Episode }) {
   return (

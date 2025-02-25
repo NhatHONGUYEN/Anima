@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const NO_EPISODES_TEXT = "Sorry! No Episodes";
-const NO_IMAGE_SRC = "/sorry.gif";
+const NO_IMAGE_SRC = "/gif/sorry.gif";
 
 export default function BentoGridNoEpisodesMessage() {
   return (

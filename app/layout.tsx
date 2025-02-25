@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: "Anima",
   description: "Discover and explore the best anime recommendations.",
   icons: {
-    icon: "/japanese-goblin.svg",
+    icon: "/images/japanese-goblin.svg",
   },
   openGraph: {
     title: "Anima",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Anima",
     images: [
       {
-        url: "https://anima-dusky.vercel.app/sanji.png",
+        url: "https://anima-dusky.vercel.app/images/sanji.png",
         width: 1200,
         height: 630,
         alt: "Anima - Discover and explore the best anime recommendations.",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description: "Discover and explore the best anime recommendations.",
     images: [
       {
-        url: "https://anima-dusky.vercel.app/sanji.png",
+        url: "https://anima-dusky.vercel.app/images/sanji.png",
         alt: "Anima - Discover and explore the best anime recommendations.",
       },
     ],

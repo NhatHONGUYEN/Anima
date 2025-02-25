@@ -5,7 +5,7 @@ export const INITIAL_VISIBLE_COUNT = 8;
 //UserHero.tsx
 
 export const IMAGE_ALT = "Détective Conan";
-export const IMAGE_SRC = "/detective_conan.gif";
+export const IMAGE_SRC = "/gif/detective_conan.gif";
 
 //AnimeCard.tsx
 
@@ -14,10 +14,10 @@ export const MAX_SYNOPSIS_LENGTH = 30; // Define a constant for the maximum syno
 
 //NoUserHero.tsx
 
-export const SERAPH_IMAGE_SRC = "/seraph.gif";
+export const SERAPH_IMAGE_SRC = "/gif/seraph.gif";
 export const SERAPH_IMAGE_ALT = "Seraph animation";
 
-export const SASUKE_IMAGE_SRC = "/sasuke.webp";
+export const SASUKE_IMAGE_SRC = "/images/sasuke.webp";
 export const SASUKE_IMAGE_ALT = "Sasuke character";
 
 export const TITLE = "Explore the World of Anime";

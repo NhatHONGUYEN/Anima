@@ -20,7 +20,7 @@ export default function Faq({ heading = "FAQ", items = FaqItems }: FaqProps) {
           >
             {heading}{" "}
             <Image
-              src="/levi.png"
+              src="/images/levi.png"
               className="rounded-full w-40 sm:w-96"
               alt="levi ackerman"
               width={400}

@@ -49,7 +49,7 @@ export default function BentoGridTrailer({
           <div className="flex flex-col items-center justify-center w-full h-full">
             <h1 className="py-4">Trailer not available</h1>
             <Image
-              src="/notrailer.gif"
+              src="/gif/notrailer.gif"
               alt="No trailer available"
               width={200}
               height={200}
