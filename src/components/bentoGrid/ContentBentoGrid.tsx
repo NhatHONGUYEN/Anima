@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-import { ContentBentoGridProps } from "@/lib/types";
 import BentoGridHeader from "./BentoGridHeader";
 import BentoGridTrailer from "./BentoGridTrailer";
 import BentoGridImage from "./BentoGridImage";
@@ -12,6 +10,7 @@ import BentoGridVoiceActors from "./BentoGridVoiceActors";
 import CustomButton from "../customButton/CustomButton";
 import { MoveLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { ContentBentoGridProps } from "@/lib/types/bentoGrid";
 
 export default function ContentBentoGrid({
   mal_id,

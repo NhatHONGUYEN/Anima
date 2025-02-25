@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useRef } from "react";
-import { BentoGridTrailerProps } from "@/lib/types";
 import BentoGridVideoDialog from "@/animations/BentoGridVideoDialog";
 import Image from "next/image";
+import { BentoGridTrailerProps } from "@/lib/types/bentoGrid";
 
 export default function BentoGridTrailer({
   title,

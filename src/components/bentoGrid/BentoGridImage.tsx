@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { BentoGridImageProps } from "@/lib/types";
+import { BentoGridImageProps } from "@/lib/types/bentoGrid";
 
 export default function BentoGridImage({
   largeImageUrl,

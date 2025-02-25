@@ -1,6 +1,6 @@
 "use client";
 
-import { BentoGridDetailsProps } from "@/lib/types";
+import { BentoGridDetailsProps } from "@/lib/types/bentoGrid";
 import AccordionSection from "../AccordionSection";
 
 export default function BentoGridDetails({

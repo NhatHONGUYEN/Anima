@@ -1,11 +1,13 @@
 "use client";
 
 import { Badge } from "../ui/badge";
-import { BentoGridHeaderProps, Theme } from "@/lib/types";
+
 import { Heart, Star } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useLikeStore } from "@/lib/store";
 import LikeButton from "../customButton/LikeButton";
+import { BentoGridHeaderProps } from "@/lib/types/bentoGrid";
+import { Theme } from "@/lib/types/theme";
 
 export default function BentoGridHeader({
   title,
