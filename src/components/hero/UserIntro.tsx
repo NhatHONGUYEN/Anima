@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CustomButton from "./CustomButton";
+import CustomButton from "../CustomButton";
 import { ImageProps } from "@/lib/types";
 import FADE_DOWN_ANIMATION from "@/animations/FADE_DOWN_ANIMATION";
 

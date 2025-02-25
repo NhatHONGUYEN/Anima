@@ -1,5 +1,5 @@
 import AnimeList from "../AnimeList";
-import UserIntro from "../UserIntro";
+import UserIntro from "./UserIntro";
 
 export default function UserHero() {
   return (

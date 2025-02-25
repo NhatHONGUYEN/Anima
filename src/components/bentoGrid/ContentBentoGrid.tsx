@@ -2,14 +2,14 @@
 
 import React from "react";
 import { ContentBentoGridProps } from "@/lib/types";
-import BentoGridHeader from "./bentoGrid/BentoGridHeader";
-import BentoGridTrailer from "./bentoGrid/BentoGridTrailer";
-import BentoGridImage from "./bentoGrid/BentoGridImage";
-import BentoGridDetails from "./bentoGrid/BentoGridDetails";
-import BentoGridEpisodes from "./bentoGrid/BentoGridEpisodes";
-import BentoGridCharacters from "./bentoGrid/BentoGridCharacters";
-import BentoGridVoiceActors from "./bentoGrid/BentoGridVoiceActors";
-import CustomButton from "./CustomButton";
+import BentoGridHeader from "./BentoGridHeader";
+import BentoGridTrailer from "./BentoGridTrailer";
+import BentoGridImage from "./BentoGridImage";
+import BentoGridDetails from "./BentoGridDetails";
+import BentoGridEpisodes from "./BentoGridEpisodes";
+import BentoGridCharacters from "./BentoGridCharacters";
+import BentoGridVoiceActors from "./BentoGridVoiceActors";
+import CustomButton from "../CustomButton";
 import { MoveLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 

@@ -8,7 +8,7 @@ import {
 import { Anime, Characters, Episode } from "@/lib/types";
 
 import Loader from "./ui/loader";
-import ContentBentoGrid from "./ContentBentoGrid";
+import ContentBentoGrid from "./bentoGrid/ContentBentoGrid";
 
 export default function AnimeDetails({ id }: { id: number }) {
   const { data: animeDetail, error, isLoading } = useAnimeDetails(id);

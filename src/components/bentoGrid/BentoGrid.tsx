@@ -5,7 +5,7 @@ import { useAnimeDetails, useAnimeEpisodes } from "@/hooks/useTopAnime";
 import { Anime, Episode } from "@/lib/types";
 
 import Loader from "../ui/loader";
-import ContentBentoGrid from "../ContentBentoGrid";
+import ContentBentoGrid from "./ContentBentoGrid";
 
 export default function BentoGrid() {
   const { data: animeDetail, error, isLoading } = useAnimeDetails(38524);
