@@ -1,49 +1,33 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useTopAnime } from "@/hooks/useTopAnime";
+import React from "react";
+import { useRouter } from "next/navigation";
+import { AnimeListProps } from "@/lib/types";
 import AnimeCard from "@/components/AnimeCard";
-import { Anime } from "@/lib/types";
 import Loader from "./ui/loader";
 import CustomButton from "./customButton/CustomButton";
 import { MoveLeft } from "lucide-react";
-import { useRouter } from "next/navigation";
 import FADE_DOWN_ANIMATION from "@/animations/FADE_DOWN_ANIMATION";
-
-type AnimeListProps = {
-  filter: "airing" | "upcoming" | "bypopularity" | "favorite" | "all";
-  title: string;
-  description: string;
-};
+import { useAnimeList } from "@/hooks/useAnimeList"; // Import the custom hook
+import { INITIAL_VISIBLE_COUNT } from "@/lib/constants";
 
 export default function AnimeList({
   filter,
   title,
   description,
 }: AnimeListProps) {
-  const [page, setPage] = useState(1);
-  const [allAnime, setAllAnime] = useState<Anime[]>([]);
-  const { data, error, isLoading } = useTopAnime(filter, page);
   const router = useRouter();
-  const [visibleCount, setVisibleCount] = useState(8); // État pour gérer le nombre d'éléments visibles
+  const {
+    allAnime,
+    visibleCount,
+    isLoading,
+    error,
+    handleShowMore,
+    handleShowLess,
+  } = useAnimeList(filter, INITIAL_VISIBLE_COUNT); // Pass the initial visible count to the custom hook
 
-  useEffect(() => {
-    if (data?.data) {
-      setAllAnime((prevAnime) => [...prevAnime, ...data.data]);
-    }
-  }, [data]);
-
-  if (isLoading && page === 1) return <Loader />;
+  if (isLoading && visibleCount === INITIAL_VISIBLE_COUNT) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
-
-  const handleShowMore = () => {
-    setPage((prevPage) => prevPage + 1);
-    setVisibleCount((prevCount) => prevCount + 8); // Augmente de 8 éléments
-  };
-
-  const handleShowLess = () => {
-    setVisibleCount((prevCount) => Math.max(8, prevCount - 8)); // Réduit de 8 éléments, avec un minimum de 8
-  };
 
   return (
     <section className="py-16">
@@ -63,7 +47,7 @@ export default function AnimeList({
           <div className="grid mt-10 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {allAnime
               .slice(0, visibleCount) // Affiche uniquement les premiers `visibleCount` éléments
-              .map((anime: Anime, index) => (
+              .map((anime, index) => (
                 <AnimeCard key={`${anime.mal_id}-${index}`} anime={anime} />
               ))}
           </div>
@@ -71,7 +55,7 @@ export default function AnimeList({
             {allAnime.length >= visibleCount && (
               <CustomButton label="Show More" onClick={handleShowMore} />
             )}
-            {visibleCount > 8 && (
+            {visibleCount > INITIAL_VISIBLE_COUNT && (
               <CustomButton
                 label="Show Less"
                 variant="outline"

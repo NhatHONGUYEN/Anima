@@ -5,7 +5,7 @@ import {
   fetchAnimeRecommendations,
   fetchAnimeReviews,
   fetchTopAnime,
-} from "@/lib/actions.ts/anime";
+} from "@/lib/actions/anime";
 import { NextResponse } from "next/server";
 
 // Cette fonction traite toutes les requêtes GET

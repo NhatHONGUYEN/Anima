@@ -197,3 +197,9 @@ export type Theme = {
   mal_id: number;
   name: string;
 };
+
+export type AnimeListProps = {
+  filter: "airing" | "upcoming" | "bypopularity" | "favorite" | "all";
+  title: string;
+  description: string;
+};

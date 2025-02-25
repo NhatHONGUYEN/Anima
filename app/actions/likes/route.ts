@@ -1,6 +1,6 @@
 "use server";
 
-import { addLike } from "@/lib/actions.ts/likes";
+import { addLike } from "@/lib/actions/likes";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 

@@ -8,7 +8,7 @@ import {
   fetchAnimeRecommendations,
   fetchAnimeReviews,
   fetchTopAnime,
-} from "@/lib/actions.ts/anime";
+} from "@/lib/actions/anime";
 
 export function useTopAnime(
   filter?: "airing" | "upcoming" | "bypopularity" | "favorite" | "all",

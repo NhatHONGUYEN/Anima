@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { fetchAnimeDetails } from "@/lib/actions.ts/anime";
+import { fetchAnimeDetails } from "@/lib/actions/anime";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import LikeButton from "./customButton/LikeButton";
