@@ -5,10 +5,29 @@ import { avatars } from "@/lib/data";
 import CustomButton from "../customButton/CustomButton";
 import { signIn } from "next-auth/react";
 import FADE_DOWN_ANIMATION from "@/animations/FADE_DOWN_ANIMATION";
+import {
+  ANIME_SERIES_COUNT,
+  ANIME_SERIES_LABEL,
+  BECOME_MEMBER_LABEL,
+  DESCRIPTION,
+  HOURS_OF_CONTENT_COUNT,
+  HOURS_OF_CONTENT_LABEL,
+  JOINED_PEOPLE_TEXT,
+  SASUKE_IMAGE_ALT,
+  SASUKE_IMAGE_SRC,
+  SERAPH_IMAGE_ALT,
+  SERAPH_IMAGE_SRC,
+  SIGN_IN_PROVIDER,
+  SIGN_IN_REDIRECT_URL,
+  SUBTITLE,
+  TITLE,
+  USER_SATISFACTION_LABEL,
+  USER_SATISFACTION_PERCENTAGE,
+} from "@/lib/constants";
 
 export default function NoUserHero() {
   const handleSignIn = () => {
-    signIn("github", { redirectTo: "/" });
+    signIn(SIGN_IN_PROVIDER, { redirectTo: SIGN_IN_REDIRECT_URL });
   };
 
   return (
@@ -18,19 +37,21 @@ export default function NoUserHero() {
           <div className="flex flex-col gap-4 md:flex-row">
             <div className="flex text-center md:text-left flex-col gap-6">
               <h1 className="text-4xl lg:w-96  font-medium leading-tight lg:text-6xl">
-                Explore the World of Anime
+                {TITLE}
               </h1>
-              <h2 className="text-2xl font-medium leading-tight lg:text-4xl"></h2>
-              <p className="mx-auto md:mx-0 max-w-[80%]">
-                Dive into exclusive content, behind-the-scenes insights, and
-                more. Enhance your anime experience and join our community.
-              </p>
+              <h2 className="text-2xl font-medium leading-tight lg:text-4xl">
+                {SUBTITLE}
+              </h2>
+              <p className="mx-auto md:mx-0 max-w-[80%]">{DESCRIPTION}</p>
               <div className="relative mx-auto md:mx-0 z-10 flex flex-wrap items-center gap-6">
-                <CustomButton label="Become a member" onClick={handleSignIn} />
+                <CustomButton
+                  label={BECOME_MEMBER_LABEL}
+                  onClick={handleSignIn}
+                />
                 <Image
                   className="w-16 h-16 bg-secondary rounded-full border-4 border-primary-foreground"
-                  src="/seraph.gif"
-                  alt="Seraph animation"
+                  src={SERAPH_IMAGE_SRC}
+                  alt={SERAPH_IMAGE_ALT}
                   width={40}
                   height={40}
                 />
@@ -40,8 +61,8 @@ export default function NoUserHero() {
               <div className="hidden sm:block relative mx-auto mt-28 h-[21.25rem] w-[21.25rem] rounded-full bg-secondary md:mx-0 md:mt-0 lg:h-[25rem] lg:w-[25rem]">
                 <div className="absolute bottom-0 left-1/2 w-[21.25rem] -translate-x-1/2 overflow-hidden rounded-b-full lg:w-[25rem]">
                   <Image
-                    src="/sasuke.webp"
-                    alt="Sasuke character"
+                    src={SASUKE_IMAGE_SRC}
+                    alt={SASUKE_IMAGE_ALT}
                     className=" w-full translate-y-20 scale-90 object-cover object-center "
                     width={425}
                     height={425}
@@ -61,7 +82,7 @@ export default function NoUserHero() {
                     ))}
                   </div>
                   <div className="flex-1 text-sm text-gray-800">
-                    7000+ people already joined
+                    {JOINED_PEOPLE_TEXT}
                   </div>
                 </div>
                 <div className="absolute right-0 top-0 flex h-[6.25rem] w-[6.25rem] rotate-12 rounded-3xl border-8 border-primary-foreground bg-primary lg:h-[6.875rem] lg:w-[6.875rem]">
@@ -77,26 +98,26 @@ export default function NoUserHero() {
             <div className=" flex w-full flex-col md:flex-row">
               <div className="flex flex-1 flex-col gap-3 border-b-[1px] p-6 md:border-b-0 md:border-r-[1px]">
                 <div className="text-2xl font-medium text-primary lg:text-4xl">
-                  500+
+                  {ANIME_SERIES_COUNT}
                 </div>
                 <div className="text-muted-foreground lg:text-lg">
-                  Anime Series
+                  {ANIME_SERIES_LABEL}
                 </div>
               </div>
               <div className="flex flex-1 flex-col gap-3 border-b-[1px] p-6 md:border-b-0 md:border-r-[1px]">
                 <div className="text-2xl font-medium text-primary lg:text-4xl">
-                  1000+
+                  {HOURS_OF_CONTENT_COUNT}
                 </div>
                 <div className="text-muted-foreground lg:text-lg">
-                  Hours of Content
+                  {HOURS_OF_CONTENT_LABEL}
                 </div>
               </div>
               <div className="flex flex-1 flex-col gap-3 p-6">
                 <div className="text-2xl font-medium text-primary lg:text-4xl">
-                  99%
+                  {USER_SATISFACTION_PERCENTAGE}
                 </div>
                 <div className="text-muted-foreground lg:text-lg">
-                  User Satisfaction Rating
+                  {USER_SATISFACTION_LABEL}
                 </div>
               </div>
             </div>
