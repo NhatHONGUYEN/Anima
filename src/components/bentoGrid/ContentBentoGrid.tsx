@@ -6,7 +6,7 @@ import BentoGridHeader from "./BentoGridHeader";
 import BentoGridTrailer from "./BentoGridTrailer";
 import BentoGridImage from "./BentoGridImage";
 import BentoGridDetails from "./BentoGridDetails";
-import BentoGridEpisodes from "./BentoGridEpisodes";
+import BentoGridEpisodes from "./bentoGridEpisodes/BentoGridEpisodes";
 import BentoGridCharacters from "./BentoGridCharacters";
 import BentoGridVoiceActors from "./BentoGridVoiceActors";
 import CustomButton from "../customButton/CustomButton";
