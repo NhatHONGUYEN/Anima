@@ -203,3 +203,21 @@ export type AnimeListProps = {
   title: string;
   description: string;
 };
+
+export type CustomButtonProps = {
+  label: string;
+  href?: string;
+  icon?: React.ElementType;
+  variant?: "default" | "outline";
+  onClick?: () => void;
+};
+
+export type AnimeCardProps = {
+  anime: Anime;
+};
+
+export type LikeButtonProps = {
+  onLike?: (liked: boolean) => void;
+  defaultLiked?: boolean;
+  className?: string;
+};

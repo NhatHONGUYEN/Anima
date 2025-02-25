@@ -2,11 +2,12 @@ import Image from "next/image";
 import CustomButton from "../customButton/CustomButton";
 import { ImageProps } from "@/lib/types";
 import FADE_DOWN_ANIMATION from "@/animations/FADE_DOWN_ANIMATION";
+import { IMAGE_ALT, IMAGE_SRC } from "@/lib/constants";
 
 export default function UserIntro() {
   const imageProps: ImageProps = {
-    src: "/detective_conan.gif",
-    alt: "Détective Conan",
+    src: IMAGE_SRC,
+    alt: IMAGE_ALT,
     fill: true,
     sizes: "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
     style: { objectFit: "cover" },

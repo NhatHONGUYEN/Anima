@@ -2,23 +2,17 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-
 import toast from "react-hot-toast";
 import Image from "next/image";
 import EmptyHeart from "./EmptyHeart";
 import FullyHeart from "./FullyHeart";
+import { LikeButtonProps } from "@/lib/types";
 
-interface LikeButtonProps {
-  onLike?: (liked: boolean) => void;
-  defaultLiked?: boolean;
-  className?: string;
-}
-
-const LikeButton = ({
+export default function LikeButton({
   onLike,
   defaultLiked = false,
   className = "",
-}: LikeButtonProps) => {
+}: LikeButtonProps) {
   const [isLiked, setIsLiked] = useState(defaultLiked);
 
   const handleLike = (event: React.MouseEvent) => {
@@ -66,6 +60,4 @@ const LikeButton = ({
       </motion.div>
     </motion.div>
   );
-};
-
-export default LikeButton;
+}

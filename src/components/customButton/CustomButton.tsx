@@ -1,14 +1,7 @@
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import { Button } from "../ui/button";
-
-type CustomButtonProps = {
-  label: string;
-  href?: string;
-  icon?: React.ElementType;
-  variant?: "default" | "outline";
-  onClick?: () => void;
-};
+import { CustomButtonProps } from "@/lib/types";
 
 export default function CustomButton({
   label,
