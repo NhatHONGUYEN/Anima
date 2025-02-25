@@ -96,3 +96,25 @@ export const ANIME_THUMBNAILS = [
     thumbnail: "/dandan (4).gif",
   },
 ];
+
+export const FaqItems = [
+  {
+    question: "Why use a FAQ?",
+    answer: "Because I just want to have a little chat with you.",
+  },
+  {
+    question: "Why did I start this project?",
+    answer:
+      "I really love watching anime, and I'm particularly fascinated by animation, like the latest season of One Piece or Attack on Titan. They inspired me to start this project.",
+  },
+  {
+    question: "Which stack do I use?",
+    answer:
+      "Next.js, Tailwind CSS, TypeScript, Vercel, TanStack Query, Prisma, PostgreSQL, Auth.js, Zustand, and Motion. And for the database, I use the API from Jikan API. Thanks to all the creators of these amazing tools!",
+  },
+  {
+    question: "Do you appreciate the project?",
+    answer:
+      "At first, I never expected this project to go so far, which is why my Git repository isn't very well organized. But I really want to improve it. It has been an amazing experience to learn this stack. So if you like this project, just share it with others and help me land a job!",
+  },
+];
